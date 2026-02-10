@@ -1,0 +1,132 @@
+---
+const developmentServices = [
+  {
+    title: 'Custom Software',
+    description:
+      'End-to-end development of bespoke web and mobile applications. From architecture through to deployment, we build software tailored to your specific business requirements using modern, maintainable technology stacks.',
+  },
+  {
+    title: 'AI/ML Integration',
+    description:
+      'Practical integration of artificial intelligence and machine learning into your products and workflows. We focus on high-impact use cases — not hype — delivering measurable automation and intelligence improvements.',
+  },
+  {
+    title: 'Product Discovery',
+    description:
+      'Structured product discovery to validate ideas before you build. We use rapid prototyping, user research, and evidence-based prioritisation to ensure you build the right thing, not just build the thing right.',
+  },
+  {
+    title: 'Legacy Modernisation',
+    description:
+      'Systematic modernisation of legacy systems with minimal disruption. We assess, plan, and incrementally migrate critical applications to modern architectures, reducing technical debt and operational risk.',
+  },
+  {
+    title: 'Cloud Architecture',
+    description:
+      'Design and implementation of scalable, cost-effective cloud infrastructure. From initial cloud migration to optimising existing deployments, we help you get the most from AWS, Azure, or GCP.',
+  },
+];
+
+const consultingServices = [
+  {
+    title: 'Agile Coaching',
+    description:
+      'Practical agile coaching that goes beyond ceremonies and frameworks. We help teams adopt delivery practices that actually work — tailored to your context, not copied from a textbook.',
+  },
+  {
+    title: 'DORA Metrics',
+    description:
+      'Implementation of DORA metrics (deployment frequency, lead time, change failure rate, MTTR) to measure and improve your engineering team\'s effectiveness with real data, not gut feel.',
+  },
+  {
+    title: 'DevOps/CI-CD',
+    description:
+      'Design and implementation of CI/CD pipelines, infrastructure-as-code, and DevOps practices. We help teams ship faster with confidence by automating the path from commit to production.',
+  },
+  {
+    title: 'EngOps/DX',
+    description:
+      'Engineering operations and developer experience improvement. We optimise your team\'s tooling, workflows, and internal platforms to reduce friction and increase velocity.',
+  },
+  {
+    title: 'Team Structure',
+    description:
+      'Advice on engineering team topology, ways of working, and organisational design. We help you structure teams for fast flow, clear ownership, and sustainable delivery.',
+  },
+  {
+    title: 'Technical Due Diligence',
+    description:
+      'Independent technical assessment for investors, acquirers, or leadership teams. We evaluate architecture, code quality, team capability, and technical risk to support informed decision-making.',
+  },
+];
+---
+
+<section
+  id="services"
+  class="bg-white py-section lg:py-section-lg"
+  aria-labelledby="services-heading"
+  data-animate="services-detail"
+>
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    <h2
+      id="services-heading"
+      class="text-h2 lg:text-h2-lg text-brand-primary text-center mb-12"
+    >
+      Services
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      {/* Development Services */}
+      <div>
+        <h3 class="text-h3 lg:text-h3-lg text-brand-primary mb-6">
+          Development Services
+        </h3>
+        <div class="divide-y divide-gray-200">
+          {
+            developmentServices.map((service) => (
+              <details class="group" data-animate="accordion-item">
+                <summary class="flex items-center justify-between py-4 cursor-pointer font-medium text-brand-dark hover:text-brand-accent transition-colors duration-200 min-h-[44px] list-none [&::-webkit-details-marker]:hidden">
+                  <span>{service.title}</span>
+                  <span class="ml-4 flex-shrink-0 text-brand-muted group-open:rotate-45 transition-transform duration-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </span>
+                </summary>
+                <div class="accordion-content overflow-hidden">
+                  <p class="pb-4 text-body text-brand-muted">{service.description}</p>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+
+      {/* Consulting Services */}
+      <div>
+        <h3 class="text-h3 lg:text-h3-lg text-brand-primary mb-6">
+          Consulting Services
+        </h3>
+        <div class="divide-y divide-gray-200">
+          {
+            consultingServices.map((service) => (
+              <details class="group" data-animate="accordion-item">
+                <summary class="flex items-center justify-between py-4 cursor-pointer font-medium text-brand-dark hover:text-brand-accent transition-colors duration-200 min-h-[44px] list-none [&::-webkit-details-marker]:hidden">
+                  <span>{service.title}</span>
+                  <span class="ml-4 flex-shrink-0 text-brand-muted group-open:rotate-45 transition-transform duration-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </span>
+                </summary>
+                <div class="accordion-content overflow-hidden">
+                  <p class="pb-4 text-body text-brand-muted">{service.description}</p>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

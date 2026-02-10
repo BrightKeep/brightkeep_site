@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import ServicesOverview from '../components/ServicesOverview.astro';
+import MethodologyGrid from '../components/MethodologyGrid.astro';
+import ServicesDetail from '../components/ServicesDetail.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout>
+  <Nav />
+  <main id="main-content" class="pt-16" tabindex="-1">
+    <Hero />
+    <ServicesOverview />
+    <MethodologyGrid />
+    <ServicesDetail />
+    <ContactForm />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  if (!prefersReducedMotion) {
+    // --- Hero entrance animation (staggered fade-up) ---
+    const heroSelectors = [
+      '[data-animate="hero-heading"]',
+      '[data-animate="hero-subheadline"]',
+      '[data-animate="hero-cta"]',
+    ];
+    heroSelectors.forEach((sel) => gsap.set(sel, { opacity: 0, y: 30 }));
+
+    const heroTl = gsap.timeline({ delay: 0.2 });
+    heroTl
+      .to('[data-animate="hero-heading"]', {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+      })
+      .to(
+        '[data-animate="hero-subheadline"]',
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
+        '-=0.3'
+      )
+      .to(
+        '[data-animate="hero-cta"]',
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
+        '-=0.3'
+      );
+
+    // --- Service cards staggered reveal on scroll ---
+    const cards = document.querySelectorAll('[data-animate="card"]');
+    gsap.set(cards, { opacity: 0, y: 40 });
+
+    ScrollTrigger.create({
+      trigger: '#what-we-do',
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        gsap.to(cards, {
+          opacity: 1,
+          y: 0,
+          stagger: 0.2,
+          duration: 0.6,
+          ease: 'power2.out',
+        });
+      },
+    });
+
+    // --- Methodology tiles sequential fade-in on scroll ---
+    const tiles = document.querySelectorAll('[data-animate="tile"]');
+    gsap.set(tiles, { opacity: 0, y: 30 });
+
+    ScrollTrigger.create({
+      trigger: '#how-we-work',
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        gsap.to(tiles, {
+          opacity: 1,
+          y: 0,
+          stagger: 0.1,
+          duration: 0.5,
+          ease: 'power2.out',
+        });
+      },
+    });
+
+    // --- Services accordion smooth GSAP height transitions ---
+    document
+      .querySelectorAll('[data-animate="accordion-item"]')
+      .forEach((el) => {
+        const details = el as HTMLDetailsElement;
+        const summary = details.querySelector('summary');
+        const content = details.querySelector(
+          '.accordion-content'
+        ) as HTMLElement | null;
+        if (!summary || !content) return;
+
+        let isAnimating = false;
+
+        summary.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (isAnimating) return;
+          isAnimating = true;
+
+          if (details.open) {
+            // Collapse
+            gsap.to(content, {
+              height: 0,
+              duration: 0.3,
+              ease: 'power2.inOut',
+              onComplete: () => {
+                details.open = false;
+                content.style.height = '';
+                isAnimating = false;
+              },
+            });
+          } else {
+            // Expand
+            details.open = true;
+            const h = content.scrollHeight;
+            gsap.set(content, { height: 0 });
+            gsap.to(content, {
+              height: h,
+              duration: 0.3,
+              ease: 'power2.inOut',
+              onComplete: () => {
+                content.style.height = '';
+                isAnimating = false;
+              },
+            });
+          }
+        });
+      });
+
+    // --- Contact section fade-in (target created in EP0004) ---
+    const contactEl = document.getElementById('contact');
+    if (contactEl) {
+      gsap.set(contactEl.children, { opacity: 0, y: 30 });
+      ScrollTrigger.create({
+        trigger: contactEl,
+        start: 'top 80%',
+        once: true,
+        onEnter: () => {
+          gsap.to(contactEl.children, {
+            opacity: 1,
+            y: 0,
+            stagger: 0.15,
+            duration: 0.6,
+            ease: 'power2.out',
+          });
+        },
+      });
+    }
+  }
+</script>

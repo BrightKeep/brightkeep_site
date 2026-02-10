@@ -1,0 +1,48 @@
+---
+/**
+ * Analytics Integration Point
+ *
+ * Configure by setting PUBLIC_ANALYTICS_ID in your environment.
+ * When set, the analytics provider script loads asynchronously.
+ * When unset or empty, no analytics script is included (zero overhead).
+ *
+ * To change analytics provider:
+ * 1. Update the script `src` URL below
+ * 2. Update the data attribute if the provider expects a different one
+ * 3. Update the provider detection in the trackEvent function
+ *
+ * Candidate providers (all cookieless, privacy-respecting):
+ * - Plausible: src="https://plausible.io/js/script.js" data-domain={id}
+ * - Fathom: src="https://cdn.usefathom.com/script.js" data-site={id}
+ * - Umami: src="https://analytics.umami.is/script.js" data-website-id={id}
+ */
+const analyticsId = import.meta.env.PUBLIC_ANALYTICS_ID;
+---
+
+{analyticsId && (
+  <script
+    is:inline
+    async
+    defer
+    data-site-id={analyticsId}
+    src="https://analytics.example.com/script.js"
+  ></script>
+)}
+
+<script is:inline>
+  // Provider-agnostic event tracking — always available as window.trackEvent()
+  // Safe to call unconditionally; no-op when no analytics provider is loaded.
+  window.trackEvent = function(eventName, properties) {
+    try {
+      if (typeof window.plausible === 'function') {
+        window.plausible(eventName, { props: properties });
+      } else if (window.fathom && typeof window.fathom.trackEvent === 'function') {
+        window.fathom.trackEvent(eventName);
+      } else if (window.umami && typeof window.umami.track === 'function') {
+        window.umami.track(eventName, properties);
+      }
+    } catch (e) {
+      // Analytics errors should never break the site
+    }
+  };
+</script>

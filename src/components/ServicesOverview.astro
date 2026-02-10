@@ -1,0 +1,117 @@
+---
+const services = [
+  {
+    title: 'Digital Product Development',
+    summary:
+      'From concept to launch, we build digital products that solve real problems and deliver measurable business value.',
+    bullets: [
+      'Custom web and mobile applications',
+      'AI/ML integration and automation',
+      'Product discovery and validation',
+      'Legacy system modernisation',
+    ],
+    icon: 'code',
+  },
+  {
+    title: 'Digital Delivery Consulting',
+    summary:
+      'We help engineering teams deliver faster, measure better, and build the capability to sustain it without us.',
+    bullets: [
+      'Agile coaching and delivery practice',
+      'DORA metrics and engineering effectiveness',
+      'DevOps, CI/CD, and platform engineering',
+      'Team structure and ways of working',
+    ],
+    icon: 'chart',
+  },
+];
+---
+
+<section
+  id="what-we-do"
+  class="bg-brand-surface py-section lg:py-section-lg"
+  aria-labelledby="what-we-do-heading"
+  data-animate="services-overview"
+>
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    <h2
+      id="what-we-do-heading"
+      class="text-h2 lg:text-h2-lg text-brand-primary text-center mb-12"
+    >
+      What We Do
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      {
+        services.map((service) => (
+          <article
+            class="bg-white rounded-card p-6 md:p-8 shadow-sm"
+            data-animate="card"
+          >
+            <div class="mb-4">
+              {service.icon === 'code' ? (
+                <svg
+                  class="w-10 h-10 text-brand-accent"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  class="w-10 h-10 text-brand-accent"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"
+                  />
+                </svg>
+              )}
+            </div>
+
+            <h3 class="text-h3 lg:text-h3-lg text-brand-primary mb-3">
+              {service.title}
+            </h3>
+
+            <p class="text-body text-brand-muted mb-4">{service.summary}</p>
+
+            <ul class="space-y-2">
+              {service.bullets.map((bullet) => (
+                <li class="flex items-start gap-2 text-body text-brand-dark">
+                  <span class="text-brand-highlight mt-1.5 flex-shrink-0">
+                    <svg
+                      class="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

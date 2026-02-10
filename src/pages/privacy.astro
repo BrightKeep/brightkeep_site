@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy | BrightKeep"
+  description="BrightKeep's privacy policy explains how we collect, use, and protect your personal information in accordance with the Australian Privacy Act 1988."
+>
+  <Nav />
+  <main id="main-content" class="pt-16" tabindex="-1">
+    <section class="bg-brand-surface py-section lg:py-section-lg" aria-labelledby="privacy-heading">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 id="privacy-heading" class="text-h1 lg:text-h1-lg text-brand-primary mb-4">
+          Privacy Policy
+        </h1>
+        <p class="text-small text-brand-muted mb-12">
+          Last updated: 10 February 2026
+        </p>
+
+        <div class="space-y-10 text-body lg:text-body-lg text-brand-dark">
+          {/* 1. Introduction */}
+          <div>
+            <h2 class="text-h3 lg:text-h3-lg text-brand-primary mb-4">1. Introduction</h2>
+            <p class="mb-4">
+              BrightKeep (ABN 70 667 383 477) ("we", "us", "our") is committed to protecting
+              the privacy of individuals who interact with our website. This privacy policy
+              explains how we collect, use, disclose, and protect your personal information in
+              accordance with the Australian Privacy Act 1988 (Cth) and the Australian Privacy
+              Principles (APPs).
+            </p>
+            <p>
+              This policy applies to personal information collected through our website at
+              brightkeep.com.au, including the contact form and any analytics data.
+            </p>
+          </div>
+
+          {/* 2. Information We Collect */}
+          <div>
+            <h2 class="text-h3 lg:text-h3-lg text-brand-primary mb-4">2. Information We Collect</h2>
+            <p class="mb-4">
+              We collect personal information that you voluntarily provide to us through our
+              contact form. This includes:
+            </p>
+            <ul class="list-disc pl-6 space-y-2 mb-4">
+              <li><strong>Name</strong> (required)</li>
+              <li><strong>Email address</strong> (required)</li>
+              <li><strong>Company name</strong> (optional)</li>
+              <li><strong>Message content</strong> (optional)</li>
+            </ul>
+            <p>
+              We may also collect anonymous, aggregated analytics data about how visitors
+              use our website (such as pages visited and general geographic region). Our
+              analytics solution is privacy-respecting and does not use cookies for tracking.
+            </p>
+          </div>
+
+          {/* 3. How We Use Your Information */}
+          <div>
+            <h2 class="text-h3 lg:text-h3-lg text-brand-primary mb-4">3. How We Use Your Information</h2>
+            <p class="mb-4">
+              We use the personal information collected through our contact form for the
+              following purposes:
+            </p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>To respond to your enquiry or message</li>
+              <li>To communicate with you about our services</li>
+              <li>To improve our website and services based on aggregated analytics data</li>
+            </ul>
+          </div>
+
+          {/* 4. Third-Party Services */}
+          <div>
+            <h2 class="text-h3 lg:text-h3-lg text-brand-primary mb-4">4. Third-Party Services</h2>
+            <p class="mb-4">
+              We use the following third-party services that may process your data:
+            </p>
+            <ul class="list-disc pl-6 space-y-2 mb-4">
+              <li>
+                <strong>Formspree</strong> — Our contact form submissions are processed by
+                Formspree, Inc. Formspree receives the data you submit through the contact
+                form (Name, Email, Company, Message) and forwards it to us via email.
+                Formspree's privacy policy is available on their website.
+              </li>
+              <li>
+                <strong>Analytics provider</strong> — We use a privacy-respecting, cookieless
+                analytics service to understand general website usage patterns. This service
+                does not collect personally identifiable information and does not track
+                individual users across websites.
+              </li>
+              <li>
+                <strong>Google Fonts</strong> — Our website loads fonts from Google Fonts.
+                Google may collect your IP address and browser information when fonts are
+                requested. See Google's privacy policy for details.
+              </li>
+            </ul>
+            <p>
+              We do not sell, rent, or trade your personal information to any third parties
+              for marketing purposes.
+            </p>
+          </div>
+
+          {/* 5. Cookies and Tracking */}
+          <div>
+            <h2 class="text-h3 lg:text-h3-lg text-brand-primary mb-4">5. Cookies and Tracking</h2>
+            <p>
+              Our website does not use cookies for tracking or advertising purposes. Our
+              analytics solution is cookieless and does not store any data on your device.
+              Essential cookies may be used by your browser or our hosting provider for
+              basic functionality (such as security), but these do not track your activity
+              or collect personal information.
+            </p>
+          </div>
+
+          {/* 6. Data Retention */}
+          <div>
+            <h2 class="text-h3 lg:text-h3-lg text-brand-primary mb-4">6. Data Retention</h2>
+            <p>
+              Contact form submissions are retained for as long as necessary to respond to
+              your enquiry and maintain our business records. We will not retain your
+              personal information longer than reasonably necessary for the purposes for
+              which it was collected. Analytics data is aggregated and anonymised, and does
+              not contain personally identifiable information.
+            </p>
+          </div>
+
+          {/* 7. Your Rights */}
+          <div>
+            <h2 class="text-h3 lg:text-h3-lg text-brand-primary mb-4">7. Your Rights</h2>
+            <p class="mb-4">
+              Under the Australian Privacy Principles, you have the right to:
+            </p>
+            <ul class="list-disc pl-6 space-y-2 mb-4">
+              <li><strong>Access</strong> the personal information we hold about you</li>
+              <li><strong>Request correction</strong> of any inaccurate or incomplete information</li>
+              <li><strong>Request deletion</strong> of your personal information</li>
+              <li><strong>Lodge a complaint</strong> if you believe we have breached the Australian Privacy Principles</li>
+            </ul>
+            <p>
+              To exercise any of these rights, please contact us using the details below.
+              We will respond to your request within a reasonable timeframe, and in any case
+              within 30 days.
+            </p>
+          </div>
+
+          {/* 8. Changes to This Policy */}
+          <div>
+            <h2 class="text-h3 lg:text-h3-lg text-brand-primary mb-4">8. Changes to This Policy</h2>
+            <p>
+              We may update this privacy policy from time to time to reflect changes in our
+              practices or legal requirements. Any changes will be posted on this page with
+              an updated "Last updated" date. We encourage you to review this policy
+              periodically.
+            </p>
+          </div>
+
+          {/* 9. Contact Us */}
+          <div>
+            <h2 class="text-h3 lg:text-h3-lg text-brand-primary mb-4">9. Contact Us</h2>
+            <p class="mb-4">
+              If you have any questions about this privacy policy, wish to exercise your
+              privacy rights, or have a complaint about our handling of your personal
+              information, please contact us:
+            </p>
+            <div class="bg-white rounded-card p-6 space-y-2">
+              <p><strong>BrightKeep</strong></p>
+              <p>Melbourne, VIC, Australia</p>
+              <p>
+                Email:{' '}
+                <a
+                  href="mailto:contact@brightkeep.com.au"
+                  class="text-brand-secondary hover:text-brand-accent transition-colors duration-200 underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-secondary rounded"
+                >
+                  contact@brightkeep.com.au
+                </a>
+              </p>
+            </div>
+            <p class="mt-4 text-brand-muted text-small">
+              If you are not satisfied with our response, you may lodge a complaint with the
+              Office of the Australian Information Commissioner (OAIC) at{' '}
+              <a
+                href="https://www.oaic.gov.au"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-brand-secondary hover:text-brand-accent transition-colors duration-200 underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-secondary rounded"
+              >
+                oaic.gov.au
+              </a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

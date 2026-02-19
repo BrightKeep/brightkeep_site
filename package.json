@@ -7,12 +7,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "start": "node dist/server/entry.mjs",
     "astro": "astro"
   },
   "engines": {
-    "node": ">=18.14.1"
+    "node": ">=20.0.0"
   },
   "dependencies": {
+    "@astrojs/node": "^9.5.4",
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.17.1",

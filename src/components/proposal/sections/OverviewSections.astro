@@ -1,0 +1,407 @@
+---
+
+---
+
+<!-- Section 1: Executive Summary -->
+<section data-section="executive-summary" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">1. Executive Summary</h2>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Cloud9 needs a tool that turns SharePoint data into interactive architecture visualisations.
+      Consultants and their clients should be able to explore application landscapes, filter by any
+      dimension, trace integration dependencies, and export what they see into slide decks and
+      client-ready documents, without maintaining manual diagrams that go stale the moment they're drawn.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      The tool also represents a commercial opportunity. Each client deployment costs approximately $64
+      per month in Azure infrastructure. Cloud9 determines the pricing model, with the margin per client
+      being the difference between the chosen price point and the infrastructure cost. The full business
+      case, including revenue projections and investment payback analysis, is presented in Section 2.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>We propose building this tool in 8 weeks</strong> with a two-person senior development
+      team, starting with a focused one-week discovery, four weeks of development, one week of UAT, and
+      two weeks of hypercare support.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">Three Architectural Decisions</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Three architectural decisions define this proposal:
+    </p>
+
+    <ol class="list-decimal pl-6 mb-4 space-y-2 text-[#2D2D2D]">
+      <li>
+        <strong>Single-tenant deployment, not multi-tenant.</strong> Each Cloud9 client gets their
+        own isolated instance &mdash; their own database, their own application, their own URL. This
+        is materially more cost-effective for Cloud9 to run at launch than the enterprise multi-tenant
+        architecture described in the RFP. It provides stronger data isolation by default (physical
+        separation, not logical), and simplifies build time and complexity. The architecture is designed
+        for multi-tenant migration when client count reaches a single-tenant cost threshold (~18 clients),
+        and that migration can be executed with no client impact.
+      </li>
+      <li>
+        <strong>SharePoint stays as the source of truth.</strong> The tool reads from SharePoint via
+        daily sync with a manual refresh option. In the MLP phase, a &ldquo;check-out&rdquo; model
+        lets users create working copies for target-state planning without touching the synced data.
+        This eliminates issues relating to &lsquo;source-of-truth&rsquo;.
+      </li>
+      <li>
+        <strong>Feasibility drives phase allocation.</strong> We have evaluated the proposed feature
+        sequencing against Desirability, Viability, and Feasibility. Features that can deliver high
+        value quickly have been moved forward. This means Degree of Hops (the feature that demonstrates
+        impact analysis to architects) and PDF export both move into the MVP, alongside PNG export.
+      </li>
+    </ol>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">Key Numbers</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-semibold">Metric</th>
+            <th class="px-3 py-2 text-left font-semibold">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">MVP investment</td>
+            <td class="border border-gray-200 px-3 py-2"><strong>$42,700 AUD</strong> (excl. GST)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Team</td>
+            <td class="border border-gray-200 px-3 py-2">2 senior developers (3 days/week + 1.5 days/week)</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Calendar duration</td>
+            <td class="border border-gray-200 px-3 py-2">8 weeks (including discovery, UAT, hypercare)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Billable person-days</td>
+            <td class="border border-gray-200 px-3 py-2">30.5</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Infrastructure cost at launch (1 client)</td>
+            <td class="border border-gray-200 px-3 py-2">~$120/month AUD</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Infrastructure cost (5 clients)</td>
+            <td class="border border-gray-200 px-3 py-2">~$376/month AUD</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Multi-tenancy cost (fixed)</td>
+            <td class="border border-gray-200 px-3 py-2">~$1,200/month AUD</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Client onboarding time</td>
+            <td class="border border-gray-200 px-3 py-2">~2&ndash;4 hours per new client</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Multi-tenant crossover point</td>
+            <td class="border border-gray-200 px-3 py-2">~18 clients</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Delivery model</td>
+            <td class="border border-gray-200 px-3 py-2">Full solution handover</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>The delivery model is a full solution handover.</strong> At the end of the engagement,
+      Cloud9 owns the application, the source code, the infrastructure, and the operational knowledge
+      to run and maintain it independently. There is no ongoing maintenance contract and no retained
+      operational responsibility. Further development is available as a contracted engagement when
+      Cloud9 chooses to invest. The full handover model is detailed in Section 14.
+    </p>
+  </div>
+</section>
+
+<!-- Section 2: Business Case -->
+<section data-section="business-case" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">2. Business Case</h2>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">2.1 Infrastructure Economics</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Each client deployment costs approximately <strong>$64 per month</strong> in Azure infrastructure,
+      covering compute, database, storage, and monitoring. Cloud9 manages the Azure subscription directly
+      with no intermediary markup or managed service fee.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      A shared development environment adds approximately $56 per month. Total infrastructure at launch
+      with one client: approximately <strong>$120 per month</strong>.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Detailed infrastructure cost breakdowns and tier considerations are provided in Section 11.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">2.2 Revenue Potential</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      The following model illustrates the revenue potential at three price points. Cloud9 determines the
+      pricing model, whether as a standalone platform subscription, bundled into consulting engagement
+      fees, or offered as a value-add service.
+    </p>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Margin per client</h4>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-semibold">Metric</th>
+            <th class="px-3 py-2 text-left font-semibold">$500/month</th>
+            <th class="px-3 py-2 text-left font-semibold">$750/month</th>
+            <th class="px-3 py-2 text-left font-semibold">$1,000/month</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Infrastructure cost</td>
+            <td class="border border-gray-200 px-3 py-2">$64</td>
+            <td class="border border-gray-200 px-3 py-2">$64</td>
+            <td class="border border-gray-200 px-3 py-2">$64</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Gross margin per client</td>
+            <td class="border border-gray-200 px-3 py-2">$436 (87%)</td>
+            <td class="border border-gray-200 px-3 py-2">$686 (91%)</td>
+            <td class="border border-gray-200 px-3 py-2">$936 (94%)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Annual recurring revenue by client count</h4>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-semibold">Active Clients</th>
+            <th class="px-3 py-2 text-left font-semibold">$500/month</th>
+            <th class="px-3 py-2 text-left font-semibold">$750/month</th>
+            <th class="px-3 py-2 text-left font-semibold">$1,000/month</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">5</td>
+            <td class="border border-gray-200 px-3 py-2">$26,160</td>
+            <td class="border border-gray-200 px-3 py-2">$41,160</td>
+            <td class="border border-gray-200 px-3 py-2">$56,160</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">10</td>
+            <td class="border border-gray-200 px-3 py-2">$52,320</td>
+            <td class="border border-gray-200 px-3 py-2">$82,320</td>
+            <td class="border border-gray-200 px-3 py-2">$112,320</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">15</td>
+            <td class="border border-gray-200 px-3 py-2">$78,480</td>
+            <td class="border border-gray-200 px-3 py-2">$123,480</td>
+            <td class="border border-gray-200 px-3 py-2">$168,480</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Investment payback period</h4>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-semibold">Active Clients</th>
+            <th class="px-3 py-2 text-left font-semibold">$500/month</th>
+            <th class="px-3 py-2 text-left font-semibold">$750/month</th>
+            <th class="px-3 py-2 text-left font-semibold">$1,000/month</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">5</td>
+            <td class="border border-gray-200 px-3 py-2">~20 months</td>
+            <td class="border border-gray-200 px-3 py-2">~12 months</td>
+            <td class="border border-gray-200 px-3 py-2">~9 months</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">10</td>
+            <td class="border border-gray-200 px-3 py-2">~10 months</td>
+            <td class="border border-gray-200 px-3 py-2">~6 months</td>
+            <td class="border border-gray-200 px-3 py-2">~5 months</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      At the most conservative pricing with modest client uptake, the MVP investment is recovered within
+      the first year of reaching 10 active clients.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      These price points are illustrative. The underlying economics remain the same regardless of pricing
+      model: <strong>$64 per month to operate per client, with everything above that being value Cloud9
+      captures.</strong>
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">2.3 Consultant Capacity Recovery</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Beyond direct subscription revenue, the tool recovers billable consultant hours. Consultants
+      currently spend an estimated 8&ndash;12 hours per engagement manually creating and updating
+      architecture diagrams. The tool reduces this to 1&ndash;2 hours of initial configuration, with
+      subsequent updates handled automatically via SharePoint sync.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      At typical consulting day rates, this represents $1,500&ndash;$2,500 per engagement in recovered
+      capacity that can be redirected to billable consulting work.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">2.4 Scaling Economics</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Infrastructure cost scales linearly at $64 per client per month. At approximately 18 clients, a
+      one-time migration to shared multi-tenant infrastructure fixes the monthly cost at approximately
+      $1,200 regardless of client count. The application is designed for this migration from day one.
+      See Appendix D for the detailed migration process and Section 11.3 for the full crossover analysis.
+    </p>
+  </div>
+</section>
+
+<!-- Section 3: About BrightKeep -->
+<section data-section="about-brightkeep" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">3. About BrightKeep</h2>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">3.1 Our Approach</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      BrightKeep is a Digital Product &amp; Business Development company. We both build technology
+      solutions, and consult on how to build them. We are founded on decades of experience delivering
+      in the digital sector across corporate, startup, and consulting environments.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      We are a product-focussed firm, starting with the problem to solve, not the technology. Our
+      engagement process starts with what the customer or business needs, and we shape solutions around
+      outcomes rather than tool preferences. We favour pragmatic development &mdash; solutions that are
+      understandable, maintainable, and right-sized for where the product&rsquo;s maturity is, with
+      clear paths to scale when ready.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      We work in small, senior teams with short feedback loops. Weekly demos, working software early, and
+      clear communication. Our combination of industry and consulting experience means we understand that
+      building the right thing matters as much as building the thing right.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">3.2 Industry Experience</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      BrightKeep&rsquo;s team has experience working across automotive, financial services, transport,
+      SaaS platforms, document management, and enterprise consulting. We have built B2B SaaS products
+      used globally, led legacy-to-cloud platform migrations, integrated AI and machine learning into
+      production systems, and worked within the Microsoft ecosystem (Azure, Entra ID, SharePoint, Power
+      Platform) across multiple engagements. Our delivery consulting experience includes supporting
+      enterprise clients in the efficient and effective delivery of technology solutions.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">3.3 Relevant Experience</h3>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">NightOffice.ai &mdash; an AI-Powered Business Management Platform <span class="text-sm font-normal text-gray-500">(In Development)</span></h4>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      We have developed a SaaS platform that gives entrepreneurs and small businesses access to all
+      their data in a centralised tool, managed by AI-powered specialists. Users are able to hire AI
+      specialists in specific fields (Finance, Engineering, Marketing) that will then work for them in
+      all aspects of managing their business. Built on a React frontend, Supabase backend, real-time
+      collaboration, document management with AI synthesis, and multi-agent coordination. Full product
+      lifecycle from discovery through to build.
+    </p>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Client Delivery &mdash; Solution Documentation Platform</h4>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Built for a client with multiple complex software bases, and limited capacity for the creation of
+      technical documentation. Production solutions were going live without the documentation that support
+      and operations teams needed to maintain them. BrightKeep developed a tool integrating GitHub
+      repositories and CI/CD pipelines into a Microsoft Power Platform solution, using AI to analyse
+      codebases, understand end-to-end solution architecture, and generate technical documentation in a
+      structured framework. Users can query the documentation through Copilot Agents.
+    </p>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Client Delivery &mdash; Financial Analytics Dashboard</h4>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      A client with disparate data sources across accounting (Xero), an online platform, and manual
+      records had no clear picture of how their money was being spent. BrightKeep built a solution that
+      pulls and merges data from multiple sources into interactive dashboards, enabling analysis of
+      customer behaviour against revenue streams, financial forecasting, pricing model evaluation, and
+      performance tracking.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">3.4 Team</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+      <!-- Alastair Tooth -->
+      <div class="bg-white rounded-lg border border-gray-200 p-6">
+        <div class="flex flex-col items-center text-center mb-4">
+          <img
+            src="/proposals/alastair-tooth.jpeg"
+            alt="Alastair Tooth"
+            class="w-24 h-24 rounded-full object-cover mb-4"
+          />
+          <h4 class="text-lg font-semibold text-[#1B2A4A]">Alastair Tooth</h4>
+          <p class="text-sm font-medium text-[#0D9488]">Delivery Lead &amp; Product</p>
+        </div>
+        <p class="text-sm text-[#2D2D2D] leading-relaxed">
+          15 years in digital product development across corporate, startup, and consulting environments.
+          Background in product management and product ownership, with hands-on experience shaping product
+          strategy, running discovery, and driving delivery. Previously worked as a product and delivery
+          consultant at a firm operating in the same model as Cloud9 &mdash; embedding with enterprise
+          clients to improve how technology solutions are scoped, built, and shipped. Currently Head of
+          Performance Excellence, focused on optimised delivery practices, AI solutions, and engineering
+          performance. Also founder of a technology company in the automotive industry delivering both
+          hardware and software products.
+        </p>
+      </div>
+
+      <!-- Darren Benson -->
+      <div class="bg-white rounded-lg border border-gray-200 p-6">
+        <div class="flex flex-col items-center text-center mb-4">
+          <img
+            src="/proposals/darren-benson.png"
+            alt="Darren Benson"
+            class="w-24 h-24 rounded-full object-cover mb-4"
+          />
+          <h4 class="text-lg font-semibold text-[#1B2A4A]">Darren Benson</h4>
+          <p class="text-sm font-medium text-[#0D9488]">Technical Lead &amp; Senior Engineer</p>
+        </div>
+        <p class="text-sm text-[#2D2D2D] leading-relaxed">
+          Over 30 years in software engineering and engineering leadership. Career spans hands-on
+          architecture through to VP and Head of Engineering roles at organisations including Inchcape,
+          Ripjar, Hadean, and Preservica. Most recently leading the definition of a scalable, multi-tenant
+          SaaS platform at Inchcape. At Preservica, led the transformation of a legacy on-premise product
+          into a cloud-based SaaS platform on Azure with React and PostgreSQL &mdash; the same core stack
+          proposed for this engagement. At Ripjar, integrated AI and machine learning into enterprise
+          products for financial crime detection. Deep experience in secure, scalable architecture, cloud
+          infrastructure (Azure and AWS), and building engineering organisations that deliver reliably.
+          BSc (Hons) Software Engineering.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

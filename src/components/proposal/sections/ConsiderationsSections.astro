@@ -1,0 +1,347 @@
+---
+
+---
+
+<!-- Section 16: Assumptions -->
+<section data-section="assumptions" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">16. Assumptions</h2>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      These assumptions underpin the estimates in this proposal. Each will be validated during the Discovery phase. If any prove materially incorrect, the architecture, timeline, or cost may require revision.
+    </p>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">#</th>
+            <th class="px-3 py-2 text-left font-medium">Assumption</th>
+            <th class="px-3 py-2 text-left font-medium">Impact If Wrong</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">1</td>
+            <td class="border border-gray-200 px-3 py-2">Typical client has fewer than 500 applications and 2,000 integrations</td>
+            <td class="border border-gray-200 px-3 py-2">Graph rendering strategy may change (server-side layout, pagination)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">2</td>
+            <td class="border border-gray-200 px-3 py-2">Fewer than 10 concurrent users per client</td>
+            <td class="border border-gray-200 px-3 py-2">Infrastructure sizing may increase</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">3</td>
+            <td class="border border-gray-200 px-3 py-2">1&ndash;5 clients during the first year</td>
+            <td class="border border-gray-200 px-3 py-2">Multi-tenant migration timing may accelerate</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">4</td>
+            <td class="border border-gray-200 px-3 py-2">SharePoint data follows a consistent schema across clients (Cloud9 provides template)</td>
+            <td class="border border-gray-200 px-3 py-2">Per-client column mapping configuration required</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">5</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 manages an Azure subscription where deployments are hosted</td>
+            <td class="border border-gray-200 px-3 py-2">Alternative hosting requires revised Terraform and cost estimates</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">6</td>
+            <td class="border border-gray-200 px-3 py-2">Each client has their own Entra ID directory and can register an application</td>
+            <td class="border border-gray-200 px-3 py-2">Multi-org consent required if using Cloud9&rsquo;s directory for all clients</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">7</td>
+            <td class="border border-gray-200 px-3 py-2">Daily SharePoint sync is acceptable (not real-time)</td>
+            <td class="border border-gray-200 px-3 py-2">Event-driven pipeline adds complexity</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">8</td>
+            <td class="border border-gray-200 px-3 py-2">MVP has a single user persona (viewer) with identical permissions</td>
+            <td class="border border-gray-200 px-3 py-2">Role-based access in MVP increases auth complexity</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">9</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 provides sample SharePoint data for development and testing</td>
+            <td class="border border-gray-200 px-3 py-2">Synthetic data must be created, adding to Phase 0 effort</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">10</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9&rsquo;s functional lead (Veronica) is available for 3&ndash;4 hours per week during build</td>
+            <td class="border border-gray-200 px-3 py-2">Decision delays may extend timeline</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">11</td>
+            <td class="border border-gray-200 px-3 py-2">The tool never writes data back to SharePoint in any phase</td>
+            <td class="border border-gray-200 px-3 py-2">Bi-directional sync is a fundamentally different architecture</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">12</td>
+            <td class="border border-gray-200 px-3 py-2">Users and personas managed within MS Entra/AD (confirmed out of scope per RFP)</td>
+            <td class="border border-gray-200 px-3 py-2">Building user management adds to MVP scope</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">13</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 provides timely access to SharePoint lists, Entra directory, and Azure subscription</td>
+            <td class="border border-gray-200 px-3 py-2">Onboarding and build may be delayed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Section 17: Risks and Mitigations -->
+<section data-section="risks" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">17. Risks and Mitigations</h2>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Risk</th>
+            <th class="px-3 py-2 text-left font-medium">Likelihood</th>
+            <th class="px-3 py-2 text-left font-medium">Impact</th>
+            <th class="px-3 py-2 text-left font-medium">Mitigation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2"><strong>SharePoint data quality issues</strong> (missing fields, inconsistent formats)</td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700">High</span></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-700">Medium</span></td>
+            <td class="border border-gray-200 px-3 py-2">Validation layer with detailed error logging. Sync status visible in UI. Invalid records logged, never silently dropped. Validate real data quality in Discovery.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2"><strong>SharePoint API throttling during large syncs</strong></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700">High</span></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-700">Medium</span></td>
+            <td class="border border-gray-200 px-3 py-2">Delta queries minimise API calls. Microsoft Graph SDK handles Retry-After headers automatically. Schedule syncs outside business hours.</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2"><strong>Scope creep from MLP features into MVP</strong></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700">High</span></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-700">Medium</span></td>
+            <td class="border border-gray-200 px-3 py-2">Clear scope boundary in this document. Change request process for additions. Weekly demos keep scope visible.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2"><strong>Graph rendering performance with large datasets</strong> (500+ nodes)</td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-700">Medium</span></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700">High</span></td>
+            <td class="border border-gray-200 px-3 py-2">fcose layout (2x faster than CoSE), viewport culling, level-of-detail rendering, layout caching. Determine actual data scale in Discovery.</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2"><strong>Client IT delays for Entra consent and SharePoint access</strong></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-700">Medium</span></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-700">Medium</span></td>
+            <td class="border border-gray-200 px-3 py-2">Clear step-by-step guides with screenshots. Minimise required client IT actions. Screen-share walkthrough for first onboarding.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2"><strong>Technical lead not appointed</strong> (TBC in RFP)</td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-700">Medium</span></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-700">Medium</span></td>
+            <td class="border border-gray-200 px-3 py-2">Escalate early. Proceed with BrightKeep recommendations subject to Cloud9 review.</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2"><strong>Entra app registration rejected by client IT</strong></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-700">Medium</span></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700">High</span></td>
+            <td class="border border-gray-200 px-3 py-2">Security documentation package explaining requested permissions. Read-only SharePoint access as minimum scope.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2"><strong>SharePoint data model changes during build</strong></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-700">Medium</span></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-700">Medium</span></td>
+            <td class="border border-gray-200 px-3 py-2">Discovery phase validates schema. Change control process for mid-build schema changes.</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2"><strong>Multiple deployments become operationally burdensome</strong></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-700">Low</span> <span class="text-xs text-gray-500">(MVP)</span></td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-700">Medium</span> <span class="text-xs text-gray-500">(Growth)</span></td>
+            <td class="border border-gray-200 px-3 py-2">Terraform automation and GitHub Actions handle mechanical work. Monitor overhead and trigger multi-tenant migration at crossover point.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Section 18: Open Questions -->
+<section data-section="open-questions" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">18. Open Questions</h2>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">Critical &mdash; Resolve Before Build Starts</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">#</th>
+            <th class="px-3 py-2 text-left font-medium">Question</th>
+            <th class="px-3 py-2 text-left font-medium">Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">1</td>
+            <td class="border border-gray-200 px-3 py-2">What does a &ldquo;good&rdquo; visualisation look like? Can Cloud9 provide a sketch, screenshot, or reference?</td>
+            <td class="border border-gray-200 px-3 py-2">This single answer shapes the entire frontend. A picture eliminates weeks of misunderstanding.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">2</td>
+            <td class="border border-gray-200 px-3 py-2">How many applications and integrations does a typical client have? Upper bound?</td>
+            <td class="border border-gray-200 px-3 py-2">50 nodes vs 500 vs 5,000 are fundamentally different engineering problems. Affects rendering strategy.</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">3</td>
+            <td class="border border-gray-200 px-3 py-2">How many clients are expected in year one and year two?</td>
+            <td class="border border-gray-200 px-3 py-2">Determines when multi-tenant migration becomes relevant. Affects infrastructure planning.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">4</td>
+            <td class="border border-gray-200 px-3 py-2">How many concurrent users per client?</td>
+            <td class="border border-gray-200 px-3 py-2">Confirms single-instance sizing is appropriate.</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">5</td>
+            <td class="border border-gray-200 px-3 py-2">Can we see a sample SharePoint export (columns, types, row counts, data quality)?</td>
+            <td class="border border-gray-200 px-3 py-2">Cannot design data mapping without seeing real data.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">Important &mdash; Resolve During Discovery</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">#</th>
+            <th class="px-3 py-2 text-left font-medium">Question</th>
+            <th class="px-3 py-2 text-left font-medium">Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">6</td>
+            <td class="border border-gray-200 px-3 py-2">What differentiates the executive view from the architect view?</td>
+            <td class="border border-gray-200 px-3 py-2">Determines persona view design in MLP.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">7</td>
+            <td class="border border-gray-200 px-3 py-2">Is positions memory per user or shared?</td>
+            <td class="border border-gray-200 px-3 py-2">Data model for layout storage.</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">8</td>
+            <td class="border border-gray-200 px-3 py-2">Who maintains SharePoint data during MVP?</td>
+            <td class="border border-gray-200 px-3 py-2">Affects data quality assumptions.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">9</td>
+            <td class="border border-gray-200 px-3 py-2">Is each client using their own Entra ID directory?</td>
+            <td class="border border-gray-200 px-3 py-2">Confirms single-tenant auth pattern.</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">10</td>
+            <td class="border border-gray-200 px-3 py-2">SharePoint permissions model &mdash; application or delegated?</td>
+            <td class="border border-gray-200 px-3 py-2">Determines OAuth flow for data sync.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">11</td>
+            <td class="border border-gray-200 px-3 py-2">Who manages the Azure subscription?</td>
+            <td class="border border-gray-200 px-3 py-2">Affects CI/CD design and onboarding automation.</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">12</td>
+            <td class="border border-gray-200 px-3 py-2">Actual availability SLA target?</td>
+            <td class="border border-gray-200 px-3 py-2">App Service provides ~99.95% by default. Confirm this is acceptable.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">13</td>
+            <td class="border border-gray-200 px-3 py-2">URL pattern for client instances?</td>
+            <td class="border border-gray-200 px-3 py-2">Affects DNS and SSL configuration.</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">14</td>
+            <td class="border border-gray-200 px-3 py-2">Are SharePoint list schemas consistent across clients?</td>
+            <td class="border border-gray-200 px-3 py-2">If they vary, per-client mapping config is needed.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">15</td>
+            <td class="border border-gray-200 px-3 py-2">Data sources beyond SharePoint on the roadmap?</td>
+            <td class="border border-gray-200 px-3 py-2">Affects how generic the ingestion layer should be.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Recommended approach:</strong> Send questions 1&ndash;5 before proposal acceptance. Include remaining as assumptions to be validated during Discovery.
+    </p>
+  </div>
+</section>
+
+<!-- Section 19: What's Not Included -->
+<section data-section="not-included" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">19. What&rsquo;s Not Included</h2>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Item</th>
+            <th class="px-3 py-2 text-left font-medium">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">MLP and Matured Product development</td>
+            <td class="border border-gray-200 px-3 py-2">Indicative estimates provided (Section 7). Scoped and priced formally after MVP delivery based on real usage data</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">AI agent development</td>
+            <td class="border border-gray-200 px-3 py-2">Recommend separate discovery and scoping engagement</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">SharePoint list creation or data population</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 responsibility</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Azure subscription provisioning</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 account; BrightKeep provides Terraform automation</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Penetration testing by third party</td>
+            <td class="border border-gray-200 px-3 py-2">Recommended; quoted separately if required</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">User and persona management within Entra</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 responsibility (confirmed out of scope per RFP)</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Data migration from existing systems</td>
+            <td class="border border-gray-200 px-3 py-2">Not mentioned in RFP</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Mobile application</td>
+            <td class="border border-gray-200 px-3 py-2">Web-based, responsive for tablet</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Offline access</td>
+            <td class="border border-gray-200 px-3 py-2">Not mentioned in RFP</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Real-time collaborative editing</td>
+            <td class="border border-gray-200 px-3 py-2">Not in scope for any phase</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

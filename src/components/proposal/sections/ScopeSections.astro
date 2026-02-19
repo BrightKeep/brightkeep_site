@@ -1,0 +1,916 @@
+---
+
+---
+
+<!-- Section 6: MVP Scope -->
+<section data-section="mvp-scope" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">6. MVP Scope</h2>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Every RFP functional requirement is addressed below, mapped to the original RFP line items.
+      Items we propose moving between phases are flagged with justification.
+    </p>
+
+    <!-- 6.1 Interactive Integration Map -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">6.1 Interactive Integration Map</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Ref</th>
+            <th class="px-3 py-2 text-left font-medium">Requirement</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">V1</td>
+            <td class="border border-gray-200 px-3 py-2">Applications rendered as nodes, integrations as edges, in-browser</td>
+            <td class="border border-gray-200 px-3 py-2">Visual mapping of nodes/relationships</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">V2</td>
+            <td class="border border-gray-200 px-3 py-2">Drag to reposition, click for detail panel, hover for summary</td>
+            <td class="border border-gray-200 px-3 py-2">Nodes positioning</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">V3</td>
+            <td class="border border-gray-200 px-3 py-2">Zoom and pan across the graph canvas</td>
+            <td class="border border-gray-200 px-3 py-2">Visual mapping</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">V4</td>
+            <td class="border border-gray-200 px-3 py-2">Application nodes display assigned colour from catalogue</td>
+            <td class="border border-gray-200 px-3 py-2">Application colour coding</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">V5</td>
+            <td class="border border-gray-200 px-3 py-2">Click/hover on edges shows integration loads, protocols, data contracts</td>
+            <td class="border border-gray-200 px-3 py-2">Pop-ups for integration loads/contracts</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">V6</td>
+            <td class="border border-gray-200 px-3 py-2">Layout caching for frequently accessed graphs</td>
+            <td class="border border-gray-200 px-3 py-2">Performance NFR</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">V7</td>
+            <td class="border border-gray-200 px-3 py-2">Graph render and filter response under 3 seconds</td>
+            <td class="border border-gray-200 px-3 py-2">Performance NFR: &lt; 3 seconds</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 6.2 Multi-Dimensional Filtering -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">6.2 Multi-Dimensional Filtering</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Ref</th>
+            <th class="px-3 py-2 text-left font-medium">Requirement</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">F1</td>
+            <td class="border border-gray-200 px-3 py-2">Filter by application</td>
+            <td class="border border-gray-200 px-3 py-2">Filtration: Application</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">F2</td>
+            <td class="border border-gray-200 px-3 py-2">Filter by business domain</td>
+            <td class="border border-gray-200 px-3 py-2">Filtration: Business domain</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">F3</td>
+            <td class="border border-gray-200 px-3 py-2">Filter by protocol (REST, SOAP, SFTP, MQ, etc.)</td>
+            <td class="border border-gray-200 px-3 py-2">Filtration: Protocol</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">F4</td>
+            <td class="border border-gray-200 px-3 py-2">Filter by tags</td>
+            <td class="border border-gray-200 px-3 py-2">Filtration: Tags</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">F5</td>
+            <td class="border border-gray-200 px-3 py-2">Filter by business process</td>
+            <td class="border border-gray-200 px-3 py-2">Filtration: Business processes</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">F6</td>
+            <td class="border border-gray-200 px-3 py-2">Multiple filters active simultaneously</td>
+            <td class="border border-gray-200 px-3 py-2">Implied</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">F7</td>
+            <td class="border border-gray-200 px-3 py-2">Graph re-renders in real time when filters change</td>
+            <td class="border border-gray-200 px-3 py-2">Implied</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 6.3 Degree of Hops -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">6.3 Degree of Hops &mdash; <span class="text-[#FF6B6B] font-bold">MOVED FROM Matured Product to MVP</span></h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Ref</th>
+            <th class="px-3 py-2 text-left font-medium">Requirement</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">DH1</td>
+            <td class="border border-gray-200 px-3 py-2">Select an application node as centre point</td>
+            <td class="border border-gray-200 px-3 py-2">Set degree of hops (Matured)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">DH2</td>
+            <td class="border border-gray-200 px-3 py-2">Set hop count (1, 2, 3, N) via slider</td>
+            <td class="border border-gray-200 px-3 py-2">Set degree of hops (Matured)</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">DH3</td>
+            <td class="border border-gray-200 px-3 py-2">Display only applications within N connections</td>
+            <td class="border border-gray-200 px-3 py-2">Set degree of hops (Matured)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">DH4</td>
+            <td class="border border-gray-200 px-3 py-2">Visual distance indicators (colour fade by hop distance)</td>
+            <td class="border border-gray-200 px-3 py-2">Enhancement</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <blockquote class="border-l-4 border-[#FF6B6B] pl-4 py-2 mb-4 bg-[#FFF5F5] rounded-r-lg">
+      <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+        <strong>Why moved forward:</strong> Cytoscape.js has BFS/DFS traversal built in. Estimated effort: 2&ndash;3 days.
+        This is the third-highest-scoring feature across our assessed backlog items (DVF: 25) and is a highly compelling
+        feature in a live demo. An architect selects an application, slides to 2 hops, and instantly sees the broader
+        picture. We believe this justifies early-stage development.
+      </p>
+    </blockquote>
+
+    <!-- 6.4 Application Catalogue -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">6.4 Application Catalogue</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Ref</th>
+            <th class="px-3 py-2 text-left font-medium">Requirement</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">AC1</td>
+            <td class="border border-gray-200 px-3 py-2">Paginated, sortable list of all applications</td>
+            <td class="border border-gray-200 px-3 py-2">Application catalogue list view</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">AC2</td>
+            <td class="border border-gray-200 px-3 py-2">Name, business domain, colour code, tags, status, metadata</td>
+            <td class="border border-gray-200 px-3 py-2">Application catalogue</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">AC3</td>
+            <td class="border border-gray-200 px-3 py-2">Text search across application fields</td>
+            <td class="border border-gray-200 px-3 py-2">Implied</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">AC4</td>
+            <td class="border border-gray-200 px-3 py-2">Colour coding management &mdash; users can assign or change application colours via a colour picker in the catalogue. User-set colours persist across sessions and are not overwritten by SharePoint sync</td>
+            <td class="border border-gray-200 px-3 py-2">Manages application colour coding</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">AC5</td>
+            <td class="border border-gray-200 px-3 py-2">Read-only &mdash; no create, modify, or delete of application or integration records in MVP</td>
+            <td class="border border-gray-200 px-3 py-2">Cannot modify or create</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <blockquote class="border-l-4 border-[#FF6B6B] pl-4 py-2 mb-4 bg-[#FFF5F5] rounded-r-lg">
+      <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+        <strong>Colour coding model:</strong> Colours can originate from SharePoint (synced with application data) or be set directly in the tool.
+        User-set colours take precedence and are preserved during sync. This is a display preference, not a data modification &mdash; similar to
+        saving a layout. The application record itself remains read-only.
+      </p>
+    </blockquote>
+
+    <!-- 6.5 Integration Catalogue -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">6.5 Integration Catalogue</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Ref</th>
+            <th class="px-3 py-2 text-left font-medium">Requirement</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">IC1</td>
+            <td class="border border-gray-200 px-3 py-2">Paginated, sortable list of all integrations</td>
+            <td class="border border-gray-200 px-3 py-2">Integrations catalogue list view</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">IC2</td>
+            <td class="border border-gray-200 px-3 py-2">Source app, target app, protocol, direction, business process, data contract</td>
+            <td class="border border-gray-200 px-3 py-2">Integration detail</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">IC3</td>
+            <td class="border border-gray-200 px-3 py-2">Text search across integration fields</td>
+            <td class="border border-gray-200 px-3 py-2">Implied</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">IC4</td>
+            <td class="border border-gray-200 px-3 py-2">Read-only &mdash; no create, modify, or delete in MVP</td>
+            <td class="border border-gray-200 px-3 py-2">Cannot modify or create</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 6.6 SharePoint Data Pipeline -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">6.6 SharePoint Data Pipeline</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Ref</th>
+            <th class="px-3 py-2 text-left font-medium">Requirement</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">SP1</td>
+            <td class="border border-gray-200 px-3 py-2">Daily automated sync from SharePoint lists</td>
+            <td class="border border-gray-200 px-3 py-2">SharePoint Integration</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">SP2</td>
+            <td class="border border-gray-200 px-3 py-2">Manual sync trigger via UI button</td>
+            <td class="border border-gray-200 px-3 py-2">Enhancement</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">SP3</td>
+            <td class="border border-gray-200 px-3 py-2">Basic validation (required fields, referential integrity)</td>
+            <td class="border border-gray-200 px-3 py-2">Data validation rules</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">SP4</td>
+            <td class="border border-gray-200 px-3 py-2">Invalid records logged, not silently dropped</td>
+            <td class="border border-gray-200 px-3 py-2">Data validation rules</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">SP5</td>
+            <td class="border border-gray-200 px-3 py-2">Sync runs in background, does not block UI</td>
+            <td class="border border-gray-200 px-3 py-2">Performance NFR: async pipelines</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 6.7 Authentication -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">6.7 Authentication</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Ref</th>
+            <th class="px-3 py-2 text-left font-medium">Requirement</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">AU1</td>
+            <td class="border border-gray-200 px-3 py-2">Microsoft SSO via Entra ID (OAuth2/OIDC)</td>
+            <td class="border border-gray-200 px-3 py-2">Microsoft based SSO integration</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">AU2</td>
+            <td class="border border-gray-200 px-3 py-2">MFA support (handled by Entra)</td>
+            <td class="border border-gray-200 px-3 py-2">Authentication, MFA</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">AU3</td>
+            <td class="border border-gray-200 px-3 py-2">Multi-user access &mdash; multiple users can use the tool concurrently</td>
+            <td class="border border-gray-200 px-3 py-2">Secure multi-user access</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">AU4</td>
+            <td class="border border-gray-200 px-3 py-2">Single persona &mdash; all authenticated users get identical read-only access</td>
+            <td class="border border-gray-200 px-3 py-2">Single persona</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">AU5</td>
+            <td class="border border-gray-200 px-3 py-2">Users cannot modify or create application/integration data</td>
+            <td class="border border-gray-200 px-3 py-2">Cannot modify or create</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">AU6</td>
+            <td class="border border-gray-200 px-3 py-2">Per-user data: saved layouts and positions are stored per user, not shared</td>
+            <td class="border border-gray-200 px-3 py-2">Personalisation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <blockquote class="border-l-4 border-[#FF6B6B] pl-4 py-2 mb-4 bg-[#FFF5F5] rounded-r-lg">
+      <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+        <strong>Multi-user model:</strong> Entra ID SSO inherently supports multiple concurrent users. Each user authenticates
+        with their own credentials, receives their own session token, and has their own saved layouts. All users see the same
+        underlying data (read-only from SharePoint sync) and have identical permissions. User management is handled within
+        Entra ID &mdash; Cloud9 controls who has access by managing their Entra directory, not within the application.
+        &ldquo;Single persona&rdquo; means one permission level (viewer), not one user. Multi-persona access (Business Owner,
+        Architect, Developer, Admin roles with differentiated views) is scoped for MLP.
+      </p>
+    </blockquote>
+
+    <!-- 6.8 Single-Tenant Deployment -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">6.8 Single-Tenant Deployment (Counter-Proposal to Multi-Tenant)</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Ref</th>
+            <th class="px-3 py-2 text-left font-medium">Requirement</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">ST1</td>
+            <td class="border border-gray-200 px-3 py-2">Per-client isolated application instance and database</td>
+            <td class="border border-gray-200 px-3 py-2">Multi-tenant (counter-proposal)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">ST2</td>
+            <td class="border border-gray-200 px-3 py-2">Client-specific URL</td>
+            <td class="border border-gray-200 px-3 py-2">TenantID.cloud9consulting.com</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">ST3</td>
+            <td class="border border-gray-200 px-3 py-2">Physical database separation between clients</td>
+            <td class="border border-gray-200 px-3 py-2">Tenant discrimination (exceeds RFP)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">ST4</td>
+            <td class="border border-gray-200 px-3 py-2">Docker containers deployed via Terraform</td>
+            <td class="border border-gray-200 px-3 py-2">Containerized and orchestration ready</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">ST5</td>
+            <td class="border border-gray-200 px-3 py-2">TLS 1.3 in transit, AES-256 at rest</td>
+            <td class="border border-gray-200 px-3 py-2">Data in transit/at-rest secured</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">ST6</td>
+            <td class="border border-gray-200 px-3 py-2">Per-instance logging, centralised monitoring</td>
+            <td class="border border-gray-200 px-3 py-2">Logging &amp; Monitoring</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 6.9 Positions Memory and Named Layouts -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">6.9 Positions Memory and Named Layouts</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Ref</th>
+            <th class="px-3 py-2 text-left font-medium">Requirement</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">PM1</td>
+            <td class="border border-gray-200 px-3 py-2">Save node positions, zoom, viewport, and active filters per user</td>
+            <td class="border border-gray-200 px-3 py-2">Personalisation &mdash; Positions memory</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">PM2</td>
+            <td class="border border-gray-200 px-3 py-2">Restore saved layout on return</td>
+            <td class="border border-gray-200 px-3 py-2">Positions memory</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">PM3</td>
+            <td class="border border-gray-200 px-3 py-2">Multiple named layouts (save more than one arrangement)</td>
+            <td class="border border-gray-200 px-3 py-2">Enhancement</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 6.10 Export (PNG and PDF) -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">6.10 Export (PNG and PDF)</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Ref</th>
+            <th class="px-3 py-2 text-left font-medium">Requirement</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">EX1</td>
+            <td class="border border-gray-200 px-3 py-2">Export current graph view as PNG image</td>
+            <td class="border border-gray-200 px-3 py-2">PDF/PNG export</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">EX2</td>
+            <td class="border border-gray-200 px-3 py-2">Export formatted PDF report with graph image, metadata tables, and branding</td>
+            <td class="border border-gray-200 px-3 py-2">PDF/PNG export</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <blockquote class="border-l-4 border-[#FF6B6B] pl-4 py-2 mb-4 bg-[#FFF5F5] rounded-r-lg">
+      <p class="text-[#2D2D2D] leading-relaxed">
+        <strong>Implementation note:</strong> PNG export is a single Cytoscape API call (<code class="bg-gray-200 px-1 rounded text-sm font-mono">cy.png()</code>).
+        PDF export uses <code class="bg-gray-200 px-1 rounded text-sm font-mono">@react-pdf/renderer</code> for server-side document generation.
+      </p>
+    </blockquote>
+
+    <!-- 6.11 Documentation and Training -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">6.11 Documentation and Training</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Ref</th>
+            <th class="px-3 py-2 text-left font-medium">Requirement</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">DT1</td>
+            <td class="border border-gray-200 px-3 py-2">User onboarding documentation</td>
+            <td class="border border-gray-200 px-3 py-2">User onboarding documentation</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">DT2</td>
+            <td class="border border-gray-200 px-3 py-2">Administrator training</td>
+            <td class="border border-gray-200 px-3 py-2">Administrator training</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">DT3</td>
+            <td class="border border-gray-200 px-3 py-2">End-user training sessions</td>
+            <td class="border border-gray-200 px-3 py-2">User Training</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">DT4</td>
+            <td class="border border-gray-200 px-3 py-2">Support model with defined tiers and escalation</td>
+            <td class="border border-gray-200 px-3 py-2">Support Model, Escalation process</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 6.12 Items Deferred from RFP MVP Scope -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">6.12 Items Deferred from RFP MVP Scope</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">RFP Item</th>
+            <th class="px-3 py-2 text-left font-medium">Proposed Phase</th>
+            <th class="px-3 py-2 text-left font-medium">Justification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Tenant Branding</td>
+            <td class="border border-gray-200 px-3 py-2">MLP</td>
+            <td class="border border-gray-200 px-3 py-2">For single-tenant deployment, branding is a config change per instance. More valuable alongside personas and version management.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Data validation rules (full)</td>
+            <td class="border border-gray-200 px-3 py-2">MLP</td>
+            <td class="border border-gray-200 px-3 py-2">MVP includes basic validation. Full configurable validation rules arrive in MLP.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 6.13 Items Added to MVP -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">6.13 Items Added to MVP (Not in RFP MVP Scope)</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Item</th>
+            <th class="px-3 py-2 text-left font-medium">Source</th>
+            <th class="px-3 py-2 text-left font-medium">Justification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Degree of Hops</td>
+            <td class="border border-gray-200 px-3 py-2">Moved from Matured Product</td>
+            <td class="border border-gray-200 px-3 py-2">2&ndash;3 days effort, DVF score 25. Built-in Cytoscape capability. Strongest demo feature.</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Named Layouts</td>
+            <td class="border border-gray-200 px-3 py-2">Enhancement</td>
+            <td class="border border-gray-200 px-3 py-2">Extension of positions memory. Will act as foundation for version management in MLP.</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Manual Sync Trigger</td>
+            <td class="border border-gray-200 px-3 py-2">Enhancement</td>
+            <td class="border border-gray-200 px-3 py-2">Button to refresh data on demand.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- Section 7: Post-MVP Roadmap -->
+<section data-section="post-mvp-roadmap" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">7. Post-MVP Roadmap</h2>
+
+    <!-- 7.1 MLP -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.1 MLP &mdash; &ldquo;Design, Manage, and Share Architecture Views&rdquo;</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Scoped and priced separately after MVP delivery. The estimates below are indicative.
+    </p>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Feature</th>
+            <th class="px-3 py-2 text-left font-medium">What It Delivers</th>
+            <th class="px-3 py-2 text-left font-medium">Indicative Effort</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Multi-Persona Access</td>
+            <td class="border border-gray-200 px-3 py-2">Business Owner, Architect, Developer, Admin roles</td>
+            <td class="border border-gray-200 px-3 py-2">4&ndash;6 days</td>
+            <td class="border border-gray-200 px-3 py-2">Manage Applications personas</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Check-Out Model</td>
+            <td class="border border-gray-200 px-3 py-2">Create editable working copies (&ldquo;to-be&rdquo; views)</td>
+            <td class="border border-gray-200 px-3 py-2">5&ndash;8 days</td>
+            <td class="border border-gray-200 px-3 py-2">Secure multi-persona access</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Version Management</td>
+            <td class="border border-gray-200 px-3 py-2">Save, name, compare, and publish architecture views</td>
+            <td class="border border-gray-200 px-3 py-2">3&ndash;4 days</td>
+            <td class="border border-gray-200 px-3 py-2">Versions management</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Published Versions</td>
+            <td class="border border-gray-200 px-3 py-2">Share named versions across the organisation</td>
+            <td class="border border-gray-200 px-3 py-2">2&ndash;3 days</td>
+            <td class="border border-gray-200 px-3 py-2">Published versions</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Tenant Branding</td>
+            <td class="border border-gray-200 px-3 py-2">Client logo and primary colour in UI and exports</td>
+            <td class="border border-gray-200 px-3 py-2">1.5&ndash;2 days</td>
+            <td class="border border-gray-200 px-3 py-2">Tenant Branding</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Application Logos</td>
+            <td class="border border-gray-200 px-3 py-2">Logo images on graph nodes</td>
+            <td class="border border-gray-200 px-3 py-2">1&ndash;2 days</td>
+            <td class="border border-gray-200 px-3 py-2">Application Logos</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Data &amp; Error Management</td>
+            <td class="border border-gray-200 px-3 py-2">Admin dashboard for sync errors</td>
+            <td class="border border-gray-200 px-3 py-2">4&ndash;6 days</td>
+            <td class="border border-gray-200 px-3 py-2">Data/Error Management</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Infrastructure Scaling</td>
+            <td class="border border-gray-200 px-3 py-2">Horizontal scaling, HA database</td>
+            <td class="border border-gray-200 px-3 py-2">3&ndash;5 days</td>
+            <td class="border border-gray-200 px-3 py-2">Scalability NFRs</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Cloud9 Operations Dashboard</td>
+            <td class="border border-gray-200 px-3 py-2">Self-service client onboarding wizard</td>
+            <td class="border border-gray-200 px-3 py-2">5&ndash;7 days</td>
+            <td class="border border-gray-200 px-3 py-2">Enhancement</td>
+          </tr>
+          <tr class="bg-gray-50 font-semibold">
+            <td class="border border-gray-200 px-3 py-2">Total MLP (indicative)</td>
+            <td class="border border-gray-200 px-3 py-2"></td>
+            <td class="border border-gray-200 px-3 py-2">29&ndash;43 days</td>
+            <td class="border border-gray-200 px-3 py-2"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>What could change:</strong> MLP scope will be re-assessed after MVP delivery. Usage patterns,
+      client feedback, and operational learnings from the MVP will inform which MLP features are prioritised,
+      resized, or replaced. The estimates above are directional, not commitments.
+    </p>
+
+    <!-- 7.2 Matured Product -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.2 Matured Product &mdash; &ldquo;Intelligence Layer&rdquo;</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Feature</th>
+            <th class="px-3 py-2 text-left font-medium">What It Delivers</th>
+            <th class="px-3 py-2 text-left font-medium">Indicative Effort</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">AI Conversational Filtering</td>
+            <td class="border border-gray-200 px-3 py-2">Natural language queries translated to graph filters</td>
+            <td class="border border-gray-200 px-3 py-2">10&ndash;18 days</td>
+            <td class="border border-gray-200 px-3 py-2">AI Agent &mdash; conversation-based filtrations</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">AI Solution Design</td>
+            <td class="border border-gray-200 px-3 py-2">Conversational architecture advisor</td>
+            <td class="border border-gray-200 px-3 py-2">12&ndash;25 days</td>
+            <td class="border border-gray-200 px-3 py-2">AI Agent (advanced)</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">AI Discovery &amp; Evaluation</td>
+            <td class="border border-gray-200 px-3 py-2">Discovery phase for AI features</td>
+            <td class="border border-gray-200 px-3 py-2">8&ndash;12 days</td>
+            <td class="border border-gray-200 px-3 py-2">&mdash;</td>
+          </tr>
+          <tr class="bg-gray-50 font-semibold">
+            <td class="border border-gray-200 px-3 py-2">Total Matured (indicative)</td>
+            <td class="border border-gray-200 px-3 py-2"></td>
+            <td class="border border-gray-200 px-3 py-2">30&ndash;55 days</td>
+            <td class="border border-gray-200 px-3 py-2"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Why the wide range:</strong> AI feature effort depends heavily on the complexity of the data model,
+      the quality of the training data, and the level of conversational sophistication required. We recommend
+      scoping AI as a separate discovery and delivery phase after MLP, with its own proposal and pricing.
+    </p>
+
+  </div>
+</section>
+
+<!-- Section 8: Architecture Approach -->
+<section data-section="architecture" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">8. Architecture Approach</h2>
+
+    <!-- 8.1 High-Level Architecture -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">8.1 High-Level Architecture (Per-Client Deployment)</h3>
+
+    <pre class="bg-gray-50 rounded-lg p-4 mb-6 text-sm overflow-x-auto text-[#2D2D2D]">
+                    +---------------------------+
+                    |     Azure App Service      |
+                    |   (B1 - API + Static SPA)  |
+                    |   Managed TLS certificate   |
+                    +-------------+-------------+
+                                  |
+                    +-------------+-------------+
+                    |     Fastify Application     |
+                    |     (Node.js / TypeScript)   |
+                    |                             |
+                    |  +- Auth Module             |
+                    |  +- Graph Module            |
+                    |  +- Catalogue Module        |
+                    |  +- Export Module            |
+                    |  +- Sync Module             |
+                    +----+------------------+----+
+                         |                  |
+            +------------+      +-----------+---------+
+            |                   |                     |
+  +---------+------+    +-------+--------+    +-------+-------+
+  |  PostgreSQL    |    | Blob Storage   |    | Microsoft     |
+  |  (Burstable)   |    | (Exports,      |    | Graph API     |
+  |                |    |  Static Assets)|    | (SharePoint)  |
+  +----------------+    +----------------+    +---------------+
+
+  +--------------------------------------------------+
+  |         pg-boss (PostgreSQL-native jobs)          |
+  |  +- Daily SharePoint Sync                        |
+  |  +- Manual Sync Trigger                          |
+  |  +- Export Generation                            |
+  +--------------------------------------------------+</pre>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Each client deployment is a self-contained stack. No shared infrastructure between clients.
+      No code path through which one client&rsquo;s data can reach another.
+    </p>
+
+    <!-- 8.2 Data Flow -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">8.2 Data Flow</h3>
+
+    <pre class="bg-gray-50 rounded-lg p-4 mb-6 text-sm overflow-x-auto text-[#2D2D2D]">
+SharePoint Lists --&gt; Daily Sync + Manual Trigger --&gt; PostgreSQL --&gt; Cytoscape.js Graph
+                     (Microsoft Graph API)           (read-only)    (in-browser rendering)
+                     (one-way, read-only)</pre>
+
+    <!-- 8.3 NFR Response -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">8.3 NFR Response</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">NFR</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Requirement</th>
+            <th class="px-3 py-2 text-left font-medium">Our Approach</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Cloud hosting</td>
+            <td class="border border-gray-200 px-3 py-2">Azure</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800 mr-2">Implemented</span>
+              Aligned with Entra ID and SharePoint.
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Two environments</td>
+            <td class="border border-gray-200 px-3 py-2">DEV &amp; Prod</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800 mr-2">Implemented</span>
+              Shared dev + per-client production.
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Stateless compute</td>
+            <td class="border border-gray-200 px-3 py-2">Interchangeable nodes</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800 mr-2">Implemented</span>
+              Containers are stateless by design.
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Containerized</td>
+            <td class="border border-gray-200 px-3 py-2">Orchestration ready</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800 mr-2">Implemented</span>
+              Docker on App Service.
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">API gateway / load balancer</td>
+            <td class="border border-gray-200 px-3 py-2">Behind load-balanced endpoints</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-yellow-100 text-yellow-800 mr-2">Simplified</span>
+              App Service built-in load balancer.
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Horizontal scaling</td>
+            <td class="border border-gray-200 px-3 py-2">Dynamic node provisioning</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800 mr-2">Architected, deferred</span>
+              Not needed at 3&ndash;5 users per client.
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Zero-downtime node addition</td>
+            <td class="border border-gray-200 px-3 py-2">No service interruption</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800 mr-2">Architected, deferred</span>
+              Deployment slots provide this when needed.
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">No single points of failure</td>
+            <td class="border border-gray-200 px-3 py-2">Redundant components</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-gray-200 text-gray-700 mr-2">Deferred</span>
+              Single instance with health checks and auto-restart.
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Active-active deployment</td>
+            <td class="border border-gray-200 px-3 py-2">Uninterrupted continuity</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-gray-200 text-gray-700 mr-2">Deferred</span>
+              Appropriate at 50+ concurrent users, not 3&ndash;5.
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Connection pooling</td>
+            <td class="border border-gray-200 px-3 py-2">Prevent resource exhaustion</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800 mr-2">Implemented</span>
+              Drizzle ORM connection pool.
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Encryption</td>
+            <td class="border border-gray-200 px-3 py-2">Transit and at rest</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800 mr-2">Implemented</span>
+              TLS 1.3, AES-256 at rest.
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Tenant discrimination</td>
+            <td class="border border-gray-200 px-3 py-2">Cryptographically bound</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800 mr-2">Exceeded</span>
+              Physical database separation.
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Progressive rendering</td>
+            <td class="border border-gray-200 px-3 py-2">Large graphs displayed incrementally</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800 mr-2">Implemented</span>
+              fcose layout, viewport culling, level-of-detail.
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Caching</td>
+            <td class="border border-gray-200 px-3 py-2">Reduce recompilation</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800 mr-2">Implemented</span>
+              Layout caching via cy.json(). In-memory API response cache.
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Async pipelines</td>
+            <td class="border border-gray-200 px-3 py-2">No frontend degradation</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800 mr-2">Implemented</span>
+              pg-boss background jobs.
+            </td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Logging &amp; Monitoring</td>
+            <td class="border border-gray-200 px-3 py-2">Observable system</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800 mr-2">Implemented</span>
+              Azure Application Insights.
+            </td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Responsive UI</td>
+            <td class="border border-gray-200 px-3 py-2">Web-based</td>
+            <td class="border border-gray-200 px-3 py-2">
+              <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800 mr-2">Implemented</span>
+              Desktop-first, functional on tablet.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>

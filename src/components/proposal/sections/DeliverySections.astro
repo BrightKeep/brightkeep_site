@@ -1,0 +1,1285 @@
+---
+
+---
+
+<!-- Section 9: Timeline and Phases -->
+<section data-section="timeline" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">9. Timeline and Phases</h2>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">9.1 Delivery Model</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Two senior developers, 4.5 combined days per week, eight weeks.</strong> Development is AI-augmented &mdash; BrightKeep uses production-grade AI coding tools that accelerate implementation while maintaining code quality through continuous human oversight and review.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Capacity:</strong> 3 days/week (Delivery Lead) + 1.5 days/week (Technical Lead) = 4.5 person-days/week.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Why this works for this project:</strong>
+    </p>
+
+    <ul class="list-disc pl-6 mb-4 space-y-2 text-[#2D2D2D]">
+      <li>Cloud9 has a working prototype with real client data, so discovery is confirmation, not exploration</li>
+      <li>The tech stack is well-established and well-documented</li>
+      <li>Single-tenant deployment is architecturally simpler than multi-tenant</li>
+      <li>The modular monolith architecture allows both developers to work in parallel</li>
+      <li>AI-augmented development handles the bulk of implementation work</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">9.2 Phased Delivery Plan</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Phase</th>
+            <th class="px-3 py-2 text-left font-medium">Calendar Weeks</th>
+            <th class="px-3 py-2 text-left font-medium">Person-Days</th>
+            <th class="px-3 py-2 text-left font-medium">Deliverable</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2"><strong>Phase 0: Discovery</strong></td>
+            <td class="border border-gray-200 px-3 py-2">1</td>
+            <td class="border border-gray-200 px-3 py-2">2</td>
+            <td class="border border-gray-200 px-3 py-2">Requirements template, SharePoint access confirmed, Entra registration initiated</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2"><strong>Phase 1: Foundation</strong></td>
+            <td class="border border-gray-200 px-3 py-2">2&ndash;3</td>
+            <td class="border border-gray-200 px-3 py-2">9</td>
+            <td class="border border-gray-200 px-3 py-2">Infrastructure, auth, database, sync worker, API scaffolding, React shell</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2"><strong>Phase 2: Core Features</strong></td>
+            <td class="border border-gray-200 px-3 py-2">4&ndash;5</td>
+            <td class="border border-gray-200 px-3 py-2">9</td>
+            <td class="border border-gray-200 px-3 py-2">Graph visualisation, filtering, degree of hops, catalogues, layouts, export, polish</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2"><strong>Phase 3: UAT &amp; Testing</strong></td>
+            <td class="border border-gray-200 px-3 py-2">6</td>
+            <td class="border border-gray-200 px-3 py-2">4.5</td>
+            <td class="border border-gray-200 px-3 py-2">UAT with pilot client, bug fixes, second client validation</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2"><strong>Phase 4: Hypercare &amp; Support</strong></td>
+            <td class="border border-gray-200 px-3 py-2">7&ndash;8</td>
+            <td class="border border-gray-200 px-3 py-2">6</td>
+            <td class="border border-gray-200 px-3 py-2">Priority support, performance monitoring, knowledge transfer, handover</td>
+          </tr>
+          <tr class="bg-gray-50 font-semibold">
+            <td class="border border-gray-200 px-3 py-2">Total</td>
+            <td class="border border-gray-200 px-3 py-2">8 weeks</td>
+            <td class="border border-gray-200 px-3 py-2">30.5</td>
+            <td class="border border-gray-200 px-3 py-2"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="chart-timeline"></canvas>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">9.3 Phase Details</h3>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Phase 0: Discovery (Week 1) &mdash; 2 person-days</h4>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Goal:</strong> Confirm requirements and unblock development.
+    </p>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Deliverable</th>
+            <th class="px-3 py-2 text-left font-medium">Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Requirements and deliverables template</td>
+            <td class="border border-gray-200 px-3 py-2">Comprehensive list of everything needed to build, provided to Cloud9&rsquo;s BA</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">SharePoint schema confirmation</td>
+            <td class="border border-gray-200 px-3 py-2">Validate column mapping against the working prototype&rsquo;s data</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Entra app registration initiated</td>
+            <td class="border border-gray-200 px-3 py-2">App registration created; admin consent requested from Cloud9 IT</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Architecture confirmation</td>
+            <td class="border border-gray-200 px-3 py-2">Single-tenant approach, URL pattern, auth model confirmed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Discovery runs in parallel with Cloud9&rsquo;s internal processes. BrightKeep provides the requirements template on day one; Cloud9&rsquo;s BA populates it with input from Veronica and the consulting team. The key prerequisite is SharePoint access &mdash; BrightKeep needs read access to the pilot client&rsquo;s SharePoint lists to validate the data model. The gate for Phase 1 is confirmed SharePoint schema and an Entra app registration in progress.
+    </p>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Phase 1: Foundation (Weeks 2&ndash;3) &mdash; 9 person-days</h4>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Goal:</strong> Infrastructure standing, auth working, data flowing from SharePoint to the database.
+    </p>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Deliverable</th>
+            <th class="px-3 py-2 text-left font-medium">Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Terraform modules</td>
+            <td class="border border-gray-200 px-3 py-2">Parameterised IaC creating all Azure resources per client</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">CI/CD pipeline</td>
+            <td class="border border-gray-200 px-3 py-2">GitHub Actions: build, test, containerise, deploy to dev</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Entra ID authentication</td>
+            <td class="border border-gray-200 px-3 py-2">MSAL login (frontend PKCE + backend JWT validation)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">PostgreSQL schema</td>
+            <td class="border border-gray-200 px-3 py-2">All core tables via Drizzle migrations, tenant_id on all tables</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">SharePoint sync worker</td>
+            <td class="border border-gray-200 px-3 py-2">Daily scheduled sync + manual trigger, delta query, mapping, upsert, validation, error logging</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">API scaffolding</td>
+            <td class="border border-gray-200 px-3 py-2">Fastify routes, auth middleware, OpenAPI generation, health check</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">React app shell</td>
+            <td class="border border-gray-200 px-3 py-2">MSAL provider, routing, layout skeleton, TanStack Query, Zustand</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      End-of-phase demo: Log in with Entra ID, see synced SharePoint data in the database, confirm API health check. This is the foundation everything else builds on.
+    </p>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Phase 2: Core Features (Weeks 4&ndash;5) &mdash; 9 person-days</h4>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Goal:</strong> All MVP features built, integrated, and polished.
+    </p>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Deliverable</th>
+            <th class="px-3 py-2 text-left font-medium">Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Graph visualisation</td>
+            <td class="border border-gray-200 px-3 py-2">Cytoscape.js with fcose layout, tooltips, navigator minimap, context menu</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Multi-dimensional filtering</td>
+            <td class="border border-gray-200 px-3 py-2">All five dimensions, combined filters, dynamic re-render</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Degree of hops</td>
+            <td class="border border-gray-200 px-3 py-2">BFS traversal, slider, visual distance indicators</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Application and integration catalogues</td>
+            <td class="border border-gray-200 px-3 py-2">Paginated tables, search, sort, detail views</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Position save/restore and named layouts</td>
+            <td class="border border-gray-200 px-3 py-2">cy.json() serialisation, layout management UI</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">PNG and PDF export</td>
+            <td class="border border-gray-200 px-3 py-2">cy.png() for PNG, @react-pdf/renderer for formatted PDF reports</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Sync status UI</td>
+            <td class="border border-gray-200 px-3 py-2">Last sync time, records summary, error details, manual trigger</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">UI polish</td>
+            <td class="border border-gray-200 px-3 py-2">Loading states, error handling, responsive layout, search</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      End-of-phase demo: Full application walkthrough with real client data. Graph visualisation, filtering, degree of hops, catalogues, layouts, export &mdash; all functional and integrated.
+    </p>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Phase 3: UAT &amp; Testing (Week 6) &mdash; 4.5 person-days</h4>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Goal:</strong> User acceptance, bug fixes, production confidence.
+    </p>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Deliverable</th>
+            <th class="px-3 py-2 text-left font-medium">Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">UAT with pilot client</td>
+            <td class="border border-gray-200 px-3 py-2">Real data, real users, structured feedback collection</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Bug fixes</td>
+            <td class="border border-gray-200 px-3 py-2">Priority-ordered resolution from UAT findings</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Second client validation</td>
+            <td class="border border-gray-200 px-3 py-2">Deploy to second client instance to confirm onboarding process works</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Performance validation</td>
+            <td class="border border-gray-200 px-3 py-2">Load testing with representative data volumes</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Security review</td>
+            <td class="border border-gray-200 px-3 py-2">Authentication flows, API authorisation, data isolation verification</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Documentation draft</td>
+            <td class="border border-gray-200 px-3 py-2">User guide, administrator guide, and onboarding runbook in progress</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Phase 4: Hypercare &amp; Support (Weeks 7&ndash;8) &mdash; 6 person-days</h4>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Goal:</strong> Stability, knowledge transfer, operational independence.
+    </p>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Deliverable</th>
+            <th class="px-3 py-2 text-left font-medium">Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Priority support</td>
+            <td class="border border-gray-200 px-3 py-2">Rapid response to production issues during business hours</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Performance monitoring</td>
+            <td class="border border-gray-200 px-3 py-2">Application Insights dashboards, alerting rules, sync health monitoring</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Knowledge transfer</td>
+            <td class="border border-gray-200 px-3 py-2">Architecture walkthrough, codebase orientation, operational procedures</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Documentation finalisation</td>
+            <td class="border border-gray-200 px-3 py-2">User guide, administrator guide, onboarding runbook, troubleshooting guide, architecture decision log</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Operational runbooks</td>
+            <td class="border border-gray-200 px-3 py-2">Step-by-step procedures for onboarding, updates, migrations, sync troubleshooting, incident response</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Handover</td>
+            <td class="border border-gray-200 px-3 py-2">Source code, infrastructure credentials, CI/CD access, complete operational handover</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">9.4 Mapping to RFP Deliverables</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">RFP Deliverable</th>
+            <th class="px-3 py-2 text-left font-medium">Covered In</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Interactive graph visualisation with filtering and dependency analysis</td>
+            <td class="border border-gray-200 px-3 py-2">Phase 2: Core Features</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">SharePoint integration and authentication (SSO)</td>
+            <td class="border border-gray-200 px-3 py-2">Phase 1: Foundation</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Application and integration catalogues</td>
+            <td class="border border-gray-200 px-3 py-2">Phase 2: Core Features</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Export capabilities (PNG and PDF)</td>
+            <td class="border border-gray-200 px-3 py-2">Phase 2: Core Features</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Infrastructure as Code and CI/CD pipeline</td>
+            <td class="border border-gray-200 px-3 py-2">Phase 1: Foundation</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Documentation, training, and support model</td>
+            <td class="border border-gray-200 px-3 py-2">Phase 4: Hypercare &amp; Support</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Section 10: Effort and Cost -->
+<section data-section="effort-cost" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">10. Effort and Cost</h2>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">10.1 Team and Rate</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Role</th>
+            <th class="px-3 py-2 text-left font-medium">Person</th>
+            <th class="px-3 py-2 text-left font-medium">Daily Rate (AUD)</th>
+            <th class="px-3 py-2 text-left font-medium">Allocation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Delivery Lead &amp; Product</td>
+            <td class="border border-gray-200 px-3 py-2">Alastair Tooth</td>
+            <td class="border border-gray-200 px-3 py-2">$1,400</td>
+            <td class="border border-gray-200 px-3 py-2">3 days/week across all phases</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Technical Lead &amp; Senior Engineer</td>
+            <td class="border border-gray-200 px-3 py-2">Darren Benson</td>
+            <td class="border border-gray-200 px-3 py-2">$1,400</td>
+            <td class="border border-gray-200 px-3 py-2">1.5 days/week across all phases</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">10.2 MVP Investment Summary</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Phase</th>
+            <th class="px-3 py-2 text-left font-medium">Weeks</th>
+            <th class="px-3 py-2 text-left font-medium">Person-Days</th>
+            <th class="px-3 py-2 text-left font-medium">Cost (AUD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Phase 0: Discovery</td>
+            <td class="border border-gray-200 px-3 py-2">1</td>
+            <td class="border border-gray-200 px-3 py-2">2</td>
+            <td class="border border-gray-200 px-3 py-2">$2,800</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Phase 1: Foundation</td>
+            <td class="border border-gray-200 px-3 py-2">2&ndash;3</td>
+            <td class="border border-gray-200 px-3 py-2">9</td>
+            <td class="border border-gray-200 px-3 py-2">$12,600</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Phase 2: Core Features</td>
+            <td class="border border-gray-200 px-3 py-2">4&ndash;5</td>
+            <td class="border border-gray-200 px-3 py-2">9</td>
+            <td class="border border-gray-200 px-3 py-2">$12,600</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Phase 3: UAT &amp; Testing</td>
+            <td class="border border-gray-200 px-3 py-2">6</td>
+            <td class="border border-gray-200 px-3 py-2">4.5</td>
+            <td class="border border-gray-200 px-3 py-2">$6,300</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Phase 4: Hypercare &amp; Support</td>
+            <td class="border border-gray-200 px-3 py-2">7&ndash;8</td>
+            <td class="border border-gray-200 px-3 py-2">6</td>
+            <td class="border border-gray-200 px-3 py-2">$8,400</td>
+          </tr>
+          <tr class="bg-gray-50 font-semibold">
+            <td class="border border-gray-200 px-3 py-2">Total MVP</td>
+            <td class="border border-gray-200 px-3 py-2">8 weeks</td>
+            <td class="border border-gray-200 px-3 py-2">30.5 days</td>
+            <td class="border border-gray-200 px-3 py-2">$42,700</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      All amounts exclude GST.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Engagement model:</strong> Time and materials. BrightKeep invoices fortnightly based on actual days worked. The phased structure means Cloud9 has visibility into progress and spend at every stage, with the option to adjust scope or pause at any phase boundary. The 30.5 person-day total reflects the AI-augmented delivery model &mdash; this scope would typically require 130+ person-days using traditional development methods. AI tooling enables sustainable delivery at 4&ndash;5x the output of traditional development, while maintaining code quality through continuous human oversight and review.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">10.3 Post-MVP Estimates (Indicative)</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Phase</th>
+            <th class="px-3 py-2 text-left font-medium">Estimated Effort</th>
+            <th class="px-3 py-2 text-left font-medium">Estimated Duration</th>
+            <th class="px-3 py-2 text-left font-medium">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">MLP</td>
+            <td class="border border-gray-200 px-3 py-2">29&ndash;43 person-days</td>
+            <td class="border border-gray-200 px-3 py-2">Dependent on team capacity</td>
+            <td class="border border-gray-200 px-3 py-2">Re-scoped after MVP</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Matured Product (AI)</td>
+            <td class="border border-gray-200 px-3 py-2">30&ndash;55 person-days</td>
+            <td class="border border-gray-200 px-3 py-2">Dependent on scope confirmation</td>
+            <td class="border border-gray-200 px-3 py-2">Includes dedicated AI discovery phase</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      These are planning estimates, not commitments. Post-MVP phases will be scoped, estimated, and agreed separately based on what is learned during MVP delivery and Cloud9&rsquo;s evolving priorities. Actual effort will depend on scope decisions made after MVP launch, client feedback, and the team&rsquo;s velocity established during the initial engagement.
+    </p>
+  </div>
+</section>
+
+<!-- Section 11: Infrastructure Costs -->
+<section data-section="infrastructure-costs" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">11. Infrastructure Costs</h2>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      All infrastructure is hosted in Cloud9&rsquo;s Azure subscription, in the Australia East region. Pricing is in AUD and based on current Azure retail rates. Cloud9 pays Azure directly &mdash; there is no intermediary markup or managed service fee from BrightKeep.
+    </p>
+
+    <blockquote class="border-l-4 border-[#1B2A4A] pl-4 mb-6 text-sm text-[#6B7280] italic">
+      Source: Azure Retail Prices API, Australia East region, February 2026. All estimates are approximate and subject to Azure pricing changes. Actual costs may vary based on usage patterns.
+    </blockquote>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">11.1 Per-Client Production Deployment</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Resource</th>
+            <th class="px-3 py-2 text-left font-medium">SKU</th>
+            <th class="px-3 py-2 text-left font-medium">Monthly Cost (AUD est.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">App Service Plan</td>
+            <td class="border border-gray-200 px-3 py-2">B1 Basic (Linux)</td>
+            <td class="border border-gray-200 px-3 py-2">~$20</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">PostgreSQL Flexible Server</td>
+            <td class="border border-gray-200 px-3 py-2">Burstable B1ms (1 vCore, 2GB RAM, 32GB storage)</td>
+            <td class="border border-gray-200 px-3 py-2">~$33</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Storage Account</td>
+            <td class="border border-gray-200 px-3 py-2">Standard LRS (Blob)</td>
+            <td class="border border-gray-200 px-3 py-2">~$3</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Application Insights</td>
+            <td class="border border-gray-200 px-3 py-2">Shared workspace (~1GB ingestion)</td>
+            <td class="border border-gray-200 px-3 py-2">~$7</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Key Vault</td>
+            <td class="border border-gray-200 px-3 py-2">Standard</td>
+            <td class="border border-gray-200 px-3 py-2">&lt;$1</td>
+          </tr>
+          <tr class="bg-gray-50 font-semibold">
+            <td class="border border-gray-200 px-3 py-2">Per-Client Total</td>
+            <td class="border border-gray-200 px-3 py-2"></td>
+            <td class="border border-gray-200 px-3 py-2">~$64/month</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">11.2 Shared Development Environment</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Resource</th>
+            <th class="px-3 py-2 text-left font-medium">SKU</th>
+            <th class="px-3 py-2 text-left font-medium">Monthly Cost (AUD est.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">App Service Plan</td>
+            <td class="border border-gray-200 px-3 py-2">B1 Basic (Linux)</td>
+            <td class="border border-gray-200 px-3 py-2">~$20</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">PostgreSQL Flexible Server</td>
+            <td class="border border-gray-200 px-3 py-2">Burstable B1ms (32GB storage)</td>
+            <td class="border border-gray-200 px-3 py-2">~$33</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Storage Account</td>
+            <td class="border border-gray-200 px-3 py-2">Standard LRS</td>
+            <td class="border border-gray-200 px-3 py-2">~$3</td>
+          </tr>
+          <tr class="bg-gray-50 font-semibold">
+            <td class="border border-gray-200 px-3 py-2">Dev Total</td>
+            <td class="border border-gray-200 px-3 py-2"></td>
+            <td class="border border-gray-200 px-3 py-2">~$56/month</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">11.3 Cost Comparison vs RFP Architecture</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      The RFP specifies an enterprise multi-tenant architecture with shared compute, shared database with row-level security, Azure Front Door, and centralised monitoring. This architecture has a fixed monthly baseline of approximately $1,200 AUD regardless of client count. The proposed single-tenant architecture scales linearly from ~$64 per client, making it significantly more cost-effective at lower client counts.
+    </p>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Clients</th>
+            <th class="px-3 py-2 text-left font-medium">RFP Architecture (est.)</th>
+            <th class="px-3 py-2 text-left font-medium">Proposed Architecture</th>
+            <th class="px-3 py-2 text-left font-medium">Saving</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">1</td>
+            <td class="border border-gray-200 px-3 py-2">~$1,200/month</td>
+            <td class="border border-gray-200 px-3 py-2">~$120/month</td>
+            <td class="border border-gray-200 px-3 py-2"><strong>90%</strong></td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">3</td>
+            <td class="border border-gray-200 px-3 py-2">~$1,200/month</td>
+            <td class="border border-gray-200 px-3 py-2">~$248/month</td>
+            <td class="border border-gray-200 px-3 py-2"><strong>79%</strong></td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">5</td>
+            <td class="border border-gray-200 px-3 py-2">~$1,200/month</td>
+            <td class="border border-gray-200 px-3 py-2">~$376/month</td>
+            <td class="border border-gray-200 px-3 py-2"><strong>69%</strong></td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">10</td>
+            <td class="border border-gray-200 px-3 py-2">~$1,200/month</td>
+            <td class="border border-gray-200 px-3 py-2">~$696/month</td>
+            <td class="border border-gray-200 px-3 py-2"><strong>42%</strong></td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">15</td>
+            <td class="border border-gray-200 px-3 py-2">~$1,200/month</td>
+            <td class="border border-gray-200 px-3 py-2">~$1,016/month</td>
+            <td class="border border-gray-200 px-3 py-2"><strong>15%</strong></td>
+          </tr>
+          <tr class="bg-gray-50 font-semibold">
+            <td class="border border-gray-200 px-3 py-2">18+</td>
+            <td class="border border-gray-200 px-3 py-2">~$1,200/month</td>
+            <td class="border border-gray-200 px-3 py-2">~$1,208/month</td>
+            <td class="border border-gray-200 px-3 py-2">Crossover</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      The crossover point is approximately 18 clients. At this point, the cost of running individual single-tenant instances exceeds the fixed cost of a shared multi-tenant deployment. The application is architected for this migration from day one &mdash; tenant_id is on every database table, and the Terraform modules are parameterised for both deployment models. The migration itself is a scoped engagement, not a rebuild.
+    </p>
+
+    <div class="chart-container">
+      <canvas id="chart-cost-comparison"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="chart-infrastructure-scaling"></canvas>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">11.4 Scaling Path</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Client Count</th>
+            <th class="px-3 py-2 text-left font-medium">Infrastructure Model</th>
+            <th class="px-3 py-2 text-left font-medium">Client Onboarding</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">1&ndash;5</td>
+            <td class="border border-gray-200 px-3 py-2">Single-tenant instances, automated via Terraform</td>
+            <td class="border border-gray-200 px-3 py-2">BrightKeep-managed (~2&ndash;4 hours per client)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">5&ndash;15</td>
+            <td class="border border-gray-200 px-3 py-2">Single-tenant with shared monitoring and dev environment</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 self-service via Operations Dashboard</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">18+</td>
+            <td class="border border-gray-200 px-3 py-2">Multi-tenant migration &mdash; shared infrastructure with RLS, Azure Front Door</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 self-service, no provisioning required (~30 min)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">25+</td>
+            <td class="border border-gray-200 px-3 py-2">Multi-tenant on AKS with horizontal scaling, read replicas, Redis</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 self-service (~30 min per client)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">11.5 Infrastructure Tier Considerations</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      The default PostgreSQL tier (B1ms) is appropriate for most client deployments at launch. The following comparison helps inform when an upgrade to B2s may be warranted for specific high-usage clients.
+    </p>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Factor</th>
+            <th class="px-3 py-2 text-left font-medium">B1ms (1 vCore, 2GB)</th>
+            <th class="px-3 py-2 text-left font-medium">B2s (2 vCores, 4GB)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">AUD/month</td>
+            <td class="border border-gray-200 px-3 py-2">~$27</td>
+            <td class="border border-gray-200 px-3 py-2">~$108</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Concurrent users</td>
+            <td class="border border-gray-200 px-3 py-2">Comfortable up to ~10</td>
+            <td class="border border-gray-200 px-3 py-2">Handles 20&ndash;50+ sustained</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Max IOPS</td>
+            <td class="border border-gray-200 px-3 py-2">640</td>
+            <td class="border border-gray-200 px-3 py-2">1,280</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Working memory</td>
+            <td class="border border-gray-200 px-3 py-2">Suits datasets under ~500 nodes</td>
+            <td class="border border-gray-200 px-3 py-2">Better for complex graph traversals</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Use case fit</td>
+            <td class="border border-gray-200 px-3 py-2">Single client, early adoption</td>
+            <td class="border border-gray-200 px-3 py-2">High-volume client, complex queries</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Recommendation:</strong> Start all clients on B1ms. Monitor CPU and memory utilisation via Application Insights. Upgrade individual clients to B2s only when monitoring shows sustained resource pressure. The upgrade is a zero-downtime operation managed through Terraform.
+    </p>
+  </div>
+</section>
+
+<!-- Section 12: Client Onboarding -->
+<section data-section="client-onboarding" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">12. Client Onboarding</h2>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Cloud9 does not have a dedicated technology team. This is a deliberate consideration in the design of the onboarding process and the post-MVP Operations Dashboard. During the MVP phase, BrightKeep handles all technical onboarding steps. Post-MVP, Cloud9 becomes fully self-sufficient through the Operations Dashboard, reducing onboarding time and eliminating dependency on BrightKeep for routine client provisioning.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      The onboarding process is designed to be repeatable, documented, and progressively automated. Each step has a clear owner and a defined duration, so Cloud9 can plan client rollouts with confidence.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">12.1 What Happens When a New Client Signs Up</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Step</th>
+            <th class="px-3 py-2 text-left font-medium">Who (MVP)</th>
+            <th class="px-3 py-2 text-left font-medium">Who (Post-MVP)</th>
+            <th class="px-3 py-2 text-left font-medium">What</th>
+            <th class="px-3 py-2 text-left font-medium">Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">1</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9</td>
+            <td class="border border-gray-200 px-3 py-2">Client agreement signed and SharePoint access confirmed</td>
+            <td class="border border-gray-200 px-3 py-2">Variable</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">2</td>
+            <td class="border border-gray-200 px-3 py-2">BrightKeep</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 (via Dashboard)</td>
+            <td class="border border-gray-200 px-3 py-2">Entra app registration created for client tenant</td>
+            <td class="border border-gray-200 px-3 py-2">~15 min</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">3</td>
+            <td class="border border-gray-200 px-3 py-2">BrightKeep</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 (via Dashboard)</td>
+            <td class="border border-gray-200 px-3 py-2">Terraform provisioning of Azure resources</td>
+            <td class="border border-gray-200 px-3 py-2">~30 min</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">4</td>
+            <td class="border border-gray-200 px-3 py-2">BrightKeep</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 (via Dashboard)</td>
+            <td class="border border-gray-200 px-3 py-2">Application deployed to client instance</td>
+            <td class="border border-gray-200 px-3 py-2">~15 min</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">5</td>
+            <td class="border border-gray-200 px-3 py-2">BrightKeep</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 (via Dashboard)</td>
+            <td class="border border-gray-200 px-3 py-2">DNS and custom domain configured</td>
+            <td class="border border-gray-200 px-3 py-2">~15 min</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">6</td>
+            <td class="border border-gray-200 px-3 py-2">BrightKeep</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 (via Dashboard)</td>
+            <td class="border border-gray-200 px-3 py-2">SharePoint column mapping configured and validated</td>
+            <td class="border border-gray-200 px-3 py-2">~30 min</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">7</td>
+            <td class="border border-gray-200 px-3 py-2">BrightKeep</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 (via Dashboard)</td>
+            <td class="border border-gray-200 px-3 py-2">Initial SharePoint sync executed and validated</td>
+            <td class="border border-gray-200 px-3 py-2">~30 min</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">8</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 + Client IT</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 + Client IT</td>
+            <td class="border border-gray-200 px-3 py-2">Client admin consent granted and user access confirmed</td>
+            <td class="border border-gray-200 px-3 py-2">~15 min</td>
+          </tr>
+          <tr class="bg-gray-50 font-semibold">
+            <td class="border border-gray-200 px-3 py-2"></td>
+            <td class="border border-gray-200 px-3 py-2"></td>
+            <td class="border border-gray-200 px-3 py-2"></td>
+            <td class="border border-gray-200 px-3 py-2">Total (excluding step 1)</td>
+            <td class="border border-gray-200 px-3 py-2">~2&ndash;4 hours</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">12.2 What We Provide for Onboarding</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Artefact</th>
+            <th class="px-3 py-2 text-left font-medium">Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Onboarding checklist</td>
+            <td class="border border-gray-200 px-3 py-2">Step-by-step guide for each new client deployment with prerequisites and verification steps</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">SharePoint template</td>
+            <td class="border border-gray-200 px-3 py-2">Reference SharePoint list structure with required columns, data types, and sample data</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Terraform modules</td>
+            <td class="border border-gray-200 px-3 py-2">Parameterised infrastructure-as-code for one-command client provisioning</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Operational runbook</td>
+            <td class="border border-gray-200 px-3 py-2">Procedures for monitoring, troubleshooting, maintenance, and incident response</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Administrator guide</td>
+            <td class="border border-gray-200 px-3 py-2">Application configuration, user management, sync management, and deployment procedures</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Architecture documentation</td>
+            <td class="border border-gray-200 px-3 py-2">System architecture, data flows, integration points, and decision log</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">12.3 Ongoing Operations</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Activity</th>
+            <th class="px-3 py-2 text-left font-medium">Frequency</th>
+            <th class="px-3 py-2 text-left font-medium">Responsibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Monitor sync health</td>
+            <td class="border border-gray-200 px-3 py-2">Daily (automated alerts)</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 (via Dashboard post-MVP)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Review Application Insights</td>
+            <td class="border border-gray-200 px-3 py-2">Weekly</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 (via Dashboard post-MVP)</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Apply application updates</td>
+            <td class="border border-gray-200 px-3 py-2">As needed</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 (via CI/CD pipeline)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Apply security patches</td>
+            <td class="border border-gray-200 px-3 py-2">As needed</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 or BrightKeep (ad-hoc engagement)</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">New client onboarding</td>
+            <td class="border border-gray-200 px-3 py-2">As needed</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 (via Dashboard post-MVP)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Infrastructure cost review</td>
+            <td class="border border-gray-200 px-3 py-2">Monthly</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Infrastructure tier review</td>
+            <td class="border border-gray-200 px-3 py-2">Quarterly</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 (with BrightKeep guidance if needed)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">12.4 Cloud9 Operations Dashboard (Post-MVP)</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      The MLP phase introduces a Cloud9 Operations Dashboard &mdash; a dedicated internal tool that gives Cloud9 full self-service control over client lifecycle management.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Onboarding wizard:</strong>
+    </p>
+
+    <ul class="list-disc pl-6 mb-4 space-y-2 text-[#2D2D2D]">
+      <li>Guided workflow to provision infrastructure, deploy the application, and configure DNS</li>
+      <li>SharePoint column mapping configuration with validation</li>
+      <li>Initial sync execution and verification</li>
+      <li>Client health check and go-live confirmation</li>
+    </ul>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>Operations view:</strong>
+    </p>
+
+    <ul class="list-disc pl-6 mb-4 space-y-2 text-[#2D2D2D]">
+      <li>Real-time sync status across all client instances</li>
+      <li>Aggregated health dashboard with uptime, resource usage, and error rates</li>
+      <li>Monthly infrastructure cost breakdown per client with trend analysis</li>
+      <li>Configuration management for SharePoint mappings and client settings</li>
+      <li>Deployment management for application updates across instances</li>
+    </ul>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      <strong>What this means for Cloud9:</strong> Complete operational independence from BrightKeep for all routine client management tasks. Onboarding time drops from ~2&ndash;4 hours (with BrightKeep involvement) to ~30 minutes (self-service). Cloud9 can scale their client base without technical bottlenecks.
+    </p>
+  </div>
+</section>
+
+<!-- Section 13: Engagement Model -->
+<section data-section="engagement-model" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">13. Engagement Model</h2>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">13.1 Delivery Approach</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Agile delivery in one-week sprints. Each sprint produces a working increment demonstrated to Cloud9 stakeholders. Scope is managed through a prioritised backlog, with weekly planning and review sessions to ensure alignment.
+    </p>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Activity</th>
+            <th class="px-3 py-2 text-left font-medium">Frequency</th>
+            <th class="px-3 py-2 text-left font-medium">Participants</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Sprint planning</td>
+            <td class="border border-gray-200 px-3 py-2">Weekly (Monday)</td>
+            <td class="border border-gray-200 px-3 py-2">BrightKeep + Cloud9 functional lead (Veronica)</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Status update and demo</td>
+            <td class="border border-gray-200 px-3 py-2">Weekly (Friday)</td>
+            <td class="border border-gray-200 px-3 py-2">BrightKeep + Cloud9 stakeholders</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Retrospective</td>
+            <td class="border border-gray-200 px-3 py-2">Fortnightly</td>
+            <td class="border border-gray-200 px-3 py-2">BrightKeep + Cloud9 functional lead</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Weekly demos are non-negotiable. They are the primary mechanism for ensuring the product is tracking to Cloud9&rsquo;s expectations. Every demo shows working software, not slide decks. If something is off track, it surfaces in the demo, not in a status report three weeks later.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">13.2 Team Structure</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Role</th>
+            <th class="px-3 py-2 text-left font-medium">Person</th>
+            <th class="px-3 py-2 text-left font-medium">Allocation</th>
+            <th class="px-3 py-2 text-left font-medium">Responsibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Delivery Lead &amp; Product</td>
+            <td class="border border-gray-200 px-3 py-2">Alastair Tooth</td>
+            <td class="border border-gray-200 px-3 py-2">3 days/week</td>
+            <td class="border border-gray-200 px-3 py-2">Client relationship, product decisions, scope management, frontend development</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Technical Lead &amp; Senior Engineer</td>
+            <td class="border border-gray-200 px-3 py-2">Darren Benson</td>
+            <td class="border border-gray-200 px-3 py-2">1.5 days/week</td>
+            <td class="border border-gray-200 px-3 py-2">Architecture, backend, infrastructure, code quality, testing</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Full team profiles are provided in Section 3.4. Both team members are senior practitioners who have delivered production systems across enterprise consulting, SaaS, and startup environments. There is no junior staffing or subcontracting.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">13.3 Communication and Escalation</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Level</th>
+            <th class="px-3 py-2 text-left font-medium">Contact</th>
+            <th class="px-3 py-2 text-left font-medium">Response Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Day-to-day</td>
+            <td class="border border-gray-200 px-3 py-2">Alastair Tooth</td>
+            <td class="border border-gray-200 px-3 py-2">Same business day</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Technical</td>
+            <td class="border border-gray-200 px-3 py-2">Darren Benson</td>
+            <td class="border border-gray-200 px-3 py-2">Same business day</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Escalation</td>
+            <td class="border border-gray-200 px-3 py-2">Alastair Tooth</td>
+            <td class="border border-gray-200 px-3 py-2">Within 4 business hours</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">13.4 Environments</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Environment</th>
+            <th class="px-3 py-2 text-left font-medium">Purpose</th>
+            <th class="px-3 py-2 text-left font-medium">Availability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2"><strong>Development</strong></td>
+            <td class="border border-gray-200 px-3 py-2">Active development and integration testing</td>
+            <td class="border border-gray-200 px-3 py-2">From Phase 1, Week 2</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2"><strong>Production (Pilot)</strong></td>
+            <td class="border border-gray-200 px-3 py-2">First client deployment</td>
+            <td class="border border-gray-200 px-3 py-2">From Phase 3, Week 6</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2"><strong>Production (Second Client)</strong></td>
+            <td class="border border-gray-200 px-3 py-2">Validates onboarding process</td>
+            <td class="border border-gray-200 px-3 py-2">Phase 3, Week 6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Section 14: Support and Handover Model -->
+<section data-section="support-model" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">14. Support and Handover Model</h2>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      The delivery model is a <strong>full solution handover</strong>. At the end of the engagement, Cloud9 owns the application, the source code, the infrastructure, and the operational knowledge to run and maintain it independently.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">14.1 Hypercare (Included in MVP)</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Following go-live, a two-week hypercare period is included in the MVP engagement (Phase 4, Weeks 7&ndash;8). During hypercare, BrightKeep provides:
+    </p>
+
+    <ul class="list-disc pl-6 mb-4 space-y-2 text-[#2D2D2D]">
+      <li><strong>Priority bug fixes:</strong> Production issues addressed within business hours</li>
+      <li><strong>Performance monitoring:</strong> Active monitoring of application health, sync reliability, and resource utilisation</li>
+      <li><strong>Knowledge transfer:</strong> Architecture walkthrough, codebase orientation, operational procedures handover</li>
+      <li><strong>Minor adjustments:</strong> Small configuration or UI tweaks based on initial production feedback</li>
+      <li><strong>Second client validation:</strong> Onboarding a second client instance to confirm the deployment process is repeatable</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">14.2 Handover</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      What Cloud9 receives:
+    </p>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Deliverable</th>
+            <th class="px-3 py-2 text-left font-medium">Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Source code</td>
+            <td class="border border-gray-200 px-3 py-2">Full access to the GitHub repository with complete commit history</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Infrastructure-as-code</td>
+            <td class="border border-gray-200 px-3 py-2">Terraform modules for provisioning new client instances</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">CI/CD pipeline</td>
+            <td class="border border-gray-200 px-3 py-2">GitHub Actions workflows for build, test, and deployment</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Documentation</td>
+            <td class="border border-gray-200 px-3 py-2">User guide, administrator guide, onboarding runbook, troubleshooting guide, architecture decision log</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Operational runbooks</td>
+            <td class="border border-gray-200 px-3 py-2">Step-by-step procedures for client onboarding, application updates, database migrations, sync troubleshooting, and incident response</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">14.3 Training</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Training Area</th>
+            <th class="px-3 py-2 text-left font-medium">Audience</th>
+            <th class="px-3 py-2 text-left font-medium">What&rsquo;s Covered</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Client onboarding</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 operations staff</td>
+            <td class="border border-gray-200 px-3 py-2">End-to-end onboarding process hands-on walkthrough</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Tool administration</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 operations staff</td>
+            <td class="border border-gray-200 px-3 py-2">Application updates via CI/CD, database migration process, sync monitoring</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Maintenance procedures</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 operations staff</td>
+            <td class="border border-gray-200 px-3 py-2">Zero-downtime deployments, scheduling maintenance, rollback, infrastructure tier upgrades</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">User support</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 consultants</td>
+            <td class="border border-gray-200 px-3 py-2">How to support end users: login issues, layout management, export, sync status</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">14.4 Post-Handover</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-medium">Scenario</th>
+            <th class="px-3 py-2 text-left font-medium">Engagement Model</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Bug fix or urgent issue</td>
+            <td class="border border-gray-200 px-3 py-2">Ad-hoc engagement at agreed daily rate</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">MLP feature development</td>
+            <td class="border border-gray-200 px-3 py-2">Scoped engagement with discovery, estimate, and delivery timeline</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Matured Product (AI features)</td>
+            <td class="border border-gray-200 px-3 py-2">Separate scoped engagement with its own discovery phase</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Infrastructure scaling or migration</td>
+            <td class="border border-gray-200 px-3 py-2">Scoped engagement when client count approaches ~18 clients</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">14.5 Operational Independence</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      The goal of the handover is complete operational independence. Cloud9 should be able to onboard new clients, deploy updates, monitor health, troubleshoot issues, and manage infrastructure without BrightKeep involvement. The documentation, runbooks, training, and tooling are all designed to achieve this. BrightKeep remains available for future development and specialist support, but Cloud9 is not dependent on BrightKeep for day-to-day operations.
+    </p>
+  </div>
+</section>
+
+<!-- Section 15: Partnering Model -->
+<section data-section="partnering-model" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">15. Partnering Model</h2>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      This is not a handoff engagement. The best outcomes come from genuine collaboration &mdash; where BrightKeep brings technical delivery expertise and Cloud9 brings domain knowledge, client relationships, and the context that shapes what gets built. Both parties have skin in the game, and both contribute capabilities that neither has alone.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">What BrightKeep Brings</h3>
+
+    <ul class="list-disc pl-6 mb-4 space-y-2 text-[#2D2D2D]">
+      <li><strong>Product and delivery expertise:</strong> End-to-end product development from discovery through to production deployment and operational handover</li>
+      <li><strong>Technical architecture:</strong> Cloud infrastructure, application design, and integration patterns tailored to Cloud9&rsquo;s needs and scale</li>
+      <li><strong>AI-augmented development:</strong> Tooling and methodology that delivers 4&ndash;5x the output of traditional development while maintaining code quality</li>
+      <li><strong>Operational handover:</strong> Knowledge transfer, documentation, and self-service tooling that eliminates long-term dependency</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">What Cloud9 Brings</h3>
+
+    <ul class="list-disc pl-6 mb-4 space-y-2 text-[#2D2D2D]">
+      <li><strong>Domain expertise:</strong> Deep understanding of enterprise architecture consulting, client needs, and the integration mapping workflow that shapes every product decision</li>
+      <li><strong>SharePoint data:</strong> Structured application and integration data in SharePoint lists, with real client datasets for development and testing</li>
+      <li><strong>Entra ID access:</strong> Azure tenant with Entra ID for authentication, app registrations, and Microsoft Graph API access</li>
+      <li><strong>User feedback:</strong> Direct access to consultants and client stakeholders for requirements validation, UAT, and iterative improvement</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">Joint Decisions</h3>
+
+    <ul class="list-disc pl-6 mb-4 space-y-2 text-[#2D2D2D]">
+      <li>Feature prioritisation &mdash; which features ship in MVP vs MLP vs later phases</li>
+      <li>Client selection for pilot &mdash; which Cloud9 client is the best fit for the first production deployment</li>
+      <li>Support model selection &mdash; post-hypercare engagement level based on usage patterns and development roadmap</li>
+      <li>Multi-tenant timing &mdash; when the client count and economics justify migration from single-tenant to multi-tenant architecture</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">IP Ownership</h3>
+
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
+      <p class="text-sm text-amber-800">
+        <strong>Note:</strong> IP ownership terms to be confirmed. Typical models include: (a) Cloud9 owns all IP developed during the engagement, (b) BrightKeep retains IP in reusable components with Cloud9 receiving a perpetual licence, or (c) joint ownership with defined usage rights. BrightKeep is flexible on IP arrangements and will work with Cloud9 to agree terms that reflect the partnership nature of the engagement prior to commencement.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+---
+
+---
+
+<header class="fixed top-0 left-0 right-0 h-16 bg-[#1B2A4A] z-50 flex items-center px-4 lg:px-6 shadow-lg">
+  <!-- Mobile hamburger -->
+  <button
+    id="sidebar-toggle"
+    class="lg:hidden mr-3 text-white p-1 hover:bg-white/10 rounded-lg transition-colors"
+    aria-label="Toggle navigation"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  <!-- BrightKeep logo -->
+  <div class="flex items-center flex-shrink-0 gap-2">
+    <img
+      src="/proposals/brightkeep-logo.png"
+      alt="BrightKeep"
+      class="h-8"
+    />
+    <span class="text-2xl leading-none" style="font-family: 'Poppins', sans-serif; font-weight: 300;"><span class="text-white">Bright</span><span class="text-[#FF6B6B]">Keep</span></span>
+  </div>
+
+  <!-- Title (centered) -->
+  <div class="flex-1 text-center hidden sm:block">
+    <h1 class="text-white font-semibold text-sm lg:text-base truncate px-4">
+      Cloud9 Visualisation Application &mdash; Proposal
+    </h1>
+  </div>
+
+  <!-- Export PDF button -->
+  <button
+    id="export-pdf-btn"
+    class="print:hidden ml-auto lg:ml-0 mr-3 text-white/80 hover:text-white hover:bg-white/10 p-2 rounded-lg transition-colors flex items-center gap-1.5 text-sm"
+    aria-label="Export PDF"
+    title="Export as PDF"
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+    <span class="hidden sm:inline">Export PDF</span>
+  </button>
+
+  <!-- Cloud9 logo -->
+  <div class="flex items-center flex-shrink-0">
+    <img
+      src="/proposals/cloud9-logo.png"
+      alt="Cloud9 Consulting"
+      class="h-8 rounded"
+    />
+  </div>
+</header>

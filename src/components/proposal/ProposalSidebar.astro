@@ -1,0 +1,77 @@
+---
+
+---
+
+<!-- Backdrop overlay for mobile -->
+<div id="sidebar-backdrop" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden"></div>
+
+<aside
+  id="proposal-sidebar"
+  class="fixed top-16 left-0 bottom-0 w-64 bg-[#F8F9FA] border-r border-gray-200 z-40 overflow-y-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300"
+>
+  <nav class="py-4 text-sm">
+    <!-- Overview -->
+    <div class="px-4 py-2">
+      <p class="text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-1">Overview</p>
+      <button data-section="executive-summary" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">1. Executive Summary</button>
+      <button data-section="business-case" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">2. Business Case</button>
+      <button data-section="about-brightkeep" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">3. About BrightKeep</button>
+    </div>
+
+    <!-- The Opportunity -->
+    <div class="px-4 py-2">
+      <p class="text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-1">The Opportunity</p>
+      <button data-section="understanding-the-problem" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">4. Understanding the Problem</button>
+      <button data-section="proposed-solution" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">5. Proposed Solution</button>
+    </div>
+
+    <!-- Scope & Architecture -->
+    <div class="px-4 py-2">
+      <p class="text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-1">Scope & Architecture</p>
+      <button data-section="mvp-scope" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">6. MVP Scope</button>
+      <button data-section="post-mvp-roadmap" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">7. Post-MVP Roadmap</button>
+      <button data-section="architecture" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">8. Architecture Approach</button>
+    </div>
+
+    <!-- Delivery & Investment -->
+    <div class="px-4 py-2">
+      <p class="text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-1">Delivery & Investment</p>
+      <button data-section="timeline" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">9. Timeline & Phases</button>
+      <button data-section="effort-cost" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">10. Effort & Cost</button>
+      <button data-section="infrastructure-costs" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">11. Infrastructure Costs</button>
+    </div>
+
+    <!-- Engagement -->
+    <div class="px-4 py-2">
+      <p class="text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-1">Engagement</p>
+      <button data-section="client-onboarding" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">12. Client Onboarding</button>
+      <button data-section="engagement-model" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">13. Engagement Model</button>
+      <button data-section="support-model" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">14. Support & Handover</button>
+      <button data-section="partnering-model" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">15. Partnering Model</button>
+    </div>
+
+    <!-- Considerations -->
+    <div class="px-4 py-2">
+      <p class="text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-1">Considerations</p>
+      <button data-section="assumptions" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">16. Assumptions</button>
+      <button data-section="risks" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">17. Risks & Mitigations</button>
+      <button data-section="open-questions" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">18. Open Questions</button>
+      <button data-section="not-included" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">19. Not Included</button>
+    </div>
+
+    <!-- Appendices -->
+    <div class="px-4 py-2">
+      <p class="text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-1">Appendices</p>
+      <button data-section="appendix-a" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">A. RFP Traceability</button>
+      <button data-section="appendix-b" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">B. Work Breakdown</button>
+      <button data-section="appendix-c" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">C. Cost References</button>
+      <button data-section="appendix-d" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">D. Migration Process</button>
+    </div>
+
+    <!-- Version info -->
+    <div class="px-4 py-4 mt-2 border-t border-gray-200">
+      <p class="text-xs text-[#6B7280]">Version 2.0 &bull; 20 Feb 2026</p>
+      <p class="text-xs text-[#6B7280]">Prepared for Cloud9 Consulting</p>
+    </div>
+  </nav>
+</aside>

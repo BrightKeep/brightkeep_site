@@ -713,38 +713,11 @@
     <!-- 11.1 High-Level Architecture -->
     <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">11.1 High-Level Architecture (Per-Client Deployment)</h3>
 
-    <pre class="bg-gray-50 rounded-lg p-4 mb-6 text-sm overflow-x-auto text-[#2D2D2D]">
-                    +---------------------------+
-                    |     Azure App Service      |
-                    |   (B1 - API + Static SPA)  |
-                    |   Managed TLS certificate   |
-                    +-------------+-------------+
-                                  |
-                    +-------------+-------------+
-                    |     Fastify Application     |
-                    |     (Node.js / TypeScript)   |
-                    |                             |
-                    |  +- Auth Module             |
-                    |  +- Graph Module            |
-                    |  +- Catalogue Module        |
-                    |  +- Export Module            |
-                    |  +- Sync Module             |
-                    +----+------------------+----+
-                         |                  |
-            +------------+      +-----------+---------+
-            |                   |                     |
-  +---------+------+    +-------+--------+    +-------+-------+
-  |  PostgreSQL    |    | Blob Storage   |    | Microsoft     |
-  |  (Burstable)   |    | (Exports,      |    | Graph API     |
-  |                |    |  Static Assets)|    | (SharePoint)  |
-  +----------------+    +----------------+    +---------------+
-
-  +--------------------------------------------------+
-  |         pg-boss (PostgreSQL-native jobs)          |
-  |  +- Daily SharePoint Sync                        |
-  |  +- Manual Sync Trigger                          |
-  |  +- Export Generation                            |
-  +--------------------------------------------------+</pre>
+    <img
+      src="/proposals/11-1-architecture.png"
+      alt="Per-Client Deployment Architecture — Application Layer, Data Layer, Integration Layer, Background Processing"
+      class="w-full rounded-lg mb-6"
+    />
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
       Each client deployment is a self-contained stack. No shared infrastructure between clients.
@@ -754,10 +727,11 @@
     <!-- 11.2 Data Flow -->
     <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">11.2 Data Flow</h3>
 
-    <pre class="bg-gray-50 rounded-lg p-4 mb-6 text-sm overflow-x-auto text-[#2D2D2D]">
-SharePoint Lists --&gt; Daily Sync + Manual Trigger --&gt; PostgreSQL --&gt; Cytoscape.js Graph
-                     (Microsoft Graph API)           (read-only)    (in-browser rendering)
-                     (one-way, read-only)</pre>
+    <img
+      src="/proposals/11-2-data-flow.png"
+      alt="Data Flow — One-way, read-only pipeline from SharePoint to browser"
+      class="w-full rounded-lg mb-6"
+    />
 
     <!-- 11.3 NFR Response -->
     <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">11.3 NFR Response</h3>

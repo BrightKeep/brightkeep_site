@@ -244,6 +244,7 @@ if (Astro.request.method === 'POST' && !authenticated) {
             });
           }
 
+          window.showSection = showSection;
           function showSection(sectionId) {
             // Hide cover
             if (cover) cover.classList.add('hidden');

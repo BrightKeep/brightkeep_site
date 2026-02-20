@@ -229,7 +229,7 @@
     </div>
 
     <p class="mb-4 text-[#6B7280] text-sm">
-      Full company and team details are in <button type="button" onclick="showSection('solution-detailed')" class="text-[#FF6B6B] hover:underline cursor-pointer font-medium">Section 8.6</button>.
+      Full company and team details are in <button type="button" onclick="showSection('solution-detailed', 'section-8-6')" class="text-[#FF6B6B] hover:underline cursor-pointer font-medium">Section 8.6</button>.
     </p>
   </div>
 </section>
@@ -308,7 +308,7 @@
   <div class="proposal-content">
     <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">4. Our Proposed Solution</h2>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">4.1 MVP Capabilities</h3>
+    <h3 id="section-4-1" class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">4.1 MVP Capabilities</h3>
 
     <div class="overflow-x-auto mb-6">
       <table class="w-full text-sm border-collapse">
@@ -374,7 +374,7 @@
       </table>
     </div>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">4.2 Counter-Proposals</h3>
+    <h3 id="section-4-2" class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">4.2 Counter-Proposals</h3>
 
     <div class="space-y-4 mb-6">
       <div class="bg-white rounded-lg border border-gray-200 p-5">
@@ -429,7 +429,7 @@
       </div>
     </div>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">4.3 Beyond MVP</h3>
+    <h3 id="section-4-3" class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">4.3 Beyond MVP</h3>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
       <div class="bg-white rounded-lg border border-gray-200 p-5">
@@ -448,7 +448,7 @@
     </div>
 
     <p class="mb-4 text-[#6B7280] text-sm">
-      Full detail in <button type="button" onclick="showSection('solution-detailed')" class="text-[#FF6B6B] hover:underline cursor-pointer font-medium">Sections 8&ndash;11</button>.
+      Full detail in <button type="button" onclick="showSection('solution-detailed')" class="text-[#FF6B6B] hover:underline cursor-pointer font-medium">Section 8</button>, <button type="button" onclick="showSection('mvp-scope')" class="text-[#FF6B6B] hover:underline cursor-pointer font-medium">9</button>, <button type="button" onclick="showSection('post-mvp-roadmap')" class="text-[#FF6B6B] hover:underline cursor-pointer font-medium">10</button>, and <button type="button" onclick="showSection('architecture')" class="text-[#FF6B6B] hover:underline cursor-pointer font-medium">11</button>.
     </p>
   </div>
 </section>
@@ -458,7 +458,7 @@
   <div class="proposal-content">
     <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">5. Delivery Effort Overview</h2>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">5.1 Timeline Summary</h3>
+    <h3 id="section-5-1" class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">5.1 Timeline Summary</h3>
 
     <div class="overflow-x-auto mb-6">
       <table class="w-full text-sm border-collapse">
@@ -515,7 +515,7 @@
       <canvas id="chart-delivery-phases"></canvas>
     </div>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">5.2 Delivery Narrative</h3>
+    <h3 id="section-5-2" class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">5.2 Delivery Narrative</h3>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
       Two senior developers, 4.5 combined days per week, eight weeks. Development is AI-augmented
@@ -617,7 +617,7 @@
   <div class="proposal-content">
     <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">7. The Cost</h2>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.1 MVP Investment</h3>
+    <h3 id="section-7-1" class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.1 MVP Investment</h3>
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
       <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
@@ -656,7 +656,7 @@
       every stage.
     </p>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.2 Infrastructure Costs</h3>
+    <h3 id="section-7-2" class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.2 Infrastructure Costs</h3>
 
     <div class="overflow-x-auto mb-6">
       <table class="w-full text-sm border-collapse">
@@ -706,7 +706,7 @@
       <canvas id="chart-cost-scaling"></canvas>
     </div>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.3 Market Pricing Context</h3>
+    <h3 id="section-7-3" class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.3 Market Pricing Context</h3>
 
     <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Enterprise EA Tools</h4>
 
@@ -791,7 +791,7 @@
       </p>
     </div>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.4 Revenue Model</h3>
+    <h3 id="section-7-4" class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.4 Revenue Model</h3>
 
     <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Assumptions</h4>
 
@@ -857,7 +857,7 @@
       <canvas id="chart-revenue-margin"></canvas>
     </div>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.5 Post-MVP Engineering</h3>
+    <h3 id="section-7-5" class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.5 Post-MVP Engineering</h3>
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
       <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
@@ -881,7 +881,7 @@
       Cloud9&rsquo;s evolving priorities.
     </p>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.6 Delivery Model</h3>
+    <h3 id="section-7-6" class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.6 Delivery Model</h3>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
       The delivery model is a full solution handover. At the end of the engagement, Cloud9 owns the

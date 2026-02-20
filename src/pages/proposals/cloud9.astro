@@ -245,7 +245,7 @@ if (Astro.request.method === 'POST' && !authenticated) {
           }
 
           window.showSection = showSection;
-          function showSection(sectionId) {
+          function showSection(sectionId, anchorId) {
             // Hide cover
             if (cover) cover.classList.add('hidden');
 
@@ -256,7 +256,19 @@ if (Astro.request.method === 'POST' && !authenticated) {
             const target = document.querySelector(`section[data-section="${sectionId}"]`);
             if (target) {
               target.classList.remove('hidden');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              if (anchorId) {
+                // Scroll to specific subsection anchor
+                requestAnimationFrame(() => {
+                  const anchor = document.getElementById(anchorId);
+                  if (anchor) {
+                    anchor.scrollIntoView({ behavior: 'smooth' });
+                    return;
+                  }
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+              } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
             }
 
             // Update active state in sidebar

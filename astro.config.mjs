@@ -8,4 +8,7 @@ export default defineConfig({
   site: process.env.PUBLIC_SITE_URL || 'https://www.brightkeep.com.au',
   adapter: node({ mode: 'standalone' }),
   integrations: [tailwind(), sitemap()],
+  security: {
+    checkOrigin: false,
+  },
 });

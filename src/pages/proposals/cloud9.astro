@@ -60,7 +60,7 @@ if (Astro.request.method === 'POST' && !authenticated) {
           <div id="proposal-cover" class="mb-8 pb-8 border-b border-gray-200">
             <div class="flex items-center gap-2 mb-4">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#1B2A4A] text-white">Proposal</span>
-              <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#FF6B6B] text-white">v2.0</span>
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#FF6B6B] text-white">v2.1</span>
             </div>
             <h1 class="text-3xl lg:text-4xl font-bold text-[#1B2A4A] mb-3">
               Cloud9 Visualisation Application
@@ -71,9 +71,9 @@ if (Astro.request.method === 'POST' && !authenticated) {
             <div class="flex flex-wrap gap-4 text-sm text-[#6B7280]">
               <span>Date: 20 February 2026</span>
               <span>&bull;</span>
-              <span>Version: 2.0</span>
+              <span>Version: 2.1</span>
               <span>&bull;</span>
-              <span>RFP Reference: Cloud9 Visualisation Application - Developer Briefing Document</span>
+              <span>RFP Reference: Cloud9 Visualisation Application &mdash; Engineer Briefing Document</span>
             </div>
           </div>
 
@@ -468,6 +468,147 @@ if (Astro.request.method === 'POST' && !authenticated) {
               }
             }
 
+
+            // Delivery Phases Horizontal Bar Chart (Section 5 - Delivery Overview)
+            if (sectionId === 'delivery-overview' && !chartsInitialized.has('chart-delivery-phases')) {
+              const ctx = document.getElementById('chart-delivery-phases');
+              if (ctx) {
+                chartsInitialized.add('chart-delivery-phases');
+                new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: ['Phase 0: Discovery', 'Phase 1: Foundation', 'Phase 2: Core Features', 'Phase 3: UAT & Testing', 'Phase 4: Hypercare'],
+                    datasets: [{
+                      label: 'Person-Days',
+                      data: [2, 9, 9, 4.5, 6],
+                      backgroundColor: [
+                        'rgba(27, 42, 74, 0.7)',
+                        'rgba(58, 107, 159, 0.7)',
+                        'rgba(13, 148, 136, 0.7)',
+                        'rgba(255, 107, 107, 0.7)',
+                        'rgba(107, 114, 128, 0.7)',
+                      ],
+                      borderWidth: 1,
+                    }],
+                  },
+                  options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    plugins: {
+                      title: { display: true, text: 'Effort by Phase (Person-Days)', font: { size: 14 } },
+                      legend: { display: false },
+                    },
+                    scales: {
+                      x: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Person-Days' },
+                      },
+                    },
+                  },
+                });
+              }
+            }
+
+            // Cost Scaling Line Chart (Section 7 - The Cost)
+            if (sectionId === 'the-cost' && !chartsInitialized.has('chart-cost-scaling')) {
+              const ctx = document.getElementById('chart-cost-scaling');
+              if (ctx) {
+                chartsInitialized.add('chart-cost-scaling');
+                new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                    labels: Array.from({ length: 25 }, (_, i) => i + 1),
+                    datasets: [
+                      {
+                        label: 'Single-tenant ($56 dev + $64/client)',
+                        data: Array.from({ length: 25 }, (_, i) => 56 + 64 * (i + 1)),
+                        borderColor: 'rgb(13, 148, 136)',
+                        backgroundColor: 'rgba(13, 148, 136, 0.1)',
+                        fill: true,
+                        tension: 0.1,
+                      },
+                      {
+                        label: 'Multi-tenant (fixed ~$1,200)',
+                        data: Array.from({ length: 25 }, () => 1200),
+                        borderColor: 'rgb(220, 53, 69)',
+                        backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                        fill: true,
+                        borderDash: [5, 5],
+                        tension: 0,
+                      },
+                    ],
+                  },
+                  options: {
+                    responsive: true,
+                    plugins: {
+                      title: { display: true, text: 'Infrastructure Cost Scaling: Single-Tenant vs Multi-Tenant (AUD)', font: { size: 14 } },
+                      legend: { position: 'bottom' },
+                    },
+                    scales: {
+                      x: { title: { display: true, text: 'Number of Clients' } },
+                      y: {
+                        beginAtZero: true,
+                        ticks: { callback: v => '$' + v },
+                        title: { display: true, text: 'AUD / month' },
+                      },
+                    },
+                  },
+                });
+              }
+            }
+
+            // Revenue Margin Grouped Bar Chart (Section 7 - The Cost)
+            if (sectionId === 'the-cost' && !chartsInitialized.has('chart-revenue-margin')) {
+              const ctx = document.getElementById('chart-revenue-margin');
+              if (ctx) {
+                chartsInitialized.add('chart-revenue-margin');
+                new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: ['Conservative ($500)', 'Mid ($750)', 'Growth ($1,000)', 'Premium ($1,000)'],
+                    datasets: [
+                      {
+                        label: 'Monthly Fee',
+                        data: [500, 750, 1000, 1000],
+                        backgroundColor: 'rgba(13, 148, 136, 0.7)',
+                        borderColor: 'rgb(13, 148, 136)',
+                        borderWidth: 1,
+                      },
+                      {
+                        label: 'Infrastructure Cost',
+                        data: [64, 64, 64, 64],
+                        backgroundColor: 'rgba(220, 53, 69, 0.7)',
+                        borderColor: 'rgb(220, 53, 69)',
+                        borderWidth: 1,
+                      },
+                    ],
+                  },
+                  options: {
+                    responsive: true,
+                    plugins: {
+                      title: { display: true, text: 'Monthly Fee vs Infrastructure Cost per Client (AUD)', font: { size: 14 } },
+                      legend: { position: 'bottom' },
+                      tooltip: {
+                        callbacks: {
+                          afterBody: function(tooltipItems) {
+                            const fee = tooltipItems[0].parsed.y || tooltipItems[0].raw;
+                            const margins = { 0: '87%', 1: '91%', 2: '94%', 3: '94%' };
+                            return 'Margin: ' + (margins[tooltipItems[0].dataIndex] || '');
+                          }
+                        }
+                      }
+                    },
+                    scales: {
+                      y: {
+                        beginAtZero: true,
+                        ticks: { callback: v => '$' + v },
+                        title: { display: true, text: 'AUD / month' },
+                      },
+                    },
+                  },
+                });
+              }
+            }
 
             // Feature Allocation Grouped Bar Chart
             if (sectionId === 'appendix-b' && !chartsInitialized.has('chart-feature-allocation')) {

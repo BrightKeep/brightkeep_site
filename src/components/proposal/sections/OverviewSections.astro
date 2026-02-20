@@ -11,14 +11,13 @@
       Cloud9 needs a tool that turns SharePoint data into interactive architecture visualisations.
       Consultants and their clients should be able to explore application landscapes, filter by any
       dimension, trace integration dependencies, and export what they see into slide decks and
-      client-ready documents, without maintaining manual diagrams that go stale the moment they're drawn.
+      client-ready documents, without maintaining manual diagrams that go stale the moment they&rsquo;re drawn.
     </p>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
       The tool also represents a commercial opportunity. Each client deployment costs approximately $64
       per month in Azure infrastructure. Cloud9 determines the pricing model, with the margin per client
-      being the difference between the chosen price point and the infrastructure cost. The full business
-      case, including revenue projections and investment payback analysis, is presented in Section 2.
+      being the difference between the chosen price point and the infrastructure cost.
     </p>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
@@ -27,266 +26,134 @@
       two weeks of hypercare support.
     </p>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">Three Architectural Decisions</h3>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      Three architectural decisions define this proposal:
-    </p>
-
-    <ol class="list-decimal pl-6 mb-4 space-y-2 text-[#2D2D2D]">
-      <li>
-        <strong>Single-tenant deployment, not multi-tenant.</strong> Each Cloud9 client gets their
-        own isolated instance &mdash; their own database, their own application, their own URL. This
-        is materially more cost-effective for Cloud9 to run at launch than the enterprise multi-tenant
-        architecture described in the RFP. It provides stronger data isolation by default (physical
-        separation, not logical), and simplifies build time and complexity. The architecture is designed
-        for multi-tenant migration when client count reaches a single-tenant cost threshold (~18 clients),
-        and that migration can be executed with no client impact.
-      </li>
-      <li>
-        <strong>SharePoint stays as the source of truth.</strong> The tool reads from SharePoint via
-        daily sync with a manual refresh option. In the MLP phase, a &ldquo;check-out&rdquo; model
-        lets users create working copies for target-state planning without touching the synced data.
-        This eliminates issues relating to &lsquo;source-of-truth&rsquo;.
-      </li>
-      <li>
-        <strong>Feasibility drives phase allocation.</strong> We have evaluated the proposed feature
-        sequencing against Desirability, Viability, and Feasibility. Features that can deliver high
-        value quickly have been moved forward. This means Degree of Hops (the feature that demonstrates
-        impact analysis to architects) and PDF export both move into the MVP, alongside PNG export.
-      </li>
-    </ol>
-
+    <!-- Investment -->
     <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">Key Numbers</h3>
 
-    <div class="overflow-x-auto mb-6">
-      <table class="w-full text-sm border-collapse">
-        <thead class="bg-[#1B2A4A] text-white">
-          <tr>
-            <th class="px-3 py-2 text-left font-semibold">Metric</th>
-            <th class="px-3 py-2 text-left font-semibold">Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="bg-white">
-            <td class="border border-gray-200 px-3 py-2">MVP investment</td>
-            <td class="border border-gray-200 px-3 py-2"><strong>$42,700 AUD</strong> (excl. GST)</td>
-          </tr>
-          <tr class="bg-gray-50">
-            <td class="border border-gray-200 px-3 py-2">Team</td>
-            <td class="border border-gray-200 px-3 py-2">2 senior developers (3 days/week + 1.5 days/week)</td>
-          </tr>
-          <tr class="bg-white">
-            <td class="border border-gray-200 px-3 py-2">Calendar duration</td>
-            <td class="border border-gray-200 px-3 py-2">8 weeks (including discovery, UAT, hypercare)</td>
-          </tr>
-          <tr class="bg-gray-50">
-            <td class="border border-gray-200 px-3 py-2">Billable person-days</td>
-            <td class="border border-gray-200 px-3 py-2">30.5</td>
-          </tr>
-          <tr class="bg-white">
-            <td class="border border-gray-200 px-3 py-2">Infrastructure cost at launch (1 client)</td>
-            <td class="border border-gray-200 px-3 py-2">~$120/month AUD</td>
-          </tr>
-          <tr class="bg-gray-50">
-            <td class="border border-gray-200 px-3 py-2">Infrastructure cost (5 clients)</td>
-            <td class="border border-gray-200 px-3 py-2">~$376/month AUD</td>
-          </tr>
-          <tr class="bg-white">
-            <td class="border border-gray-200 px-3 py-2">Multi-tenancy cost (fixed)</td>
-            <td class="border border-gray-200 px-3 py-2">~$1,200/month AUD</td>
-          </tr>
-          <tr class="bg-gray-50">
-            <td class="border border-gray-200 px-3 py-2">Client onboarding time</td>
-            <td class="border border-gray-200 px-3 py-2">~2&ndash;4 hours per new client</td>
-          </tr>
-          <tr class="bg-white">
-            <td class="border border-gray-200 px-3 py-2">Multi-tenant crossover point</td>
-            <td class="border border-gray-200 px-3 py-2">~18 clients</td>
-          </tr>
-          <tr class="bg-gray-50">
-            <td class="border border-gray-200 px-3 py-2">Delivery model</td>
-            <td class="border border-gray-200 px-3 py-2">Full solution handover</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">$42,700</p>
+        <p class="text-sm text-[#6B7280]">MVP Investment (AUD)</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">30.5 days</p>
+        <p class="text-sm text-[#6B7280]">Billable Person-Days</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">$1,400/day</p>
+        <p class="text-sm text-[#6B7280]">Blended Daily Rate</p>
+      </div>
+    </div>
+
+    <!-- Delivery -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">Delivery</h3>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">8 weeks</p>
+        <p class="text-sm text-[#6B7280]">Calendar Duration</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">2 senior engineers</p>
+        <p class="text-sm text-[#6B7280]">Team Size</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">Full handover</p>
+        <p class="text-sm text-[#6B7280]">Delivery Model</p>
+      </div>
+    </div>
+
+    <!-- Operations -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">Operations</h3>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">~$64/client/mo</p>
+        <p class="text-sm text-[#6B7280]">Per-Client Infrastructure</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">~$56/mo</p>
+        <p class="text-sm text-[#6B7280]">Dev Environment</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">~$120/mo</p>
+        <p class="text-sm text-[#6B7280]">Launch Cost (1 Client)</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">~2&ndash;4 hrs</p>
+        <p class="text-sm text-[#6B7280]">Client Onboarding Time</p>
+      </div>
+    </div>
+
+    <!-- Scale -->
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">Scale</h3>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">~$376/mo</p>
+        <p class="text-sm text-[#6B7280]">Cost at 5 Clients</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">~18 clients</p>
+        <p class="text-sm text-[#6B7280]">Multi-Tenant Crossover</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">~$1,200/mo</p>
+        <p class="text-sm text-[#6B7280]">Multi-Tenant Fixed Cost</p>
+      </div>
     </div>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
       <strong>The delivery model is a full solution handover.</strong> At the end of the engagement,
       Cloud9 owns the application, the source code, the infrastructure, and the operational knowledge
-      to run and maintain it independently. There is no ongoing maintenance contract and no retained
-      operational responsibility. Further development is available as a contracted engagement when
-      Cloud9 chooses to invest. The full handover model is detailed in Section 14.
+      to run and maintain it independently. There is no ongoing maintenance contract. See Sections 7
+      and 17 for full details.
     </p>
   </div>
 </section>
 
-<!-- Section 2: Business Case -->
-<section data-section="business-case" class="proposal-section hidden">
+<!-- Section 2: Who We Are -->
+<section data-section="who-we-are" class="proposal-section hidden">
   <div class="proposal-content">
-    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">2. Business Case</h2>
-
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">2.1 Infrastructure Economics</h3>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      Each client deployment costs approximately <strong>$64 per month</strong> in Azure infrastructure,
-      covering compute, database, storage, and monitoring. Cloud9 manages the Azure subscription directly
-      with no intermediary markup or managed service fee.
-    </p>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      A shared development environment adds approximately $56 per month. Total infrastructure at launch
-      with one client: approximately <strong>$120 per month</strong>.
-    </p>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      Detailed infrastructure cost breakdowns and tier considerations are provided in Section 11.
-    </p>
-
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">2.2 Revenue Potential</h3>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      The following model illustrates the revenue potential at three price points. Cloud9 determines the
-      pricing model, whether as a standalone platform subscription, bundled into consulting engagement
-      fees, or offered as a value-add service.
-    </p>
-
-    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Margin per client</h4>
-
-    <div class="overflow-x-auto mb-6">
-      <table class="w-full text-sm border-collapse">
-        <thead class="bg-[#1B2A4A] text-white">
-          <tr>
-            <th class="px-3 py-2 text-left font-semibold">Metric</th>
-            <th class="px-3 py-2 text-left font-semibold">$500/month</th>
-            <th class="px-3 py-2 text-left font-semibold">$750/month</th>
-            <th class="px-3 py-2 text-left font-semibold">$1,000/month</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="bg-white">
-            <td class="border border-gray-200 px-3 py-2">Infrastructure cost</td>
-            <td class="border border-gray-200 px-3 py-2">$64</td>
-            <td class="border border-gray-200 px-3 py-2">$64</td>
-            <td class="border border-gray-200 px-3 py-2">$64</td>
-          </tr>
-          <tr class="bg-gray-50">
-            <td class="border border-gray-200 px-3 py-2">Gross margin per client</td>
-            <td class="border border-gray-200 px-3 py-2">$436 (87%)</td>
-            <td class="border border-gray-200 px-3 py-2">$686 (91%)</td>
-            <td class="border border-gray-200 px-3 py-2">$936 (94%)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Annual recurring revenue by client count</h4>
-
-    <div class="overflow-x-auto mb-6">
-      <table class="w-full text-sm border-collapse">
-        <thead class="bg-[#1B2A4A] text-white">
-          <tr>
-            <th class="px-3 py-2 text-left font-semibold">Active Clients</th>
-            <th class="px-3 py-2 text-left font-semibold">$500/month</th>
-            <th class="px-3 py-2 text-left font-semibold">$750/month</th>
-            <th class="px-3 py-2 text-left font-semibold">$1,000/month</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="bg-white">
-            <td class="border border-gray-200 px-3 py-2">5</td>
-            <td class="border border-gray-200 px-3 py-2">$26,160</td>
-            <td class="border border-gray-200 px-3 py-2">$41,160</td>
-            <td class="border border-gray-200 px-3 py-2">$56,160</td>
-          </tr>
-          <tr class="bg-gray-50">
-            <td class="border border-gray-200 px-3 py-2">10</td>
-            <td class="border border-gray-200 px-3 py-2">$52,320</td>
-            <td class="border border-gray-200 px-3 py-2">$82,320</td>
-            <td class="border border-gray-200 px-3 py-2">$112,320</td>
-          </tr>
-          <tr class="bg-white">
-            <td class="border border-gray-200 px-3 py-2">15</td>
-            <td class="border border-gray-200 px-3 py-2">$78,480</td>
-            <td class="border border-gray-200 px-3 py-2">$123,480</td>
-            <td class="border border-gray-200 px-3 py-2">$168,480</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Investment payback period</h4>
-
-    <div class="overflow-x-auto mb-6">
-      <table class="w-full text-sm border-collapse">
-        <thead class="bg-[#1B2A4A] text-white">
-          <tr>
-            <th class="px-3 py-2 text-left font-semibold">Active Clients</th>
-            <th class="px-3 py-2 text-left font-semibold">$500/month</th>
-            <th class="px-3 py-2 text-left font-semibold">$750/month</th>
-            <th class="px-3 py-2 text-left font-semibold">$1,000/month</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="bg-white">
-            <td class="border border-gray-200 px-3 py-2">5</td>
-            <td class="border border-gray-200 px-3 py-2">~20 months</td>
-            <td class="border border-gray-200 px-3 py-2">~12 months</td>
-            <td class="border border-gray-200 px-3 py-2">~9 months</td>
-          </tr>
-          <tr class="bg-gray-50">
-            <td class="border border-gray-200 px-3 py-2">10</td>
-            <td class="border border-gray-200 px-3 py-2">~10 months</td>
-            <td class="border border-gray-200 px-3 py-2">~6 months</td>
-            <td class="border border-gray-200 px-3 py-2">~5 months</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      At the most conservative pricing with modest client uptake, the MVP investment is recovered within
-      the first year of reaching 10 active clients.
-    </p>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      These price points are illustrative. The underlying economics remain the same regardless of pricing
-      model: <strong>$64 per month to operate per client, with everything above that being value Cloud9
-      captures.</strong>
-    </p>
-
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">2.3 Consultant Capacity Recovery</h3>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      Beyond direct subscription revenue, the tool recovers billable consultant hours. Consultants
-      currently spend an estimated 8&ndash;12 hours per engagement manually creating and updating
-      architecture diagrams. The tool reduces this to 1&ndash;2 hours of initial configuration, with
-      subsequent updates handled automatically via SharePoint sync.
-    </p>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      At typical consulting day rates, this represents $1,500&ndash;$2,500 per engagement in recovered
-      capacity that can be redirected to billable consulting work.
-    </p>
-
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">2.4 Scaling Economics</h3>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      Infrastructure cost scales linearly at $64 per client per month. At approximately 18 clients, a
-      one-time migration to shared multi-tenant infrastructure fixes the monthly cost at approximately
-      $1,200 regardless of client count. The application is designed for this migration from day one.
-      See Appendix D for the detailed migration process and Section 11.3 for the full crossover analysis.
-    </p>
-  </div>
-</section>
-
-<!-- Section 3: About BrightKeep -->
-<section data-section="about-brightkeep" class="proposal-section hidden">
-  <div class="proposal-content">
-    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">3. About BrightKeep</h2>
-
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">3.1 Our Approach</h3>
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">2. Who We Are</h2>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
       BrightKeep is a Digital Product &amp; Business Development company. We both build technology
@@ -302,58 +169,368 @@
       clear paths to scale when ready.
     </p>
 
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      We work in small, senior teams with short feedback loops. Weekly demos, working software early, and
-      clear communication. Our combination of industry and consulting experience means we understand that
-      building the right thing matters as much as building the thing right.
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">Relevant Experience</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 mb-6">
+      <!-- NightOffice.ai -->
+      <div class="bg-white rounded-lg border border-gray-200 p-5">
+        <div class="flex items-center gap-3 mb-3">
+          <svg class="w-6 h-6 text-[#FF6B6B] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+          </svg>
+          <h4 class="text-base font-semibold text-[#1B2A4A]">NightOffice.ai</h4>
+        </div>
+        <p class="text-sm text-[#2D2D2D] leading-relaxed mb-3">
+          SaaS platform giving entrepreneurs access to AI-powered specialists across Finance,
+          Engineering, and Marketing. Built on React, Supabase, real-time collaboration, and
+          multi-agent coordination.
+        </p>
+        <span class="inline-block px-2.5 py-1 rounded-full text-xs font-medium bg-[#FF6B6B]/10 text-[#FF6B6B]">AI agents, real-time data, multi-user SaaS</span>
+      </div>
+
+      <!-- Solution Documentation Platform -->
+      <div class="bg-white rounded-lg border border-gray-200 p-5">
+        <div class="flex items-center gap-3 mb-3">
+          <svg class="w-6 h-6 text-[#FF6B6B] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+          </svg>
+          <h4 class="text-base font-semibold text-[#1B2A4A]">Solution Documentation Platform</h4>
+        </div>
+        <p class="text-sm text-[#2D2D2D] leading-relaxed mb-3">
+          Tool integrating GitHub repositories and CI/CD pipelines into Microsoft Power Platform,
+          using AI to analyse codebases and generate technical documentation.
+        </p>
+        <span class="inline-block px-2.5 py-1 rounded-full text-xs font-medium bg-[#FF6B6B]/10 text-[#FF6B6B]">Microsoft ecosystem, AI integration, data pipelines</span>
+      </div>
+
+      <!-- Financial Analytics Dashboard -->
+      <div class="bg-white rounded-lg border border-gray-200 p-5">
+        <div class="flex items-center gap-3 mb-3">
+          <svg class="w-6 h-6 text-[#FF6B6B] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+          </svg>
+          <h4 class="text-base font-semibold text-[#1B2A4A]">Financial Analytics Dashboard</h4>
+        </div>
+        <p class="text-sm text-[#2D2D2D] leading-relaxed mb-3">
+          Solution pulling data from multiple sources into interactive dashboards for financial
+          forecasting, pricing model evaluation, and performance tracking.
+        </p>
+        <span class="inline-block px-2.5 py-1 rounded-full text-xs font-medium bg-[#FF6B6B]/10 text-[#FF6B6B]">Data visualisation, multi-source integration</span>
+      </div>
+    </div>
+
+    <p class="mb-4 text-[#6B7280] text-sm">
+      Full company and team details are in Section 8.6.
+    </p>
+  </div>
+</section>
+
+<!-- Section 3: The Problem -->
+<section data-section="the-problem" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">3. The Problem</h2>
+
+    <p class="mb-6 text-[#2D2D2D] leading-relaxed">
+      Cloud9&rsquo;s consultants map application integrations and dependencies as part of their client
+      engagements. Today, this is done using SharePoint lists, manually drawn diagrams, and institutional
+      knowledge.
     </p>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">3.2 Industry Experience</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div class="bg-white rounded-lg border border-gray-200 p-5">
+        <div class="flex items-start gap-3">
+          <svg class="w-6 h-6 text-[#FF6B6B] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+          </svg>
+          <div>
+            <h4 class="text-base font-semibold text-[#1B2A4A] mb-1">Diagrams go stale immediately</h4>
+            <p class="text-sm text-[#6B7280]">The moment a diagram is drawn, the landscape changes. There is no connection between the diagram and the source data.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg border border-gray-200 p-5">
+        <div class="flex items-start gap-3">
+          <svg class="w-6 h-6 text-[#FF6B6B] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+          </svg>
+          <div>
+            <h4 class="text-base font-semibold text-[#1B2A4A] mb-1">Redrawing for different audiences wastes time</h4>
+            <p class="text-sm text-[#6B7280]">An executive wants a simplified view. An architect wants protocols. A developer wants API details. Each audience requires a separate diagram, drawn from scratch.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg border border-gray-200 p-5">
+        <div class="flex items-start gap-3">
+          <svg class="w-6 h-6 text-[#FF6B6B] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+          </svg>
+          <div>
+            <h4 class="text-base font-semibold text-[#1B2A4A] mb-1">No single source of truth</h4>
+            <p class="text-sm text-[#6B7280]">Integration knowledge lives in the heads of individual consultants, in scattered SharePoint lists, and in static images that may or may not reflect reality.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg border border-gray-200 p-5">
+        <div class="flex items-start gap-3">
+          <svg class="w-6 h-6 text-[#FF6B6B] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+          </svg>
+          <div>
+            <h4 class="text-base font-semibold text-[#1B2A4A] mb-1">Impact analysis is manual</h4>
+            <p class="text-sm text-[#6B7280]">Tracing the consequences of decommissioning an application requires a consultant to follow connections by hand across spreadsheets.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      BrightKeep&rsquo;s team has experience working across automotive, financial services, transport,
-      SaaS platforms, document management, and enterprise consulting. We have built B2B SaaS products
-      used globally, led legacy-to-cloud platform migrations, integrated AI and machine learning into
-      production systems, and worked within the Microsoft ecosystem (Azure, Entra ID, SharePoint, Power
-      Platform) across multiple engagements. Our delivery consulting experience includes supporting
-      enterprise clients in the efficient and effective delivery of technology solutions.
+      The visualisation tool replaces manual diagramming with a living, interactive integration map
+      that pulls directly from structured data, renders dynamically for different audiences, and
+      persists across the lifecycle of a client engagement.
     </p>
+  </div>
+</section>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">3.3 Relevant Experience</h3>
+<!-- Section 4: Our Proposed Solution -->
+<section data-section="proposed-solution" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">4. Our Proposed Solution</h2>
 
-    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">NightOffice.ai &mdash; an AI-Powered Business Management Platform <span class="text-sm font-normal text-gray-500">(In Development)</span></h4>
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">4.1 MVP Capabilities</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-semibold">Capability</th>
+            <th class="px-3 py-2 text-left font-semibold">What It Does</th>
+            <th class="px-3 py-2 text-left font-semibold">RFP Alignment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Interactive integration map</td>
+            <td class="border border-gray-200 px-3 py-2">Applications as nodes, integrations as edges. Drag, zoom, pan, click for detail.</td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800">Meets RFP</span></td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Multi-dimensional filtering</td>
+            <td class="border border-gray-200 px-3 py-2">Filter by application, business domain, protocol, tags, or business process.</td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800">Meets RFP</span></td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Degree of hops</td>
+            <td class="border border-gray-200 px-3 py-2">Select any application, set hop count. See only what&rsquo;s within N connections.</td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">Moved forward</span></td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Application &amp; integration catalogues</td>
+            <td class="border border-gray-200 px-3 py-2">Searchable, sortable list views of all applications and integrations.</td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800">Meets RFP</span></td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">SharePoint-backed data</td>
+            <td class="border border-gray-200 px-3 py-2">Daily sync from SharePoint lists via Microsoft Graph API, plus manual refresh.</td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800">Meets RFP</span></td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Positions memory &amp; named layouts</td>
+            <td class="border border-gray-200 px-3 py-2">Save, name, and recall multiple graph arrangements per user.</td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800">Meets RFP</span></td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">PNG and PDF export</td>
+            <td class="border border-gray-200 px-3 py-2">Export the current graph view as an image or a formatted PDF report.</td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800">Meets RFP</span></td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Microsoft SSO</td>
+            <td class="border border-gray-200 px-3 py-2">Authentication via Entra ID with MFA support.</td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800">Meets RFP</span></td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Single-tenant deployment</td>
+            <td class="border border-gray-200 px-3 py-2">Per-client isolated instance and database.</td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-orange-100 text-orange-800">Counter-proposal</span></td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Modular monolith</td>
+            <td class="border border-gray-200 px-3 py-2">Single deployable application with clearly separated internal modules.</td>
+            <td class="border border-gray-200 px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-orange-100 text-orange-800">Counter-proposal</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">4.2 Counter-Proposals</h3>
+
+    <div class="space-y-4 mb-6">
+      <div class="bg-white rounded-lg border border-gray-200 p-5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <p class="text-xs font-semibold text-[#6B7280] uppercase mb-1">RFP Said</p>
+            <p class="text-sm text-[#2D2D2D]">Multi-tenant architecture</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-[#FF6B6B] uppercase mb-1">We Propose</p>
+            <p class="text-sm text-[#2D2D2D]">Single-tenant deployment</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-[#6B7280] uppercase mb-1">Why</p>
+            <p class="text-sm text-[#2D2D2D]">Materially cheaper at 1&ndash;17 clients. Physical data isolation. Migration designed in from day one.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg border border-gray-200 p-5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <p class="text-xs font-semibold text-[#6B7280] uppercase mb-1">RFP Said</p>
+            <p class="text-sm text-[#2D2D2D]">Microservices</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-[#FF6B6B] uppercase mb-1">We Propose</p>
+            <p class="text-sm text-[#2D2D2D]">Modular monolith</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-[#6B7280] uppercase mb-1">Why</p>
+            <p class="text-sm text-[#2D2D2D]">Single deployable, no inter-service complexity. TypeScript compiler enforces boundaries. ~$11K&ndash;$17K saving on MVP.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg border border-gray-200 p-5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <p class="text-xs font-semibold text-[#6B7280] uppercase mb-1">RFP Said</p>
+            <p class="text-sm text-[#2D2D2D]">Degree of hops in Matured</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-[#FF6B6B] uppercase mb-1">We Propose</p>
+            <p class="text-sm text-[#2D2D2D]">Moved to MVP</p>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-[#6B7280] uppercase mb-1">Why</p>
+            <p class="text-sm text-[#2D2D2D]">2&ndash;3 days effort. DVF score 25. Built-in Cytoscape capability. Strongest demo feature.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">4.3 Beyond MVP</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div class="bg-white rounded-lg border border-gray-200 p-5">
+        <h4 class="text-base font-semibold text-[#1B2A4A] mb-2">MLP &mdash; &ldquo;Design, Manage, and Share&rdquo;</h4>
+        <p class="text-3xl font-bold text-[#1B2A4A] mb-1">25&ndash;45 days</p>
+        <p class="text-sm text-[#6B7280] mb-3">Indicative effort</p>
+        <p class="text-sm text-[#2D2D2D]">Multi-persona access, check-out model, version management, tenant branding, Cloud9 Operations Dashboard.</p>
+      </div>
+
+      <div class="bg-white rounded-lg border border-gray-200 p-5">
+        <h4 class="text-base font-semibold text-[#1B2A4A] mb-2">Matured Product &mdash; &ldquo;Intelligence Layer&rdquo;</h4>
+        <p class="text-3xl font-bold text-[#1B2A4A] mb-1">25&ndash;55 days</p>
+        <p class="text-sm text-[#6B7280] mb-3">Indicative effort</p>
+        <p class="text-sm text-[#2D2D2D]">AI conversational filtering, AI solution design, AI discovery and evaluation.</p>
+      </div>
+    </div>
+
+    <p class="mb-4 text-[#6B7280] text-sm">
+      Full detail in Sections 8&ndash;11.
+    </p>
+  </div>
+</section>
+
+<!-- Section 5: Delivery Effort Overview -->
+<section data-section="delivery-overview" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">5. Delivery Effort Overview</h2>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">5.1 Timeline Summary</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-semibold">Phase</th>
+            <th class="px-3 py-2 text-left font-semibold">Calendar Weeks</th>
+            <th class="px-3 py-2 text-left font-semibold">Person-Days</th>
+            <th class="px-3 py-2 text-left font-semibold">Deliverable</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Phase 0: Discovery</td>
+            <td class="border border-gray-200 px-3 py-2">1</td>
+            <td class="border border-gray-200 px-3 py-2">2</td>
+            <td class="border border-gray-200 px-3 py-2">Requirements confirmed, SharePoint access, Entra registration</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Phase 1: Foundation</td>
+            <td class="border border-gray-200 px-3 py-2">2&ndash;3</td>
+            <td class="border border-gray-200 px-3 py-2">9</td>
+            <td class="border border-gray-200 px-3 py-2">Infrastructure, auth, database, sync, API, React shell</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Phase 2: Core Features</td>
+            <td class="border border-gray-200 px-3 py-2">4&ndash;5</td>
+            <td class="border border-gray-200 px-3 py-2">9</td>
+            <td class="border border-gray-200 px-3 py-2">Graph, filtering, degree of hops, catalogues, layouts, export</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Phase 3: UAT &amp; Testing</td>
+            <td class="border border-gray-200 px-3 py-2">6</td>
+            <td class="border border-gray-200 px-3 py-2">4.5</td>
+            <td class="border border-gray-200 px-3 py-2">UAT with pilot client, bug fixes, second client validation</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Phase 4: Hypercare</td>
+            <td class="border border-gray-200 px-3 py-2">7&ndash;8</td>
+            <td class="border border-gray-200 px-3 py-2">6</td>
+            <td class="border border-gray-200 px-3 py-2">Support, monitoring, knowledge transfer, handover</td>
+          </tr>
+          <tr class="bg-gray-50 font-bold">
+            <td class="border border-gray-200 px-3 py-2">Total</td>
+            <td class="border border-gray-200 px-3 py-2">8 weeks</td>
+            <td class="border border-gray-200 px-3 py-2">30.5</td>
+            <td class="border border-gray-200 px-3 py-2"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="chart-delivery-phases"></canvas>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">5.2 Delivery Narrative</h3>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      We have developed a SaaS platform that gives entrepreneurs and small businesses access to all
-      their data in a centralised tool, managed by AI-powered specialists. Users are able to hire AI
-      specialists in specific fields (Finance, Engineering, Marketing) that will then work for them in
-      all aspects of managing their business. Built on a React frontend, Supabase backend, real-time
-      collaboration, document management with AI synthesis, and multi-agent coordination. Full product
-      lifecycle from discovery through to build.
+      Two senior developers, 4.5 combined days per week, eight weeks. Development is AI-augmented
+      &mdash; BrightKeep uses production-grade AI coding tools that accelerate implementation while
+      maintaining code quality through continuous human oversight and review.
     </p>
 
-    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Client Delivery &mdash; Solution Documentation Platform</h4>
+    <blockquote class="border-l-4 border-[#FF6B6B] pl-4 py-2 mb-4 bg-[#FFF5F5] rounded-r-lg">
+      <p class="text-[#2D2D2D] leading-relaxed">
+        <strong>The 30.5 person-day total reflects the AI-augmented delivery model</strong> &mdash;
+        this scope would typically require 130+ person-days using traditional development methods.
+      </p>
+    </blockquote>
 
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      Built for a client with multiple complex software bases, and limited capacity for the creation of
-      technical documentation. Production solutions were going live without the documentation that support
-      and operations teams needed to maintain them. BrightKeep developed a tool integrating GitHub
-      repositories and CI/CD pipelines into a Microsoft Power Platform solution, using AI to analyse
-      codebases, understand end-to-end solution architecture, and generate technical documentation in a
-      structured framework. Users can query the documentation through Copilot Agents.
+    <p class="mb-4 text-[#6B7280] text-sm">
+      Full timeline detail, phase deliverables, and mapping to RFP deliverables in Section 12.
     </p>
+  </div>
+</section>
 
-    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Client Delivery &mdash; Financial Analytics Dashboard</h4>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      A client with disparate data sources across accounting (Xero), an online platform, and manual
-      records had no clear picture of how their money was being spent. BrightKeep built a solution that
-      pulls and merges data from multiple sources into interactive dashboards, enabling analysis of
-      customer behaviour against revenue streams, financial forecasting, pricing model evaluation, and
-      performance tracking.
-    </p>
-
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">3.4 Team</h3>
+<!-- Section 6: The Team -->
+<section data-section="the-team" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">6. The Team</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
       <!-- Alastair Tooth -->
@@ -366,8 +543,9 @@
           />
           <h4 class="text-lg font-semibold text-[#1B2A4A]">Alastair Tooth</h4>
           <p class="text-sm font-medium text-[#0D9488]">Delivery Lead &amp; Product</p>
+          <span class="inline-block px-2.5 py-1 mt-2 rounded-full text-xs font-medium bg-[#1B2A4A] text-white">3 days/week</span>
         </div>
-        <p class="text-sm text-[#2D2D2D] leading-relaxed">
+        <p class="text-sm text-[#2D2D2D] leading-relaxed mb-4">
           15 years in digital product development across corporate, startup, and consulting environments.
           Background in product management and product ownership, with hands-on experience shaping product
           strategy, running discovery, and driving delivery. Previously worked as a product and delivery
@@ -377,6 +555,13 @@
           performance. Also founder of a technology company in the automotive industry delivering both
           hardware and software products.
         </p>
+        <h5 class="text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-2">Responsibilities</h5>
+        <ul class="list-disc pl-5 text-sm text-[#2D2D2D] space-y-1">
+          <li>Product decisions &amp; scope management</li>
+          <li>Client relationship &amp; weekly demos</li>
+          <li>Frontend development</li>
+          <li>Delivery coordination</li>
+        </ul>
       </div>
 
       <!-- Darren Benson -->
@@ -389,8 +574,9 @@
           />
           <h4 class="text-lg font-semibold text-[#1B2A4A]">Darren Benson</h4>
           <p class="text-sm font-medium text-[#0D9488]">Technical Lead &amp; Senior Engineer</p>
+          <span class="inline-block px-2.5 py-1 mt-2 rounded-full text-xs font-medium bg-[#1B2A4A] text-white">1.5 days/week</span>
         </div>
-        <p class="text-sm text-[#2D2D2D] leading-relaxed">
+        <p class="text-sm text-[#2D2D2D] leading-relaxed mb-4">
           Over 30 years in software engineering and engineering leadership. Career spans hands-on
           architecture through to VP and Head of Engineering roles at organisations including Inchcape,
           Ripjar, Hadean, and Preservica. Most recently leading the definition of a scalable, multi-tenant
@@ -401,7 +587,302 @@
           infrastructure (Azure and AWS), and building engineering organisations that deliver reliably.
           BSc (Hons) Software Engineering.
         </p>
+        <h5 class="text-xs font-semibold text-[#6B7280] uppercase tracking-wider mb-2">Responsibilities</h5>
+        <ul class="list-disc pl-5 text-sm text-[#2D2D2D] space-y-1">
+          <li>Architecture &amp; technical decisions</li>
+          <li>Backend development &amp; infrastructure</li>
+          <li>Code quality &amp; testing</li>
+          <li>Security &amp; performance</li>
+        </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Section 7: The Cost -->
+<section data-section="the-cost" class="proposal-section hidden">
+  <div class="proposal-content">
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">7. The Cost</h2>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.1 MVP Investment</h3>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">$42,700</p>
+        <p class="text-sm text-[#6B7280]">MVP Investment (AUD, excl. GST)</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">T&amp;M</p>
+        <p class="text-sm text-[#6B7280]">Engagement Model</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">30.5 days</p>
+        <p class="text-sm text-[#6B7280]">Billable Person-Days</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">8 weeks</p>
+        <p class="text-sm text-[#6B7280]">Calendar Duration</p>
+      </div>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Engagement model: Time and materials at $1,400/day. BrightKeep invoices fortnightly based on
+      actual days worked. The phased structure means Cloud9 has visibility into progress and spend at
+      every stage.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.2 Infrastructure Costs</h3>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-semibold">Resource</th>
+            <th class="px-3 py-2 text-left font-semibold">SKU</th>
+            <th class="px-3 py-2 text-left font-semibold">Monthly Cost (AUD est.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">App Service Plan</td>
+            <td class="border border-gray-200 px-3 py-2">B1 Basic (Linux)</td>
+            <td class="border border-gray-200 px-3 py-2">~$20</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">PostgreSQL Flexible Server</td>
+            <td class="border border-gray-200 px-3 py-2">Burstable B1ms</td>
+            <td class="border border-gray-200 px-3 py-2">~$33</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Storage Account</td>
+            <td class="border border-gray-200 px-3 py-2">Standard LRS (Blob)</td>
+            <td class="border border-gray-200 px-3 py-2">~$3</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Application Insights</td>
+            <td class="border border-gray-200 px-3 py-2">Shared workspace</td>
+            <td class="border border-gray-200 px-3 py-2">~$7</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Key Vault</td>
+            <td class="border border-gray-200 px-3 py-2">Standard</td>
+            <td class="border border-gray-200 px-3 py-2">&lt;$1</td>
+          </tr>
+          <tr class="bg-gray-50 font-bold">
+            <td class="border border-gray-200 px-3 py-2">Per-Client Total</td>
+            <td class="border border-gray-200 px-3 py-2"></td>
+            <td class="border border-gray-200 px-3 py-2">~$64/month</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="chart-cost-scaling"></canvas>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.3 Market Pricing Context</h3>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Enterprise EA Tools</h4>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-semibold">Tool</th>
+            <th class="px-3 py-2 text-left font-semibold">Type</th>
+            <th class="px-3 py-2 text-left font-semibold">Indicative Monthly Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">LeanIX</td>
+            <td class="border border-gray-200 px-3 py-2">SaaS EA tool</td>
+            <td class="border border-gray-200 px-3 py-2">$2,000&ndash;$8,000/month</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Ardoq</td>
+            <td class="border border-gray-200 px-3 py-2">SaaS EA tool</td>
+            <td class="border border-gray-200 px-3 py-2">$1,500&ndash;$5,000/month</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Mega HOPEX</td>
+            <td class="border border-gray-200 px-3 py-2">Enterprise EA suite</td>
+            <td class="border border-gray-200 px-3 py-2">$3,000&ndash;$10,000/month</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">ServiceNow CMDB</td>
+            <td class="border border-gray-200 px-3 py-2">ITSM with CMDB</td>
+            <td class="border border-gray-200 px-3 py-2">$2,500&ndash;$7,500/month</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Alfabet (Software AG)</td>
+            <td class="border border-gray-200 px-3 py-2">IT Portfolio Management</td>
+            <td class="border border-gray-200 px-3 py-2">$2,000&ndash;$6,000/month</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Orbus iServer</td>
+            <td class="border border-gray-200 px-3 py-2">EA visualisation</td>
+            <td class="border border-gray-200 px-3 py-2">$1,000&ndash;$4,000/month</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Diagramming Tools</h4>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-semibold">Tool</th>
+            <th class="px-3 py-2 text-left font-semibold">Type</th>
+            <th class="px-3 py-2 text-left font-semibold">Indicative Monthly Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Lucidchart Enterprise</td>
+            <td class="border border-gray-200 px-3 py-2">Diagramming</td>
+            <td class="border border-gray-200 px-3 py-2">$20&ndash;$50/user/month</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">draw.io (diagrams.net)</td>
+            <td class="border border-gray-200 px-3 py-2">Diagramming</td>
+            <td class="border border-gray-200 px-3 py-2">Free&ndash;$10/user/month</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Microsoft Visio</td>
+            <td class="border border-gray-200 px-3 py-2">Diagramming</td>
+            <td class="border border-gray-200 px-3 py-2">$5&ndash;$15/user/month</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bg-[#F0F9FF] border border-[#BAE6FD] rounded-lg p-4 mb-6">
+      <p class="text-sm text-[#1B2A4A]">
+        <strong>Positioning:</strong> Cloud9&rsquo;s tool sits between enterprise EA platforms ($2K&ndash;$10K/month) and generic diagramming tools ($5&ndash;$50/user). It delivers interactive, data-driven visualisation at ~$64/client/month infrastructure cost &mdash; giving Cloud9 significant pricing flexibility while maintaining high margins.
+      </p>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.4 Revenue Model</h3>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Assumptions</h4>
+
+    <div class="overflow-x-auto mb-6">
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-[#1B2A4A] text-white">
+          <tr>
+            <th class="px-3 py-2 text-left font-semibold">Assumption</th>
+            <th class="px-3 py-2 text-left font-semibold">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">Infrastructure cost per client</td>
+            <td class="border border-gray-200 px-3 py-2">~$64/month</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2">Blended daily rate</td>
+            <td class="border border-gray-200 px-3 py-2">$1,400</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2">MVP investment</td>
+            <td class="border border-gray-200 px-3 py-2">$42,700</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Scenarios</h4>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white rounded-lg border border-gray-200 p-4">
+        <h5 class="text-sm font-semibold text-[#1B2A4A] mb-2">Conservative</h5>
+        <p class="text-xs text-[#6B7280] mb-3">$500/month, 5 clients</p>
+        <p class="text-lg font-bold text-[#1B2A4A]">87% margin</p>
+        <p class="text-xs text-[#6B7280]">$436/client/month</p>
+        <p class="text-xs text-[#6B7280] mt-1">Payback: ~20 months</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4">
+        <h5 class="text-sm font-semibold text-[#1B2A4A] mb-2">Mid</h5>
+        <p class="text-xs text-[#6B7280] mb-3">$750/month, 5 clients</p>
+        <p class="text-lg font-bold text-[#1B2A4A]">91% margin</p>
+        <p class="text-xs text-[#6B7280]">$686/client/month</p>
+        <p class="text-xs text-[#6B7280] mt-1">Payback: ~12 months</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4">
+        <h5 class="text-sm font-semibold text-[#1B2A4A] mb-2">Growth</h5>
+        <p class="text-xs text-[#6B7280] mb-3">$1,000/month, 10 clients</p>
+        <p class="text-lg font-bold text-[#1B2A4A]">94% margin</p>
+        <p class="text-xs text-[#6B7280]">$936/client/month</p>
+        <p class="text-xs text-[#6B7280] mt-1">Payback: ~5 months</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4">
+        <h5 class="text-sm font-semibold text-[#1B2A4A] mb-2">Premium</h5>
+        <p class="text-xs text-[#6B7280] mb-3">$1,000/month, 15 clients</p>
+        <p class="text-lg font-bold text-[#1B2A4A]">94% margin</p>
+        <p class="text-xs text-[#6B7280]">$936/client/month</p>
+        <p class="text-xs text-[#6B7280] mt-1">ARR: $168,480</p>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="chart-revenue-margin"></canvas>
+    </div>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.5 Post-MVP Engineering</h3>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">25&ndash;45 days</p>
+        <p class="text-sm text-[#6B7280]">MLP (indicative)</p>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200 p-4 text-center">
+        <svg class="w-8 h-8 mx-auto mb-2 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+        </svg>
+        <p class="text-2xl font-bold text-[#1B2A4A]">25&ndash;55 days</p>
+        <p class="text-sm text-[#6B7280]">Matured Product (indicative)</p>
+      </div>
+    </div>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Post-MVP phases will be scoped and priced after MVP delivery based on real usage data and
+      Cloud9&rsquo;s evolving priorities.
+    </p>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">7.6 Delivery Model</h3>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      The delivery model is a full solution handover. At the end of the engagement, Cloud9 owns the
+      application, the source code, the infrastructure, and the operational knowledge to run and
+      maintain it independently. There is no ongoing maintenance contract and no retained operational
+      responsibility.
+    </p>
+
+    <blockquote class="border-l-4 border-[#FF6B6B] pl-4 py-2 mb-4 bg-[#FFF5F5] rounded-r-lg">
+      <p class="text-[#2D2D2D] leading-relaxed">
+        <strong>Full handover includes:</strong> source code, infrastructure-as-code, CI/CD pipelines,
+        documentation, operational runbooks, and training. Further development is available as a
+        contracted engagement when Cloud9 chooses to invest. See Section 17 for full detail.
+      </p>
+    </blockquote>
   </div>
 </section>

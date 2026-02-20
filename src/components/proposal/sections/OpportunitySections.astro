@@ -2,52 +2,12 @@
 
 ---
 
-<!-- Section 4: Understanding the Problem -->
-<section data-section="understanding-the-problem" class="proposal-section hidden">
+<!-- Section 8: Proposed Solution (Detailed) -->
+<section data-section="solution-detailed" class="proposal-section hidden">
   <div class="proposal-content">
-    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">4. Understanding the Problem</h2>
+    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">8. Proposed Solution (Detailed)</h2>
 
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      Cloud9&rsquo;s consultants map application integrations and dependencies as part of their client
-      engagements. Today, this is done using SharePoint lists, manually drawn diagrams, and institutional
-      knowledge. The problems with this approach:
-    </p>
-
-    <ul class="list-disc pl-6 mb-4 space-y-2 text-[#2D2D2D]">
-      <li>
-        <strong>Diagrams go stale immediately.</strong> The moment a diagram is drawn, the landscape
-        changes. There is no connection between the diagram and the source data.
-      </li>
-      <li>
-        <strong>Redrawing for different audiences wastes time.</strong> An executive wants a simplified
-        view. An architect wants protocols and data contracts. A developer wants API details. Each
-        audience requires a separate diagram, drawn from scratch.
-      </li>
-      <li>
-        <strong>No single source of truth travels with the engagement.</strong> Integration knowledge
-        lives in the heads of individual consultants, in scattered SharePoint lists, and in static
-        images that may or may not reflect reality.
-      </li>
-      <li>
-        <strong>Impact analysis is manual.</strong> Tracing the consequences of decommissioning an
-        application requires a consultant to follow connections by hand across spreadsheets.
-      </li>
-    </ul>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      The visualisation tool replaces manual diagramming with a <strong>living, interactive integration
-      map</strong> that pulls directly from structured data, renders dynamically for different audiences,
-      and persists across the lifecycle of a client engagement.
-    </p>
-  </div>
-</section>
-
-<!-- Section 5: Proposed Solution -->
-<section data-section="proposed-solution" class="proposal-section hidden">
-  <div class="proposal-content">
-    <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">5. Proposed Solution</h2>
-
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">5.1 What We&rsquo;re Building</h3>
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">8.1 What We&rsquo;re Building</h3>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
       A browser-based application that gives Cloud9&rsquo;s consultants and their clients a single,
@@ -76,12 +36,12 @@
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>Multi-dimensional filtering</strong></td>
             <td class="border border-gray-200 px-3 py-2">Filter by application, business domain, protocol, tags, or business process. Map re-renders instantly.</td>
-            <td class="border border-gray-200 px-3 py-2">&ldquo;Show me everything connected to SAP&rdquo; answered in seconds, not a discovery exercise.</td>
+            <td class="border border-gray-200 px-3 py-2">&ldquo;Show me everything connected to SAP&rdquo; answered in seconds.</td>
           </tr>
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>Degree of hops</strong></td>
             <td class="border border-gray-200 px-3 py-2">Select any application, set hop count (1, 2, 3, N). See only what&rsquo;s within N connections.</td>
-            <td class="border border-gray-200 px-3 py-2">Impact analysis for decommission planning. The feature that demonstrates the tool&rsquo;s value in a live demo.</td>
+            <td class="border border-gray-200 px-3 py-2">Impact analysis for decommission planning. Strongest demo feature.</td>
           </tr>
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>Application and integration catalogues</strong></td>
@@ -96,12 +56,12 @@
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>Positions memory and named layouts</strong></td>
             <td class="border border-gray-200 px-3 py-2">Save, name, and recall multiple graph arrangements per user.</td>
-            <td class="border border-gray-200 px-3 py-2">An architect spends twenty minutes arranging a map &mdash; it&rsquo;s there next time, by name.</td>
+            <td class="border border-gray-200 px-3 py-2">An architect spends twenty minutes arranging a map &mdash; it&rsquo;s there next time.</td>
           </tr>
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>PNG and PDF export</strong></td>
             <td class="border border-gray-200 px-3 py-2">Export the current graph view as an image or a formatted PDF report with metadata.</td>
-            <td class="border border-gray-200 px-3 py-2">Current-state architecture into a slide deck or client-ready document in thirty seconds.</td>
+            <td class="border border-gray-200 px-3 py-2">Current-state architecture into a slide deck in thirty seconds.</td>
           </tr>
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>Microsoft SSO</strong></td>
@@ -112,7 +72,7 @@
       </table>
     </div>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">5.2 Why Single-Tenant</h3>
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">8.2 Why Single-Tenant</h3>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
       The RFP specifies multi-tenant architecture with active-active deployment, zero-downtime scaling,
@@ -162,8 +122,8 @@
           </tr>
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>Client onboarding</strong></td>
-            <td class="border border-gray-200 px-3 py-2">Add tenant record, send Entra consent link, configure SharePoint (~30 min)</td>
-            <td class="border border-gray-200 px-3 py-2">Provision infrastructure, deploy application, configure DNS per client (~2&ndash;4 hours)</td>
+            <td class="border border-gray-200 px-3 py-2">Add tenant record, consent link, configure SP (~30 min)</td>
+            <td class="border border-gray-200 px-3 py-2">Provision infrastructure, deploy, configure DNS (~2&ndash;4 hours)</td>
           </tr>
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>Migration path</strong></td>
@@ -175,15 +135,8 @@
     </div>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      Single-tenant onboarding is more involved than multi-tenant, but this is a managed progression
-      &mdash; Cloud9 gains operational independence in stages, and multi-tenant simplification arrives
-      when the economics justify it.
-    </p>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
       <strong>The application is designed for multi-tenancy from day one.</strong> All tables include
-      <strong>tenant_id</strong>. All queries are tenant-scoped. API middleware extracts tenant context
-      from auth tokens. Configuration is externalised.
+      <strong>tenant_id</strong>. All queries are tenant-scoped.
     </p>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
@@ -204,58 +157,39 @@
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>MVP</strong></td>
             <td class="border border-gray-200 px-3 py-2">1&ndash;5</td>
-            <td class="border border-gray-200 px-3 py-2">BrightKeep provisions infrastructure and deploys per client as part of the engagement</td>
+            <td class="border border-gray-200 px-3 py-2">BrightKeep provisions infrastructure and deploys per client</td>
             <td class="border border-gray-200 px-3 py-2">BrightKeep</td>
           </tr>
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>MLP</strong></td>
             <td class="border border-gray-200 px-3 py-2">5&ndash;15</td>
-            <td class="border border-gray-200 px-3 py-2">Cloud9 Operations Dashboard provides a guided wizard for self-service provisioning, deployment, and configuration</td>
+            <td class="border border-gray-200 px-3 py-2">Cloud9 Operations Dashboard provides self-service provisioning</td>
             <td class="border border-gray-200 px-3 py-2">Cloud9</td>
           </tr>
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>Scale</strong></td>
             <td class="border border-gray-200 px-3 py-2">18+</td>
-            <td class="border border-gray-200 px-3 py-2">Multi-tenant migration eliminates per-client provisioning entirely. Onboarding becomes a database record and two client IT approvals (~30 min)</td>
+            <td class="border border-gray-200 px-3 py-2">Multi-tenant migration eliminates per-client provisioning (~30 min)</td>
             <td class="border border-gray-200 px-3 py-2">Cloud9</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      Each stage builds on the last. Cloud9 is never locked into BrightKeep for day-to-day operations
-      &mdash; they gain independence progressively, and the multi-tenant migration happens when both
-      cost and operational simplicity justify it, not before.
-    </p>
+    <blockquote class="border-l-4 border-[#FF6B6B] pl-4 py-2 mb-4 bg-[#FFF5F5] rounded-r-lg">
+      <p class="text-[#2D2D2D] leading-relaxed">
+        <strong>Why single-tenant now is cheaper:</strong> Multi-tenant architecture adds approximately
+        15&ndash;25 person-days to the MVP build ($21,000&ndash;$35,000 AUD). It also commits Cloud9 to
+        ~$1,200/month from day one. Single-tenant starts at ~$120/month. Over the growth period to 18
+        clients, the cumulative saving is approximately $10,000&ndash;$15,000. Total cost of single-tenant
+        now plus migration later is lower than multi-tenant upfront.
+      </p>
+    </blockquote>
+
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">8.3 SharePoint Integration Model</h3>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      <strong>Customer impact of the migration:</strong> ~5 minutes of scheduled downtime per client.
-      End users do nothing &mdash; the URL, login, and experience remain identical. See Appendix D
-      for the detailed process.
-    </p>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      <strong>Why single-tenant now is cheaper than building multi-tenant upfront:</strong>
-      Multi-tenant architecture adds approximately 15&ndash;25 person-days to the MVP build
-      ($21,000&ndash;$35,000 AUD) for shared infrastructure, tenant routing, connection pooling,
-      and HA configuration that provides no value until 18+ clients. It also commits Cloud9 to
-      ~$1,200/month in shared infrastructure costs from day one, regardless of how many clients are
-      live. Single-tenant starts at ~$120/month and scales only with actual clients. Over the growth
-      period to 18 clients, the cumulative infrastructure saving is approximately
-      $10,000&ndash;$15,000. When migration becomes justified, the 15&ndash;22 day effort
-      (~$21,000&ndash;$30,800) is funded by the revenue from 18 paying clients &mdash; not by upfront
-      investment before the product has proven its market. The total cost of single-tenant now plus
-      migration later is lower than multi-tenant upfront, and the financial risk is spread across a
-      period where Cloud9 has revenue to support it.
-    </p>
-
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">5.3 SharePoint Integration Model</h3>
-
-    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      <strong>SharePoint is the source of truth and stays that way.</strong> Cloud9 consultants and/or
-      their clients build and maintain SharePoint lists for architectural &ldquo;truth&rdquo;. The tool
-      reads from those lists. It never writes back.
+      <strong>SharePoint is the source of truth and stays that way.</strong>
     </p>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
@@ -263,18 +197,15 @@
     </p>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      <strong>MLP:</strong> Check-out model. Users can create working copies (scenarios) to add planned
-      applications, remove deprecated ones, or rearrange the landscape. Working copies live in the tool
-      only &mdash; no write-back to SharePoint. This enables &ldquo;as-is vs to-be&rdquo; visualisation:
-      the synced data is &ldquo;as-is,&rdquo; the working copy is &ldquo;to-be.&rdquo;
+      <strong>MLP:</strong> Check-out model. Users can create working copies for target-state planning
+      without touching the synced data.
     </p>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      This eliminates the source-of-truth problem entirely. No bi-directional sync, no conflict
-      resolution, no data ownership ambiguity.
+      This eliminates the source-of-truth problem entirely.
     </p>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">5.4 Technology Choices</h3>
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">8.4 Technology Choices</h3>
 
     <div class="overflow-x-auto mb-6">
       <table class="w-full text-sm border-collapse">
@@ -289,27 +220,27 @@
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>Frontend</strong></td>
             <td class="border border-gray-200 px-3 py-2">React 19 + TypeScript</td>
-            <td class="border border-gray-200 px-3 py-2">Largest ecosystem, strong typing, component model suits catalogue views and graph interactions</td>
+            <td class="border border-gray-200 px-3 py-2">Largest ecosystem, strong typing, component model</td>
           </tr>
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>Graph visualisation</strong></td>
             <td class="border border-gray-200 px-3 py-2">Cytoscape.js + fcose layout</td>
-            <td class="border border-gray-200 px-3 py-2">Purpose-built for network graphs. Built-in layout algorithms, zoom/pan, position serialisation (cy.json()), graph traversal (BFS/DFS for degree of hops), PNG export (cy.png()). Building equivalent interactivity in D3 would take 3&ndash;4x longer</td>
+            <td class="border border-gray-200 px-3 py-2">Purpose-built for network graphs. Built-in layout, traversal, PNG export. 3&ndash;4x faster than D3 equivalent</td>
           </tr>
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>Backend</strong></td>
             <td class="border border-gray-200 px-3 py-2">Fastify v5 + TypeScript</td>
-            <td class="border border-gray-200 px-3 py-2">Unified language with frontend. Faster than Express. Built-in schema validation, OpenAPI generation</td>
+            <td class="border border-gray-200 px-3 py-2">Unified language. Faster than Express. Built-in schema validation</td>
           </tr>
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>Database</strong></td>
             <td class="border border-gray-200 px-3 py-2">PostgreSQL 16 (Azure Flexible Server)</td>
-            <td class="border border-gray-200 px-3 py-2">Relational model fits the data. Recursive CTEs for graph queries. JSONB for flexible metadata</td>
+            <td class="border border-gray-200 px-3 py-2">Relational model fits the data. Recursive CTEs for graph queries. JSONB</td>
           </tr>
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>Background jobs</strong></td>
             <td class="border border-gray-200 px-3 py-2">pg-boss</td>
-            <td class="border border-gray-200 px-3 py-2">PostgreSQL-native job queue. Eliminates Redis dependency entirely</td>
+            <td class="border border-gray-200 px-3 py-2">PostgreSQL-native job queue. Eliminates Redis dependency</td>
           </tr>
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>Auth</strong></td>
@@ -335,7 +266,7 @@
       </table>
     </div>
 
-    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">5.5 Why Modular Monolith, Not Microservices</h3>
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">8.5 Why Modular Monolith</h3>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
       The RFP specifies microservices architecture. We suggest a <strong>modular monolith</strong>
@@ -344,7 +275,7 @@
     </p>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      <strong>Why microservices don&rsquo;t fit this project:</strong>
+      <strong>Assumption vs Reality:</strong>
     </p>
 
     <div class="overflow-x-auto mb-6">
@@ -359,22 +290,22 @@
         <tbody>
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>Data model</strong></td>
-            <td class="border border-gray-200 px-3 py-2">Services own their own data, communicate via APIs</td>
-            <td class="border border-gray-200 px-3 py-2">All modules share one PostgreSQL database and the same tables</td>
+            <td class="border border-gray-200 px-3 py-2">Services own their own data</td>
+            <td class="border border-gray-200 px-3 py-2">All modules share one PostgreSQL database</td>
           </tr>
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>Deployment cadence</strong></td>
             <td class="border border-gray-200 px-3 py-2">Services release independently</td>
-            <td class="border border-gray-200 px-3 py-2">All modules release together &mdash; there is no scenario where the graph service updates without the catalogue</td>
+            <td class="border border-gray-200 px-3 py-2">All modules release together</td>
           </tr>
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>Scale</strong></td>
             <td class="border border-gray-200 px-3 py-2">Different services need different scaling</td>
-            <td class="border border-gray-200 px-3 py-2">3&ndash;10 concurrent users per client, uniform load across all functions</td>
+            <td class="border border-gray-200 px-3 py-2">3&ndash;10 concurrent users, uniform load</td>
           </tr>
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>Technology diversity</strong></td>
-            <td class="border border-gray-200 px-3 py-2">Different services need different languages or runtimes</td>
+            <td class="border border-gray-200 px-3 py-2">Different languages or runtimes</td>
             <td class="border border-gray-200 px-3 py-2">Everything is TypeScript on Node.js</td>
           </tr>
         </tbody>
@@ -382,7 +313,7 @@
     </div>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      <strong>The cost of microservices for this project:</strong>
+      <strong>Overhead Cost:</strong>
     </p>
 
     <div class="overflow-x-auto mb-6">
@@ -397,40 +328,40 @@
         <tbody>
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>Service-to-service communication</strong></td>
-            <td class="border border-gray-200 px-3 py-2">Network latency on every internal call, serialisation/deserialisation, error handling for network failures</td>
-            <td class="border border-gray-200 px-3 py-2">None &mdash; a function call within a monolith is instant and reliable</td>
+            <td class="border border-gray-200 px-3 py-2">Network latency, serialisation, error handling</td>
+            <td class="border border-gray-200 px-3 py-2">None &mdash; function calls are instant</td>
           </tr>
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>API contract management</strong></td>
-            <td class="border border-gray-200 px-3 py-2">Each service boundary needs versioned API contracts, backward compatibility, integration testing between services</td>
-            <td class="border border-gray-200 px-3 py-2">None &mdash; internal module interfaces are enforced by the TypeScript compiler</td>
+            <td class="border border-gray-200 px-3 py-2">Versioned contracts, backward compatibility, integration testing</td>
+            <td class="border border-gray-200 px-3 py-2">None &mdash; TypeScript compiler enforces boundaries</td>
           </tr>
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>Distributed tracing</strong></td>
-            <td class="border border-gray-200 px-3 py-2">Correlating a single user request across 3&ndash;4 services requires distributed tracing infrastructure</td>
-            <td class="border border-gray-200 px-3 py-2">None &mdash; a single application log shows the full request path</td>
+            <td class="border border-gray-200 px-3 py-2">Correlating requests across 3&ndash;4 services</td>
+            <td class="border border-gray-200 px-3 py-2">None &mdash; single application log</td>
           </tr>
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>Multiple CI/CD pipelines</strong></td>
-            <td class="border border-gray-200 px-3 py-2">Each service needs its own build, test, containerise, and deploy pipeline</td>
-            <td class="border border-gray-200 px-3 py-2">None &mdash; one pipeline handles everything</td>
+            <td class="border border-gray-200 px-3 py-2">Each service needs its own pipeline</td>
+            <td class="border border-gray-200 px-3 py-2">None &mdash; one pipeline</td>
           </tr>
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>Infrastructure per service</strong></td>
-            <td class="border border-gray-200 px-3 py-2">Each microservice runs in its own App Service instance (~$20/month each). 4&ndash;5 services = $80&ndash;100/month per client vs $20/month for a monolith</td>
-            <td class="border border-gray-200 px-3 py-2">None &mdash; adds ~$60&ndash;80/month per client with no functional benefit</td>
+            <td class="border border-gray-200 px-3 py-2">~$20/month each, 4&ndash;5 services = $80&ndash;100/month per client</td>
+            <td class="border border-gray-200 px-3 py-2">None &mdash; adds $60&ndash;80/month with no benefit</td>
           </tr>
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>Operational complexity</strong></td>
-            <td class="border border-gray-200 px-3 py-2">More containers to monitor, more failure modes, more complex debugging</td>
-            <td class="border border-gray-200 px-3 py-2">Negative &mdash; makes a 2-person team&rsquo;s operational burden significantly harder</td>
+            <td class="border border-gray-200 px-3 py-2">More containers, more failure modes</td>
+            <td class="border border-gray-200 px-3 py-2">Negative &mdash; harder for a 2-person team</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      <strong>Estimated cost impact:</strong>
+      <strong>Cost Impact Summary:</strong>
     </p>
 
     <div class="overflow-x-auto mb-6">
@@ -447,19 +378,19 @@
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>Additional MVP development</strong></td>
             <td class="border border-gray-200 px-3 py-2">$0</td>
-            <td class="border border-gray-200 px-3 py-2">+$11,200&ndash;$16,800 (8&ndash;12 days)</td>
+            <td class="border border-gray-200 px-3 py-2">+$11,200&ndash;$16,800</td>
             <td class="border border-gray-200 px-3 py-2">+$11,200&ndash;$16,800</td>
           </tr>
           <tr class="bg-gray-50">
             <td class="border border-gray-200 px-3 py-2"><strong>Infrastructure per client</strong></td>
-            <td class="border border-gray-200 px-3 py-2">~$20/month (1 App Service)</td>
-            <td class="border border-gray-200 px-3 py-2">~$80&ndash;100/month (4&ndash;5 App Services + API gateway)</td>
+            <td class="border border-gray-200 px-3 py-2">~$20/month</td>
+            <td class="border border-gray-200 px-3 py-2">~$80&ndash;100/month</td>
             <td class="border border-gray-200 px-3 py-2">+$60&ndash;80/month per client</td>
           </tr>
           <tr class="bg-white">
             <td class="border border-gray-200 px-3 py-2"><strong>Operational complexity</strong></td>
-            <td class="border border-gray-200 px-3 py-2">Low (1 application, 1 pipeline, 1 log stream)</td>
-            <td class="border border-gray-200 px-3 py-2">High (4&ndash;5 services, 4&ndash;5 pipelines, distributed logs)</td>
+            <td class="border border-gray-200 px-3 py-2">Low</td>
+            <td class="border border-gray-200 px-3 py-2">High</td>
             <td class="border border-gray-200 px-3 py-2">Significantly more support effort</td>
           </tr>
         </tbody>
@@ -467,18 +398,87 @@
     </div>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      <strong>When microservices would become appropriate:</strong>
+      <strong>When microservices would become appropriate:</strong> when Cloud9 grows a dedicated
+      development team (3+ developers working on the tool full-time), when a specific module has
+      materially different scaling requirements, or when the MLP or Matured Product phases introduce
+      genuinely independent concerns (e.g. an AI service with different compute requirements). At that
+      point, the modular monolith architecture makes the extraction straightforward because the
+      boundaries are already defined.
     </p>
 
-    <ul class="list-disc pl-6 mb-4 space-y-2 text-[#2D2D2D]">
-      <li>Cloud9 grows a dedicated development team (3+ developers working on the tool full-time)</li>
-      <li>A specific module has materially different scaling requirements</li>
-      <li>The MLP or Matured Product phases introduce genuinely independent concerns (e.g. an AI service with different compute requirements)</li>
-    </ul>
+    <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-4">8.6 About BrightKeep (Detailed)</h3>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Our Approach</h4>
 
     <p class="mb-4 text-[#2D2D2D] leading-relaxed">
-      At that point, the modular monolith architecture makes the extraction straightforward because
-      the boundaries are already defined.
+      BrightKeep is a Digital Product &amp; Business Development company. We both build technology
+      solutions, and consult on how to build them. We are founded on decades of experience delivering
+      in the digital sector across corporate, startup, and consulting environments.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      We are a product-focussed firm, starting with the problem to solve, not the technology. Our
+      engagement process starts with what the customer or business needs, and we shape solutions around
+      outcomes rather than tool preferences. We favour pragmatic development &mdash; solutions that are
+      understandable, maintainable, and right-sized for where the product&rsquo;s maturity is, with
+      clear paths to scale when ready.
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      We work in small, senior teams with short feedback loops. Weekly demos, working software early, and
+      clear communication. Our combination of industry and consulting experience means we understand that
+      building the right thing matters as much as building the thing right.
+    </p>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Industry Experience</h4>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      BrightKeep&rsquo;s team has experience working across automotive, financial services, transport,
+      SaaS platforms, document management, and enterprise consulting. We have built B2B SaaS products
+      used globally, led legacy-to-cloud platform migrations, integrated AI and machine learning into
+      production systems, and worked within the Microsoft ecosystem (Azure, Entra ID, SharePoint, Power
+      Platform) across multiple engagements. Our delivery consulting experience includes supporting
+      enterprise clients in the efficient and effective delivery of technology solutions.
+    </p>
+
+    <h4 class="text-lg font-semibold text-[#1B2A4A] mt-6 mb-3">Relevant Experience</h4>
+
+    <p class="mb-2 text-[#2D2D2D] leading-relaxed">
+      <strong>NightOffice.ai &mdash; AI-Powered Business Management Platform</strong>
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      We have developed a SaaS platform that gives entrepreneurs and small businesses access to all
+      their data in a centralised tool, managed by AI-powered specialists. Users are able to hire AI
+      specialists in specific fields (Finance, Engineering, Marketing) that will then work for them in
+      all aspects of managing their business. Built on a React frontend, Supabase backend, real-time
+      collaboration, document management with AI synthesis, and multi-agent coordination. Full product
+      lifecycle from discovery through to build.
+    </p>
+
+    <p class="mb-2 text-[#2D2D2D] leading-relaxed">
+      <strong>Client Delivery &mdash; Solution Documentation Platform</strong>
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      Built for a client with multiple complex software bases, and limited capacity for the creation of
+      technical documentation. Production solutions were going live without the documentation that support
+      and operations teams needed to maintain them. BrightKeep developed a tool integrating GitHub
+      repositories and CI/CD pipelines into a Microsoft Power Platform solution, using AI to analyse
+      codebases, understand end-to-end solution architecture, and generate technical documentation in a
+      structured framework. Users can query the documentation through Copilot Agents.
+    </p>
+
+    <p class="mb-2 text-[#2D2D2D] leading-relaxed">
+      <strong>Client Delivery &mdash; Financial Analytics Dashboard</strong>
+    </p>
+
+    <p class="mb-4 text-[#2D2D2D] leading-relaxed">
+      A client with disparate data sources across accounting (Xero), an online platform, and manual
+      records had no clear picture of how their money was being spent. BrightKeep built a solution that
+      pulls and merges data from multiple sources into interactive dashboards, enabling analysis of
+      customer behaviour against revenue streams, financial forecasting, pricing model evaluation, and
+      performance tracking.
     </p>
   </div>
 </section>

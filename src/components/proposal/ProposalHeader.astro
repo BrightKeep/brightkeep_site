@@ -1,5 +1,11 @@
 ---
-
+interface Props {
+  version?: 'v1' | 'v2';
+}
+const { version = 'v1' } = Astro.props;
+const titleText = version === 'v2'
+  ? 'Cloud9 Visualisation Tool — MVP Build Proposal (V2)'
+  : 'Cloud9 Visualisation Application — Proposal v2.1';
 ---
 
 <header class="fixed top-0 left-0 right-0 h-16 bg-[#1B2A4A] z-50 flex items-center px-4 lg:px-6 shadow-lg">
@@ -24,10 +30,26 @@
     <span class="text-2xl leading-none" style="font-family: 'Poppins', sans-serif; font-weight: 300;"><span class="text-white">Bright</span><span class="text-[#FF6B6B]">Keep</span></span>
   </div>
 
+  <!-- Version toggle -->
+  <div class="hidden md:flex items-center gap-1 ml-4 lg:ml-6 bg-white/10 rounded-lg p-0.5">
+    <a
+      href="/proposals/cloud9"
+      class={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${version === 'v1' ? 'bg-white text-[#1B2A4A]' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+    >
+      V1 — Initial
+    </a>
+    <a
+      href="/proposals/cloud9-v2"
+      class={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${version === 'v2' ? 'bg-[#FF6B6B] text-white' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+    >
+      V2 — Updated
+    </a>
+  </div>
+
   <!-- Title (centered) -->
-  <div class="flex-1 text-center hidden sm:block">
+  <div class="flex-1 text-center hidden lg:block">
     <h1 class="text-white font-semibold text-sm lg:text-base truncate px-4">
-      Cloud9 Visualisation Application &mdash; Proposal v2.1
+      {titleText}
     </h1>
   </div>
 

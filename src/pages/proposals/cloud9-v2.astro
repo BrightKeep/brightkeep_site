@@ -1,0 +1,1196 @@
+---
+export const prerender = false;
+
+import ProposalLayout from '../../layouts/ProposalLayout.astro';
+import ProposalHeader from '../../components/proposal/ProposalHeader.astro';
+import ProposalSidebarV2 from '../../components/proposal/ProposalSidebarV2.astro';
+import ProposalPasswordGate from '../../components/proposal/ProposalPasswordGate.astro';
+
+const COOKIE_NAME = 'proposal_cloud9_auth';
+const COOKIE_VALUE = 'authenticated';
+const PASSWORD = import.meta.env.PROPOSAL_CLOUD9_PASSWORD || 'cloud9proposal';
+
+let authenticated = false;
+let showError = false;
+
+const cookie = Astro.request.headers.get('cookie') || '';
+if (cookie.includes(`${COOKIE_NAME}=${COOKIE_VALUE}`)) {
+  authenticated = true;
+}
+
+if (Astro.request.method === 'POST' && !authenticated) {
+  const formData = await Astro.request.formData();
+  const submittedPassword = formData.get('password');
+
+  if (submittedPassword === PASSWORD) {
+    authenticated = true;
+    Astro.cookies.set(COOKIE_NAME, COOKIE_VALUE, {
+      path: '/proposals',
+      maxAge: 60 * 60 * 24 * 7,
+      httpOnly: true,
+      secure: import.meta.env.PROD,
+      sameSite: 'lax',
+    });
+  } else {
+    showError = true;
+  }
+}
+---
+
+<ProposalLayout>
+  {!authenticated ? (
+    <ProposalPasswordGate error={showError} />
+  ) : (
+    <>
+      <ProposalHeader version="v2" />
+      <ProposalSidebarV2 />
+
+      <main class="pt-16 lg:pl-64 min-h-screen">
+
+        <!-- Print-only branded cover page -->
+        <section id="print-cover" aria-hidden="true">
+          <div class="print-cover-logo-wrap">
+            <span class="print-cover-logo-bright">Bright</span><span class="print-cover-logo-keep">Keep</span>
+          </div>
+
+          <div class="print-cover-tag-wrap">
+            <span class="print-cover-tag">Updated Proposal &middot; v2.0</span>
+          </div>
+
+          <div class="print-cover-title-wrap">
+            <h1 class="print-cover-title">Cloud9 Visualisation Tool</h1>
+            <p class="print-cover-subtitle">MVP Build Proposal (V2)</p>
+            <div class="print-cover-rule"></div>
+            <p class="print-cover-date">May 2026</p>
+          </div>
+
+          <div class="print-cover-foot">
+            <p class="print-cover-foot-left">Prepared for Cloud9 Consulting</p>
+            <p class="print-cover-foot-right">brightkeep.com.au</p>
+          </div>
+        </section>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+          <!-- Cover / title block -->
+          <div id="proposal-cover" class="mb-8 pb-8 border-b border-gray-200">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#1B2A4A] text-white">Updated Proposal</span>
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#FF6B6B] text-white">v2.0</span>
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-emerald-600 text-white">Draft for sign-off</span>
+            </div>
+            <h1 class="text-3xl lg:text-4xl font-bold text-[#1B2A4A] mb-3">
+              Cloud9 Visualisation Tool: MVP Build Proposal
+            </h1>
+            <p class="text-lg text-[#6B7280] mb-4">
+              Updated commercial structure for the delivery of the MVP
+            </p>
+            <div class="flex flex-wrap gap-4 text-sm text-[#6B7280]">
+              <span>Date: May 2026</span>
+              <span>&bull;</span>
+              <span>Version: 2.0</span>
+              <span>&bull;</span>
+              <span>Supersedes the commercial terms in Proposal V2.1 (20 Feb 2026); technical scope unchanged</span>
+            </div>
+          </div>
+
+          <!-- 1. Executive Summary -->
+          <section data-section="executive-summary" class="proposal-section hidden">
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">1. Executive Summary</h2>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-4">
+              This proposal sets out the commercial structure for BrightKeep to deliver the Cloud9 Visualisation Tool MVP, including initial deployments to Cloud9 and to Cleanaway as the first end client. Payment terms reflect the product's onboarding and growth profile, with milestones tied to delivery events.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+              <div class="p-5 rounded-lg bg-[#1B2A4A] text-white">
+                <p class="text-xs uppercase tracking-wider text-[#FF6B6B] mb-2">MVP Build, fixed fee</p>
+                <p class="text-3xl font-bold mb-1">$38,900</p>
+                <p class="text-sm text-white/80">excl. GST. $42,790 incl. GST.</p>
+                <p class="text-xs text-white/60 mt-3">Paid across four milestones (3 &times; $10,000 and a final of $8,900), each on Net 60 terms, tied to defined delivery events.</p>
+              </div>
+              <div class="p-5 rounded-lg bg-emerald-700 text-white">
+                <p class="text-xs uppercase tracking-wider text-emerald-200 mb-2">Target delivery dates</p>
+                <ul class="text-sm space-y-2">
+                  <li><strong class="block text-white">29 May 2026</strong><span class="text-white/80">Cloud9 internal working solution (PoC)</span></li>
+                  <li><strong class="block text-white">12 June 2026</strong><span class="text-white/80">Cleanaway production go-live</span></li>
+                </ul>
+                <p class="text-xs text-white/60 mt-3">Dates assume contract signature in the next sitting and timely Cloud9 / Cleanaway readiness on infrastructure and data.</p>
+              </div>
+            </div>
+
+            <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-3">The Headline</h3>
+            <ul class="list-disc pl-6 space-y-2 text-[#2D2D2D]">
+              <li><strong>Fixed price, fixed scope.</strong> $38,900 excl. GST covers the MVP feature set plus deployment to Cloud9 as Proof of Concept and to Cleanaway as the first end client. Not time-and-materials.</li>
+              <li><strong>Four-milestone payment structure.</strong> $10,000 excl. GST at signature, Cloud9 PoC handover, and Cleanaway production deployment. A final $8,900 on acceptance after a one-month stabilisation period. Each invoice is payable Net 60.</li>
+              <li><strong>Cloud9 PoC by 29 May, Cleanaway live by 12 June.</strong> Cloud9 is the first internal user, with the working solution in their tenant ahead of Cleanaway's go-live. PoC acceptance demonstrates the MVP working end-to-end against real data.</li>
+              <li><strong>Development is its own stream.</strong> This contract covers the MVP only. Any post-MVP development of the Visualisation Tool will be agreed in a future development contract or contract update, separate from any consulting work.</li>
+            </ul>
+          </section>
+
+          <!-- 2. Engagement Structure -->
+          <section data-section="two-contracts" class="proposal-section hidden">
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">2. Engagement Structure</h2>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-6">
+              The commercial relationship between Cloud9 and BrightKeep runs across three workstreams. Each has its own contract. This proposal covers Workstream A only. The other two are listed for context so that the boundary of this contract is clear.
+            </p>
+
+            <div class="overflow-x-auto mb-8">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Workstream</th>
+                    <th>Scope</th>
+                    <th>Contract</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>A. MVP Build</strong><br/><span class="text-xs text-[#6B7280]">(this proposal)</span></td>
+                    <td>Development of the Visualisation Tool MVP, with deployment to Cloud9's own SharePoint as Proof of Concept and to Cleanaway as the first end client</td>
+                    <td>MVP Build Contract</td>
+                    <td>Proposed (this document)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>B. Post-MVP Development</strong></td>
+                    <td>Subsequent development of the Visualisation Tool. Further client deployments, MLP features, backlog items, AI features, ongoing maintenance.</td>
+                    <td>Future development contracts or contract updates, agreed as the work is scoped</td>
+                    <td>Not covered here; deferred to future agreement</td>
+                  </tr>
+                  <tr>
+                    <td><strong>C. Consulting</strong></td>
+                    <td>Consulting services to Cloud9 in support of NAB and other Cloud9 client engagements</td>
+                    <td>Separate Consultancy Agreement</td>
+                    <td>Drafted, pending amendments</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="p-5 rounded-lg bg-[#F8F9FA] border-l-4 border-[#FF6B6B]">
+              <p class="font-semibold text-[#1B2A4A] mb-2">Development work sits separately from consulting</p>
+              <p class="text-sm text-[#2D2D2D]">
+                Workstreams A and B cover development of the Visualisation Tool. Workstream C covers consulting for NAB and other Cloud9 clients. The two are kept on different contracts. Development is delivered under fixed-scope work, not against the Consultancy Agreement. Keeping them apart avoids confusion about which obligations, IP terms and payment terms apply to which piece of work.
+              </p>
+            </div>
+          </section>
+
+          <!-- 3. MVP Scope -->
+          <section data-section="mvp-scope" class="proposal-section hidden">
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">3. MVP Scope</h2>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-6">
+              The MVP feature set is unchanged from the V1 proposal (Section 9). This proposal adds an explicit scope lock. Anything not listed below is out of scope of this contract and is to be agreed under a future development contract.
+            </p>
+
+            <h3 class="text-xl font-semibold text-[#1B2A4A] mb-3">3.1 Functional scope (in)</h3>
+            <div class="overflow-x-auto mb-8">
+              <table>
+                <thead>
+                  <tr><th>Capability</th><th>Detail</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Interactive integration map</td><td>Drag, zoom, pan; force-directed and orthogonal layouts</td></tr>
+                  <tr><td>Multi-dimensional filtering</td><td>Application, domain, protocol, tags, business process; real-time re-render</td></tr>
+                  <tr><td>Degree of hops</td><td>Select node, set 1&ndash;N hop count; directional BFS (upstream/downstream/both)</td></tr>
+                  <tr><td>Application catalogue</td><td>Searchable, sortable; user-managed colour assignment</td></tr>
+                  <tr><td>Integration catalogue</td><td>Source/target, protocol, direction, business process, data contracts</td></tr>
+                  <tr><td>SharePoint integration</td><td>Native SharePoint Online integration via Microsoft Graph. Daily automated sync plus manual refresh. Read-only, one-way data flow from the client's Applications and Integrations lists.</td></tr>
+                  <tr><td>Positions memory and named layouts</td><td>Save multiple graph arrangements per user</td></tr>
+                  <tr><td>PNG and PDF export</td><td>Built-in presets (Quick, Standard, Full Detail)</td></tr>
+                  <tr><td>Microsoft SSO</td><td>Entra ID with MFA</td></tr>
+                  <tr><td>Role-based access control (RBAC)</td><td>Multiple user roles defined and enforced via Entra ID groups (e.g. Read-only, Editor, Administrator). Permissions applied in-application against role membership.</td></tr>
+                  <tr><td>Single-tenant deployment</td><td>Per-client isolated Azure instance, deployed via Terraform</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="text-xl font-semibold text-[#1B2A4A] mb-3">3.2 Deployment scope (in)</h3>
+            <p class="text-[#2D2D2D] leading-relaxed mb-3">The fixed fee covers two deployments using BrightKeep's deployment pipeline:</p>
+            <ol class="list-decimal pl-6 space-y-2 mb-8 text-[#2D2D2D]">
+              <li><strong>Cloud9 internal deployment.</strong> Deployed to Cloud9's own SharePoint and Azure subscription. This serves as the Proof of Concept and the acceptance environment.</li>
+              <li><strong>Cleanaway first-client deployment.</strong> Production deployment to Cleanaway's environment using the same pipeline. Includes pre-deployment, infrastructure provisioning, data integration, UAT, training and handover.</li>
+            </ol>
+
+            <h3 class="text-xl font-semibold text-[#1B2A4A] mb-3">3.3 Technical hygiene (BrightKeep's cost)</h3>
+            <p class="text-[#2D2D2D] leading-relaxed mb-6">
+              Items of architectural hygiene, bug fixes, test coverage uplift and TRD alignment work (CI workflow, test tooling, library version updates, and similar) are <strong>not</strong> part of this fixed fee. BrightKeep covers them at its own cost as part of delivering a working MVP.
+            </p>
+
+            <h3 class="text-xl font-semibold text-[#1B2A4A] mb-3">3.4 Out of scope (explicit)</h3>
+            <div class="overflow-x-auto mb-6">
+              <table>
+                <thead>
+                  <tr><th>Out of scope</th><th>Where it goes</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Deployments to clients beyond Cloud9 and Cleanaway</td><td>Future development contract or the existing Consulting Agreement</td></tr>
+                  <tr><td>Non-SharePoint third-party integrations (e.g. ServiceNow, ManageEngine, ITSM platforms, CMDBs)</td><td>Future development contract, scoped per integration</td></tr>
+                  <tr><td>MLP features (multi-persona, check-out model, tenant branding, operations dashboard, full validation rules)</td><td>Future development contract, scoped per Statement of Work</td></tr>
+                  <tr><td>Tier 2 backlog (business owner display, criticality badge, hosting type, dynamic metadata filters)</td><td>Future development contract</td></tr>
+                  <tr><td>Tier 3 backlog (scenario modelling, sync changelog, lifecycle date, cost per app, calculated risk score)</td><td>Future development contract</td></tr>
+                  <tr><td>Tier 4 (capability mapping, reference catalog, automated discovery, GRC, historical trending)</td><td>Future development contract, or formally parked</td></tr>
+                  <tr><td>AI features (conversational filtering, solution design advisor)</td><td>Future development contract, separate engagement</td></tr>
+                  <tr><td>Ongoing maintenance and support after acceptance</td><td>Future development contract, ad-hoc</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="p-5 rounded-lg bg-amber-50 border border-amber-200">
+              <p class="font-semibold text-[#1B2A4A] mb-2">Change control</p>
+              <p class="text-sm text-[#2D2D2D]">
+                Any request from Cloud9 for work outside Sections 3.1 or 3.2 during the MVP build is treated as a Change Request. Work on a Change Request does not start until the change is documented in writing, and the parties have agreed either to defer it to a future development contract or to add it to this contract via a signed variation with a matching fee adjustment. Both parties rely on this clause to keep costs and timelines predictable.
+              </p>
+            </div>
+          </section>
+
+          <!-- 4. Proof of Concept -->
+          <section data-section="poc" class="proposal-section hidden">
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">4. Proof of Concept and Acceptance</h2>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-6">
+              The MVP is deployed to Cloud9's internal SharePoint environment as the Proof of Concept, with Cloud9 as the first internal user. The deployment shows the MVP running against real Cloud9 data, and forms the basis for acceptance under this contract.
+            </p>
+
+            <h3 class="text-xl font-semibold text-[#1B2A4A] mb-3">4.1 PoC environment</h3>
+            <div class="overflow-x-auto mb-6">
+              <table>
+                <thead><tr><th>Item</th><th>Detail</th></tr></thead>
+                <tbody>
+                  <tr><td>Hosting</td><td>Cloud9 Azure subscription (existing)</td></tr>
+                  <tr><td>Data source</td><td>Cloud9's internal SharePoint Applications and Integrations lists</td></tr>
+                  <tr><td>Users</td><td>Cloud9 staff via Entra ID SSO</td></tr>
+                  <tr><td>Infrastructure</td><td>Provisioned per the standard Terraform configuration delivered as part of the MVP</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="text-xl font-semibold text-[#1B2A4A] mb-3">4.2 PoC acceptance criteria (Milestone 2)</h3>
+            <p class="text-[#2D2D2D] leading-relaxed mb-3">The Cloud9 PoC is accepted, and Milestone 2 is reached, when the following are demonstrated:</p>
+            <ol class="list-decimal pl-6 space-y-2 mb-6 text-[#2D2D2D]">
+              <li>The application is deployed and accessible via the configured Cloud9 URL</li>
+              <li>SharePoint sync runs successfully against Cloud9's internal SharePoint data</li>
+              <li>All functional capabilities listed in Section 3.1 operate as specified</li>
+              <li>Microsoft SSO authentication succeeds for Cloud9 users</li>
+              <li>PNG and PDF export produce valid output from the loaded data</li>
+            </ol>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-3">
+              Cloud9 has <strong>10 business days</strong> from the PoC handover demonstration to confirm acceptance or notify BrightKeep in writing of specific acceptance failures against the criteria above. If no such notification is received within that window, the PoC is deemed accepted.
+            </p>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-3">
+              Final acceptance, covering the Cleanaway deployment and the handover bundle, is reached at Milestone 4 after the one-month stabilisation period. The full transition path is set out in Section 5.3.
+            </p>
+
+            <h3 class="text-xl font-semibold text-[#1B2A4A] mt-8 mb-3">4.3 Defect resolution within acceptance</h3>
+            <p class="text-[#2D2D2D] leading-relaxed">
+              Defects raised in the acceptance window that fall within Section 3.1 are resolved by BrightKeep at no additional charge prior to acceptance. Items raised that fall outside Section 3.1 are not defects. They are change requests and follow Section 3.4.
+            </p>
+          </section>
+
+          <!-- 5. Commercial Terms -->
+          <section data-section="commercials" class="proposal-section hidden">
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">5. Commercial Terms</h2>
+
+            <h3 class="text-xl font-semibold text-[#1B2A4A] mb-3">5.1 Fee</h3>
+            <div class="p-5 rounded-lg bg-[#1B2A4A] text-white mb-6">
+              <p class="text-xs uppercase tracking-wider text-[#FF6B6B] mb-1">Total fixed fee</p>
+              <p class="text-3xl font-bold">$38,900 AUD excl. GST</p>
+              <p class="text-sm text-white/80 mt-1">$42,790 AUD incl. GST</p>
+            </div>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-6">
+              The fee is <strong>fixed</strong>, not time-and-materials. BrightKeep carries the risk of any overrun on the scoped items in Sections 3.1 and 3.2 and on the hygiene work in Section 3.3. The fee covers the complete MVP feature set together with the Cloud9 PoC deployment and the Cleanaway first-client deployment.
+            </p>
+
+            <h3 class="text-xl font-semibold text-[#1B2A4A] mb-3">5.2 Payment schedule</h3>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-4">
+              The total fee is paid in four milestones: $10,000 excl. GST at each of the first three milestones, and $8,900 excl. GST at final acceptance. Payment terms are <strong>Net 60</strong> on each milestone invoice, set to reflect the product's onboarding and growth profile.
+            </p>
+
+            <div class="overflow-x-auto mb-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Milestone</th>
+                    <th>Trigger</th>
+                    <th>Target date</th>
+                    <th class="text-right">Amount excl. GST</th>
+                    <th>Terms</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>M1. Mobilisation</strong></td>
+                    <td>Contract signature</td>
+                    <td>On signature</td>
+                    <td class="text-right">$10,000</td>
+                    <td>Net 60</td>
+                  </tr>
+                  <tr>
+                    <td><strong>M2. Cloud9 PoC handover</strong></td>
+                    <td>MVP deployed to Cloud9's SharePoint per Section 4.2</td>
+                    <td>29 May 2026</td>
+                    <td class="text-right">$10,000</td>
+                    <td>Net 60</td>
+                  </tr>
+                  <tr>
+                    <td><strong>M3. Cleanaway production deployment</strong></td>
+                    <td>MVP deployed and operational in Cleanaway's environment</td>
+                    <td>12 June 2026</td>
+                    <td class="text-right">$10,000</td>
+                    <td>Net 60</td>
+                  </tr>
+                  <tr>
+                    <td><strong>M4. Final acceptance and ownership transfer</strong></td>
+                    <td>One-month stabilisation period complete after Cleanaway production go-live. Cloud9 confirms final acceptance covering the Cloud9 PoC, the Cleanaway deployment, and the handover bundle. Title transfers per Section 7.</td>
+                    <td>13 July 2026</td>
+                    <td class="text-right">$8,900</td>
+                    <td>Net 60</td>
+                  </tr>
+                  <tr class="total-row">
+                    <td colspan="3"><strong>Total</strong></td>
+                    <td class="text-right"><strong>$38,900</strong></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-6">
+              Milestone invoices are issued on the day the milestone is reached and are payable Net 60. GST is added to each invoice and is payable concurrently with the invoice amount.
+            </p>
+
+            <h3 class="text-xl font-semibold text-[#1B2A4A] mb-3">5.3 Transition to Milestone 4 (Final Acceptance)</h3>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-4">
+              M1 to M3 are tied to discrete delivery events. M4 is structured differently. It is reached after a one-month stabilisation period following Cleanaway production go-live, giving real-world usage time before final acceptance and ownership transfer.
+            </p>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-3">
+              The transition from M3 to M4 works as follows:
+            </p>
+
+            <ol class="list-decimal pl-6 space-y-2 mb-6 text-[#2D2D2D]">
+              <li><strong>Cleanaway production go-live (M3)</strong>. Tool deployed and operational in Cleanaway's environment. M3 invoice is issued.</li>
+              <li><strong>One-month stabilisation period</strong>. The tool runs in production at Cleanaway. BrightKeep monitors for any defects falling within Section 3.1, and resolves them at no additional charge as part of M4 delivery. Any items raised that fall outside Section 3.1 are change requests and are deferred to a future development contract per Section 3.4.</li>
+              <li><strong>Final acceptance review</strong>. At the end of the stabilisation period, Cloud9 reviews the complete delivery (Cloud9 PoC + Cleanaway deployment + handover bundle) and confirms acceptance. If specific acceptance failures are identified in writing referencing Section 3.1, BrightKeep resolves them and the review repeats. Absent such notification within 10 business days of the end of the stabilisation period, acceptance is deemed given.</li>
+              <li><strong>Ownership transfer</strong>. On acceptance (or deemed acceptance), title transfers to Cloud9 per Section 7.2. The full handover bundle is delivered, including transfer of the GitHub repository, deployment pipeline, and admin access to the deployed instances. M4 invoice is issued.</li>
+            </ol>
+
+            <p class="text-[#2D2D2D] leading-relaxed">
+              Target date for M4 is 13 July 2026, being one month after the 12 June 2026 Cleanaway go-live target. If M3 lands later than 12 June, M4 moves out by the same number of days.
+            </p>
+          </section>
+
+          <!-- 6. Infrastructure Costs -->
+          <section data-section="infrastructure" class="proposal-section hidden">
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">6. Infrastructure and Hosting Costs</h2>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-4">
+              Infrastructure costs are not borne by BrightKeep. They are paid by the party hosting each instance of the tool. For the Cloud9 internal deployment, this is Cloud9. For the Cleanaway production deployment, this is the party hosting that instance (Cleanaway directly, or Cloud9 hosting on Cleanaway's behalf, depending on the deployment arrangement agreed between Cloud9 and Cleanaway).
+            </p>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-6">
+              Infrastructure is billed by the hosting provider (Microsoft Azure for the current MVP architecture). BrightKeep applies no markup, no managed service fee, and no intermediary billing. The party paying for hosting pays the cloud provider directly.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <h3 class="text-xl font-semibold text-[#1B2A4A]">6.1 Baseline cost (current MVP architecture)</h3>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                Expected cost at this scope
+              </span>
+            </div>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-4">
+              Based on the current MVP architecture and Azure retail pricing (Australia East, AUD, May 2026):
+            </p>
+
+            <div class="overflow-x-auto cost-table-baseline mb-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Resource</th>
+                    <th>Detail</th>
+                    <th class="text-right">Monthly cost (AUD)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>App Service</td>
+                    <td>B1 Basic Linux, single instance</td>
+                    <td class="text-right">~$20</td>
+                  </tr>
+                  <tr>
+                    <td>PostgreSQL</td>
+                    <td>Burstable B1ms, 32GB storage</td>
+                    <td class="text-right">~$33</td>
+                  </tr>
+                  <tr>
+                    <td>Blob Storage</td>
+                    <td>Standard LRS, low usage</td>
+                    <td class="text-right">~$3</td>
+                  </tr>
+                  <tr>
+                    <td>Key Vault and Application Insights</td>
+                    <td>Standard tier, modest telemetry</td>
+                    <td class="text-right">~$8</td>
+                  </tr>
+                  <tr class="total-row">
+                    <td colspan="2"><strong>Total per instance per month</strong></td>
+                    <td class="text-right"><strong>~$64</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-6">
+              Two instances are in scope under this contract: the Cloud9 internal deployment and the Cleanaway deployment. At current pricing this works out to roughly $128 per month combined, plus a shared development environment of ~$56 per month while the build is in progress.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <h3 class="text-xl font-semibold text-[#6B7280]">6.2 Potential additional costs based on security posture</h3>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 border border-gray-300">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                May apply, not guaranteed
+              </span>
+            </div>
+
+            <p class="text-[#6B7280] leading-relaxed mb-4">
+              The baseline above is sufficient for an unrestricted deployment with no enterprise-grade security overlays. As clients formalise their security requirements, certain additional Azure resources or higher-tier resource selections may be needed. The table below shows the indicative monthly addition per instance for each common upgrade. Costs are additive: a deployment requiring multiple upgrades will combine them.
+            </p>
+
+            <div class="overflow-x-auto cost-table-muted mb-6">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Security or capacity upgrade</th>
+                    <th>What it adds</th>
+                    <th class="text-right">Additional monthly cost (AUD)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Production-tier App Service</td>
+                    <td>P1v3 instead of B1 Basic. Adds production SLA, deployment slots, autoscale, larger compute.</td>
+                    <td class="text-right">+~$110</td>
+                  </tr>
+                  <tr>
+                    <td>General Purpose PostgreSQL</td>
+                    <td>GP_Standard_D2ds_v4 (2 vCore, 8GB RAM) instead of Burstable B1ms. Required for sustained higher load or where Burstable's compute model is not acceptable.</td>
+                    <td class="text-right">+~$200</td>
+                  </tr>
+                  <tr>
+                    <td>Private endpoints</td>
+                    <td>Private endpoints for App Service, PostgreSQL, Blob Storage and Key Vault. Removes public-internet exposure of these services.</td>
+                    <td class="text-right">+~$45</td>
+                  </tr>
+                  <tr>
+                    <td>Application Gateway with WAF</td>
+                    <td>Standard_v2 with WAF tier. Sits in front of the App Service to provide layer-7 filtering and protection.</td>
+                    <td class="text-right">+~$90</td>
+                  </tr>
+                  <tr>
+                    <td>Azure DDoS IP Protection</td>
+                    <td>Per-IP DDoS protection on the public endpoint.</td>
+                    <td class="text-right">+~$25</td>
+                  </tr>
+                  <tr>
+                    <td>Customer-managed keys (BYOK)</td>
+                    <td>Key Vault Premium with HSM-protected keys. CMK encryption on PostgreSQL and Storage. Often required by financial services or regulated clients.</td>
+                    <td class="text-right">+~$15</td>
+                  </tr>
+                  <tr>
+                    <td>Geo-redundant backup</td>
+                    <td>Geo-redundant PostgreSQL backups and GRS Blob storage instead of LRS.</td>
+                    <td class="text-right">+~$12</td>
+                  </tr>
+                  <tr>
+                    <td>Microsoft Sentinel SIEM integration</td>
+                    <td>Log forwarding to a Sentinel workspace at the client's SOC. Pricing assumes modest log volume.</td>
+                    <td class="text-right">+~$60</td>
+                  </tr>
+                  <tr>
+                    <td>Enhanced monitoring and log retention</td>
+                    <td>Increased Log Analytics ingestion and longer retention (commonly 12 months for audit purposes).</td>
+                    <td class="text-right">+~$12</td>
+                  </tr>
+                  <tr>
+                    <td>Premium identity (Entra ID P1 / P2)</td>
+                    <td>Conditional access (P1) or Privileged Identity Management and access reviews (P2). Charged per user, paid through the client's Microsoft 365 tenancy. Standard Entra ID is sufficient for the MVP RBAC scope.</td>
+                    <td class="text-right">+~$10&ndash;$15 / user</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="text-[#6B7280] leading-relaxed mb-4">
+              Two indicative stacks for context:
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+              <div class="p-5 rounded-lg border border-gray-200 bg-gray-50">
+                <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Enhanced security</p>
+                <p class="text-2xl font-bold text-gray-700 mb-2">~$100 / instance / month</p>
+                <p class="text-sm text-gray-600">Baseline plus enhanced monitoring, BYOK and geo-redundant backup. Suitable for a security-conscious mid-market client without architectural rework.</p>
+              </div>
+              <div class="p-5 rounded-lg border border-gray-200 bg-gray-50">
+                <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">Production-grade enterprise</p>
+                <p class="text-2xl font-bold text-gray-700 mb-2">~$345 / instance / month</p>
+                <p class="text-sm text-gray-600">Baseline plus P1v3 App Service, private endpoints, App Gateway with WAF, BYOK and geo-redundant backup. Typical of a Cleanaway-scale client with formal IT security review.</p>
+              </div>
+            </div>
+
+            <p class="text-[#6B7280] leading-relaxed mb-6">
+              Higher tiers, including SIEM integration, GP PostgreSQL and DDoS protection, are common for regulated-industry clients (financial services, government). Indicative cost in that posture sits around $600&ndash;$650 per instance per month plus per-user identity costs.
+            </p>
+
+            <h3 class="text-xl font-semibold text-[#1B2A4A] mb-3">6.3 Indicative nature and change management</h3>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-4">
+              All infrastructure costs in this section are indicative estimates and are subject to change based on a number of factors, including (but not limited to):
+            </p>
+
+            <ul class="list-disc pl-6 space-y-2 mb-6 text-[#2D2D2D]">
+              <li>Changes to a client's security requirements or posture, before or after deployment</li>
+              <li>Growth in usage, scale, data volume or user concurrency beyond MVP-level assumptions</li>
+              <li>Movement from MVP to MLP or Matured Product features that require additional or larger Azure resources</li>
+              <li>Region selection (pricing assumes Australia East)</li>
+              <li>Infrastructure provider (current architecture targets Microsoft Azure; alternative providers will have different pricing)</li>
+              <li>Movement in Azure retail pricing</li>
+            </ul>
+
+            <div class="p-5 rounded-lg bg-amber-50 border border-amber-200">
+              <p class="font-semibold text-[#1B2A4A] mb-2">BrightKeep commitment on cost change</p>
+              <p class="text-sm text-[#2D2D2D]">
+                Where any of the factors above changes the expected infrastructure cost (for an existing deployment, a planned deployment, or a future deployment), BrightKeep will advise as soon as is practical. The advice will include the affected resources, the indicative new monthly figure, and any architectural changes required to deliver the change. Implementation of architectural changes that fall outside Section 3.1 is scoped under a future development contract per Section 3.4, not under this contract.
+              </p>
+            </div>
+          </section>
+
+          <!-- 7. Ownership & Licensing -->
+          <section data-section="ownership" class="proposal-section hidden">
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">7. Ownership, Licence and Retention of Title</h2>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-8">
+              BrightKeep retains ownership of the tool until paid in full. In the meantime, Cloud9 has a licence to use, market and onboard the tool to its clients. Ownership passes to Cloud9 once the final milestone is paid. The diagram below shows the before-and-after state.
+            </p>
+
+            <!-- Before / After grid -->
+            <div class="grid lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-4 items-stretch mb-8">
+
+              <!-- Before column -->
+              <div class="rounded-lg border border-gray-300 bg-white shadow-sm p-6 flex flex-col">
+                <div class="mb-4 pb-4 border-b border-gray-200">
+                  <p class="text-xs uppercase tracking-wider text-[#FF6B6B] font-semibold mb-2">7.1 Before final payment</p>
+                  <h4 class="text-lg font-bold text-[#1B2A4A]">During build, through to full payment</h4>
+                  <p class="text-sm text-[#6B7280] mt-1">From contract signature until M4 is settled in cleared funds.</p>
+                </div>
+
+                <div class="space-y-4 flex-1">
+                  <div>
+                    <p class="font-semibold text-[#1B2A4A] text-sm mb-1">Title</p>
+                    <p class="text-sm text-[#2D2D2D]">Sits with BrightKeep. Source code, documentation, infrastructure-as-code, designs and configuration all owned by BrightKeep. Applies to both the Cloud9 PoC and the Cleanaway production deployment.</p>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-[#1B2A4A] text-sm mb-1">Deployment pipeline</p>
+                    <p class="text-sm text-[#2D2D2D]">Operated by BrightKeep through a dedicated GitHub-based pipeline. Cloud9 and Cleanaway have full operational use of their deployed instances. No administrative control of the pipeline or repository.</p>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-[#1B2A4A] text-sm mb-1">Cloud9's rights</p>
+                    <p class="text-sm text-[#2D2D2D]">Non-exclusive, non-transferable licence to use the MVP, market it, and onboard it to clients of Cloud9's choosing. Standard restrictions on sub-licensing or redistributing the underlying source code apply.</p>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-[#1B2A4A] text-sm mb-1">Reverse engineering</p>
+                    <p class="text-sm text-[#2D2D2D]">Not permitted during the licence period.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Arrow (horizontal on lg+, vertical on smaller) -->
+              <div class="flex items-center justify-center">
+                <!-- Horizontal arrow (lg+ screens) -->
+                <div class="hidden lg:flex flex-col items-center text-[#FF6B6B]">
+                  <p class="text-xs uppercase tracking-wider font-semibold text-[#1B2A4A] mb-2">M4 paid</p>
+                  <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                  <p class="text-xs uppercase tracking-wider font-semibold text-[#1B2A4A] mt-2">in cleared funds</p>
+                </div>
+                <!-- Vertical arrow (smaller screens) -->
+                <div class="flex lg:hidden flex-row items-center gap-3 text-[#FF6B6B]">
+                  <p class="text-xs uppercase tracking-wider font-semibold text-[#1B2A4A]">M4 paid in cleared funds</p>
+                  <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                </div>
+              </div>
+
+              <!-- After column -->
+              <div class="rounded-lg border-2 border-emerald-300 bg-emerald-50 shadow-sm p-6 flex flex-col">
+                <div class="mb-4 pb-4 border-b border-emerald-200">
+                  <p class="text-xs uppercase tracking-wider text-emerald-700 font-semibold mb-2">7.2 After final payment</p>
+                  <h4 class="text-lg font-bold text-[#1B2A4A]">On full payment</h4>
+                  <p class="text-sm text-[#6B7280] mt-1">Triggered by receipt of M4 in cleared funds.</p>
+                </div>
+
+                <div class="space-y-4 flex-1">
+                  <div>
+                    <p class="font-semibold text-[#1B2A4A] text-sm mb-1">Title</p>
+                    <p class="text-sm text-[#2D2D2D]">Transfers automatically to Cloud9. All right, title and interest in the MVP is assigned absolutely. No further documentation needed for the transfer to take effect. BrightKeep will execute reasonable assignment documents on request.</p>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-[#1B2A4A] text-sm mb-1">Deployment pipeline</p>
+                    <p class="text-sm text-[#2D2D2D]">Transferred to Cloud9's control. Cloud9 takes administrative ownership of the GitHub repository, the pipeline, secrets and access tokens (rotated at handover), and the deployed instance configuration.</p>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-[#1B2A4A] text-sm mb-1">Handover bundle</p>
+                    <p class="text-sm text-[#2D2D2D]">Source code repository, deployment pipeline, Terraform infrastructure-as-code, operational runbooks, architecture decision log, administrator and end-user guides, and admin access to the Cloud9 and Cleanaway deployed instances.</p>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-[#1B2A4A] text-sm mb-1">Cloud9's position</p>
+                    <p class="text-sm text-[#2D2D2D]">Full owner of the MVP. Free to operate, modify, redeploy, and onboard further clients without further reference to BrightKeep.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+          <!-- 8. Post-MVP Development -->
+          <section data-section="post-mvp" class="proposal-section hidden">
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">8. Post-MVP Development</h2>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-6">
+              Once the MVP has been delivered, accepted and paid for under this contract, any further development of the Visualisation Tool is to be agreed under a future development contract or contract update between Cloud9 and BrightKeep. Post-MVP development is its own commercial workstream. It is not absorbed into this contract, and it does not run against any consulting arrangement.
+            </p>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-3">
+              Examples of work that would fall under future development contracts:
+            </p>
+
+            <ul class="list-disc pl-6 space-y-2 mb-6 text-[#2D2D2D]">
+              <li><strong>Per-client deployments</strong> beyond Cloud9 and Cleanaway</li>
+              <li><strong>Non-SharePoint integrations</strong> with third-party systems such as ServiceNow, ManageEngine, ITSM platforms, CMDBs, and other source-of-truth systems</li>
+              <li><strong>Backlog feature development</strong> (Tier 2 and Tier 3 items from the V1 roadmap)</li>
+              <li><strong>MLP features</strong> such as multi-persona access, check-out model, tenant branding, operations dashboard, and full validation rules</li>
+              <li><strong>Maintenance, bug fixes and operational support</strong> beyond the acceptance window</li>
+              <li><strong>AI feature development</strong> such as conversational filtering and solution design advisor</li>
+              <li><strong>Higher-security infrastructure patterns</strong> as referenced in Section 6.2</li>
+              <li><strong>Matured Product roadmap items</strong></li>
+            </ul>
+
+            <div class="p-5 rounded-lg bg-[#F8F9FA] border-l-4 border-[#FF6B6B]">
+              <p class="text-sm text-[#2D2D2D]">
+                Each piece of post-MVP development is scoped, costed and contracted at the point it is commissioned. That keeps each piece of work bounded and predictable, and avoids the kind of open-ended &ldquo;ongoing engagement&rdquo; that blurs the line between one piece of work and the next.
+              </p>
+            </div>
+          </section>
+
+          <!-- 9. Scope Discipline -->
+          <section data-section="scope-creep" class="proposal-section hidden">
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">9. Scope Discipline (Joint Commitment)</h2>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-6">
+              The main risk on a fixed-price MVP build is that out-of-scope work starts being requested before delivery is complete. To manage that, both parties commit to the following.
+            </p>
+
+            <ol class="list-decimal pl-6 space-y-3 mb-6 text-[#2D2D2D]">
+              <li><strong>Time-box the MVP.</strong> Target PoC handover within ~3 weeks of contract signature. Both parties prioritise getting the MVP to acceptance before any backlog work starts.</li>
+              <li><strong>Defer other work to a future development contract.</strong> Any request from Cloud9 during the MVP build for work outside Section 3 is acknowledged and deferred. It is not refused. It is scheduled into a future development engagement.</li>
+              <li><strong>No verbal scope expansions.</strong> All change requests are made in writing per Section 3.4. No verbal &ldquo;while you're at it&rdquo; additions.</li>
+              <li><strong>Single point of acceptance.</strong> The Cloud9 PoC handover and the Cleanaway production deployment together form the acceptance events for this contract. Once those are signed off and the final milestone is paid, this contract is closed. Any further Visualisation Tool work runs under a separately agreed development contract.</li>
+            </ol>
+          </section>
+
+          <!-- 10. For Confirmation -->
+          <section data-section="confirm" class="proposal-section hidden">
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">10. Prerequisites and Items for Confirmation</h2>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-6">
+              The substantive structure and commercials in this proposal are settled. The following prerequisites need to be in place for the target dates to hold. Owner column shows which party is responsible for each item.
+            </p>
+
+            <div class="overflow-x-auto mb-6">
+              <table>
+                <thead>
+                  <tr><th>#</th><th>Item</th><th>Owner</th><th>Notes</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>10.1</td>
+                    <td>Completion of the Visualisation Tool in line with MVP requirements</td>
+                    <td>BrightKeep</td>
+                    <td>Delivery of the MVP feature set per Section 3.1, including RBAC. This is the prerequisite to any deployment activity and underpins all subsequent target dates.</td>
+                  </tr>
+                  <tr>
+                    <td>10.2</td>
+                    <td>PoC infrastructure requirements specification</td>
+                    <td>BrightKeep</td>
+                    <td>BrightKeep to provide a written specification of the infrastructure, identity and data access requirements for the Cloud9 PoC deployment (Azure subscription, Entra ID configuration, SharePoint access, network requirements).</td>
+                  </tr>
+                  <tr>
+                    <td>10.3</td>
+                    <td>PoC environment readiness</td>
+                    <td>Cloud9</td>
+                    <td>Cloud9 to confirm its current environment matches the specification at 10.2 and to address any gaps. Any unresolved gaps will affect the 29 May 2026 Milestone 2 target.</td>
+                  </tr>
+                  <tr>
+                    <td>10.4</td>
+                    <td>Cleanaway readiness</td>
+                    <td>Cloud9 / Cleanaway</td>
+                    <td>Cyber assessment outcome confirmed and Cleanaway infrastructure/access in place, so Milestone 3 can be planned against the 12 June 2026 go-live target.</td>
+                  </tr>
+                  <tr>
+                    <td>10.5</td>
+                    <td>Security and infrastructure requirements</td>
+                    <td>Cloud9 / Cleanaway</td>
+                    <td>Confirmation of any client-driven security requirements (e.g. private endpoints, dedicated databases, network controls) that would affect the indicative infrastructure costs in Section 6 or require architectural changes.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="p-5 rounded-lg bg-amber-50 border border-amber-200">
+              <p class="font-semibold text-[#1B2A4A] mb-2">Note for Cloud9's lawyer</p>
+              <p class="text-sm text-[#2D2D2D]">
+                The retention-of-title and ownership-on-payment structure (Section 7) is the least standard element of the proposal. Cloud9 should put it in front of its lawyer alongside the rest of the contract. It is a standard mechanism, but worth an explicit sign-off.
+              </p>
+            </div>
+          </section>
+
+          <!-- 11. Next Step -->
+          <section data-section="next-step" class="proposal-section hidden">
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#1B2A4A] mb-6">11. Recommended Next Step</h2>
+
+            <p class="text-[#2D2D2D] leading-relaxed mb-6">
+              A 60-minute working session with Michael and Matt to walk through this document. From that session, BrightKeep will issue the final contract for signature.
+            </p>
+
+            <div class="p-6 rounded-lg bg-[#1B2A4A] text-white mb-6">
+              <p class="font-semibold text-[#FF6B6B] mb-3 uppercase tracking-wider text-xs">Sequencing and target dates</p>
+              <ol class="list-decimal pl-6 space-y-2 text-sm">
+                <li>Working session with Michael and Matt to walk through this proposal</li>
+                <li>Final contract issued for signature</li>
+                <li>Contract signed; Milestone 1 invoice ($10,000) issues on signature</li>
+                <li><strong>29 May 2026:</strong> Cloud9 PoC handover (Milestone 2, $10,000). Working solution in Cloud9's tenant.</li>
+                <li><strong>12 June 2026:</strong> Cleanaway production go-live (Milestone 3, $10,000).</li>
+                <li><strong>13 June &ndash; 13 July 2026:</strong> One-month stabilisation period in Cleanaway production.</li>
+                <li><strong>13 July 2026:</strong> Final acceptance and ownership transfer (Milestone 4, $8,900). Full handover bundle delivered, title transfers to Cloud9.</li>
+              </ol>
+            </div>
+
+            <p class="text-[#2D2D2D] leading-relaxed">
+              Target dates assume contract signature in the next sitting and timely Cloud9 / Cleanaway readiness on infrastructure, Entra ID and SharePoint access. If client readiness slips, dates move accordingly. Any movement will be flagged in writing as soon as it is identified.
+            </p>
+
+            <div class="mt-8 pt-6 border-t border-gray-200 text-sm text-[#6B7280]">
+              <p>BrightKeep. Alastair Tooth.</p>
+              <p>May 2026</p>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <style is:global>
+        /* Table outer container: rounded card with shadow */
+        .proposal-section .overflow-x-auto {
+          border: 1px solid #d1d5db;
+          border-radius: 0.5rem;
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+          overflow: hidden;
+          margin-bottom: 1.5rem;
+        }
+
+        /* Table reset */
+        .proposal-section table {
+          width: 100%;
+          font-size: 0.875rem;
+          line-height: 1.5;
+          border-collapse: collapse;
+          margin: 0;
+          background: white;
+        }
+
+        /* Header row */
+        .proposal-section thead tr {
+          background-color: #1B2A4A;
+        }
+        .proposal-section thead th {
+          color: white;
+          font-weight: 600;
+          font-size: 0.75rem;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          text-align: left;
+          padding: 0.75rem 1rem;
+          border-right: 1px solid #2D3F5F;
+          vertical-align: top;
+        }
+        .proposal-section thead th:last-child {
+          border-right: none;
+        }
+
+        /* Body cells: visible grid lines */
+        .proposal-section tbody td {
+          padding: 0.875rem 1rem;
+          vertical-align: top;
+          border-top: 1px solid #e5e7eb;
+          border-right: 1px solid #e5e7eb;
+          color: #2D2D2D;
+        }
+        .proposal-section tbody td:last-child {
+          border-right: none;
+        }
+        .proposal-section tbody tr:first-child td {
+          border-top: none;
+        }
+
+        /* Zebra striping */
+        .proposal-section tbody tr:nth-child(odd) {
+          background-color: #ffffff;
+        }
+        .proposal-section tbody tr:nth-child(even) {
+          background-color: #f8fafc;
+        }
+
+        /* Hover state */
+        .proposal-section tbody tr:hover {
+          background-color: #eff6ff;
+        }
+
+        /* Total row */
+        .proposal-section tr.total-row td {
+          font-weight: 600;
+          background-color: #f1f4f9 !important;
+          border-top: 2px solid #1B2A4A;
+        }
+
+        /* Right-aligned numeric cells */
+        .proposal-section table .text-right {
+          text-align: right;
+          font-variant-numeric: tabular-nums;
+        }
+
+        /* Baseline cost emphasis: emerald accent on container */
+        .proposal-section .cost-table-baseline {
+          border-color: #059669;
+          border-width: 2px;
+          box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.1), 0 2px 4px -2px rgba(5, 150, 105, 0.1);
+        }
+        .proposal-section .cost-table-baseline thead tr {
+          background-color: #1B2A4A;
+        }
+        .proposal-section .cost-table-baseline tr.total-row td {
+          background-color: #d1fae5 !important;
+          border-top: 2px solid #059669;
+          color: #064e3b;
+        }
+
+        /* Muted potential-costs table: slate, lower visual weight */
+        .proposal-section .cost-table-muted {
+          border-color: #d1d5db;
+          box-shadow: none;
+          background-color: #fafafa;
+        }
+        .proposal-section .cost-table-muted table {
+          background-color: transparent;
+        }
+        .proposal-section .cost-table-muted thead tr {
+          background-color: #94a3b8;
+        }
+        .proposal-section .cost-table-muted thead th {
+          color: #f1f5f9;
+          border-right-color: #cbd5e1;
+        }
+        .proposal-section .cost-table-muted tbody td {
+          color: #4b5563;
+          border-color: #e5e7eb;
+        }
+        .proposal-section .cost-table-muted tbody tr:nth-child(odd) {
+          background-color: #fafafa;
+        }
+        .proposal-section .cost-table-muted tbody tr:nth-child(even) {
+          background-color: #f3f4f6;
+        }
+        .proposal-section .cost-table-muted tbody tr:hover {
+          background-color: #e5e7eb;
+        }
+
+        /* ===== Print cover page ===== */
+        /* Styles applied at top level so they always parse;
+           display toggled via @media screen / @media print. */
+
+        #print-cover {
+          box-sizing: border-box !important;
+          width: 210mm !important;
+          height: 297mm !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          background-color: #1B2A4A !important;
+          color: #ffffff !important;
+          position: relative !important;
+          overflow: hidden !important;
+          page-break-after: always !important;
+          break-after: page !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          color-adjust: exact !important;
+        }
+
+        #print-cover * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          color-adjust: exact !important;
+        }
+
+        /* Top: BrightKeep wordmark */
+        #print-cover .print-cover-logo-wrap {
+          position: absolute !important;
+          top: 24mm !important;
+          left: 22mm !important;
+          font-family: 'Poppins', system-ui, sans-serif !important;
+          font-size: 36pt !important;
+          font-weight: 300 !important;
+          line-height: 1 !important;
+        }
+        #print-cover .print-cover-logo-bright { color: #ffffff !important; }
+        #print-cover .print-cover-logo-keep { color: #FF6B6B !important; }
+
+        /* Top right: status pill */
+        #print-cover .print-cover-tag-wrap {
+          position: absolute !important;
+          top: 28mm !important;
+          right: 22mm !important;
+        }
+        #print-cover .print-cover-tag {
+          display: inline-block !important;
+          color: #FF6B6B !important;
+          font-size: 9pt !important;
+          font-weight: 600 !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.15em !important;
+          border: 1pt solid #FF6B6B !important;
+          padding: 5pt 11pt !important;
+          border-radius: 999px !important;
+        }
+
+        /* Centre: title block */
+        #print-cover .print-cover-title-wrap {
+          position: absolute !important;
+          top: 110mm !important;
+          left: 22mm !important;
+          right: 22mm !important;
+        }
+        #print-cover .print-cover-title {
+          font-size: 38pt !important;
+          font-weight: 700 !important;
+          line-height: 1.12 !important;
+          color: #ffffff !important;
+          letter-spacing: -0.01em !important;
+          margin: 0 0 10pt 0 !important;
+        }
+        #print-cover .print-cover-subtitle {
+          font-size: 20pt !important;
+          font-weight: 300 !important;
+          color: rgba(255, 255, 255, 0.85) !important;
+          margin: 0 0 22pt 0 !important;
+        }
+        #print-cover .print-cover-rule {
+          width: 60pt !important;
+          height: 3pt !important;
+          background-color: #FF6B6B !important;
+          margin: 0 0 22pt 0 !important;
+        }
+        #print-cover .print-cover-date {
+          font-size: 14pt !important;
+          color: #ffffff !important;
+          margin: 0 !important;
+        }
+
+        /* Bottom strip: footer */
+        #print-cover .print-cover-foot {
+          position: absolute !important;
+          bottom: 24mm !important;
+          left: 22mm !important;
+          right: 22mm !important;
+          padding-top: 12pt !important;
+          border-top: 1pt solid rgba(255, 255, 255, 0.25) !important;
+          font-size: 10pt !important;
+          color: rgba(255, 255, 255, 0.75) !important;
+        }
+        #print-cover .print-cover-foot-left {
+          float: left !important;
+          margin: 0 !important;
+        }
+        #print-cover .print-cover-foot-right {
+          float: right !important;
+          margin: 0 !important;
+        }
+        #print-cover .print-cover-foot::after {
+          content: "" !important;
+          display: block !important;
+          clear: both !important;
+        }
+
+        /* Hide cover on screen */
+        @media screen {
+          #print-cover {
+            display: none !important;
+          }
+        }
+
+        /* Print: page setup and rules */
+        @page {
+          size: A4;
+          margin: 18mm 15mm 22mm 15mm;
+        }
+        @page :first {
+          margin: 0;
+        }
+
+        @media print {
+          /* Hide chrome */
+          header,
+          #proposal-sidebar,
+          #sidebar-backdrop,
+          #export-pdf-btn,
+          #proposal-cover {
+            display: none !important;
+          }
+
+          /* Reset body and main padding so @page margins control whitespace */
+          body {
+            margin: 0 !important;
+            padding: 0 !important;
+            background: #ffffff !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+          main {
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+
+          /* Show cover */
+          #print-cover {
+            display: block !important;
+          }
+
+          /* Body content sections - force a page break between each */
+          .proposal-section {
+            display: block !important;
+            page-break-before: always;
+            break-before: page;
+          }
+
+          .proposal-section table {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+
+          .proposal-section thead,
+          .proposal-section tbody tr:nth-child(even),
+          .proposal-section tr.total-row td,
+          .proposal-section .cost-table-baseline tr.total-row td,
+          .proposal-section .cost-table-muted thead tr {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+
+          h2, h3 {
+            page-break-after: avoid;
+            break-after: avoid;
+          }
+        }
+      </style>
+
+      <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+          const sections = document.querySelectorAll('.proposal-section');
+          const sidebarLinks = document.querySelectorAll('.sidebar-link');
+          const cover = document.getElementById('proposal-cover');
+
+          const exportBtn = document.getElementById('export-pdf-btn');
+          if (exportBtn) {
+            exportBtn.addEventListener('click', () => {
+              const activeSection = document.querySelector('.proposal-section:not(.hidden)');
+              const activeSectionId = activeSection ? activeSection.dataset.section : 'executive-summary';
+
+              sections.forEach(s => s.classList.remove('hidden'));
+              if (cover) cover.classList.remove('hidden');
+
+              setTimeout(() => { window.print(); }, 200);
+
+              window.addEventListener('afterprint', function restore() {
+                window.removeEventListener('afterprint', restore);
+                sections.forEach(s => s.classList.add('hidden'));
+                showSection(activeSectionId);
+              });
+            });
+          }
+
+          window.showSection = showSection;
+          function showSection(sectionId) {
+            if (cover) cover.classList.add('hidden');
+            sections.forEach(s => s.classList.add('hidden'));
+            const target = document.querySelector(`section[data-section="${sectionId}"]`);
+            if (target) {
+              target.classList.remove('hidden');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            sidebarLinks.forEach(link => {
+              link.classList.remove('bg-[#1B2A4A]', 'text-white', 'font-medium');
+              if (link.dataset.section === sectionId) {
+                link.classList.add('bg-[#1B2A4A]', 'text-white', 'font-medium');
+              }
+            });
+            closeMobileSidebar();
+          }
+
+          sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+              showSection(link.dataset.section);
+            });
+          });
+
+          const sidebarToggle = document.getElementById('sidebar-toggle');
+          const sidebar = document.getElementById('proposal-sidebar');
+          const backdrop = document.getElementById('sidebar-backdrop');
+
+          function openMobileSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            backdrop.classList.remove('hidden');
+          }
+
+          function closeMobileSidebar() {
+            if (window.innerWidth < 1024) {
+              sidebar.classList.add('-translate-x-full');
+              backdrop.classList.add('hidden');
+            }
+          }
+
+          if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', () => {
+              if (sidebar.classList.contains('-translate-x-full')) {
+                openMobileSidebar();
+              } else {
+                closeMobileSidebar();
+              }
+            });
+          }
+
+          if (backdrop) {
+            backdrop.addEventListener('click', closeMobileSidebar);
+          }
+
+          showSection('executive-summary');
+        });
+      </script>
+    </>
+  )}
+</ProposalLayout>

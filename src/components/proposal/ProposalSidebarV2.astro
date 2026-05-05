@@ -1,0 +1,66 @@
+---
+
+---
+
+<!-- Backdrop overlay for mobile -->
+<div id="sidebar-backdrop" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden"></div>
+
+<aside
+  id="proposal-sidebar"
+  class="fixed top-16 left-0 bottom-0 w-64 bg-[#F8F9FA] border-r border-gray-200 z-40 overflow-y-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300"
+>
+  <nav class="py-4 text-sm">
+    <!-- HEADLINE -->
+    <div class="px-4 py-3 mt-1">
+      <div class="flex items-center gap-2">
+        <div class="w-1 h-5 bg-[#FF6B6B] rounded-full"></div>
+        <p class="text-xs font-bold text-[#1B2A4A] uppercase tracking-wider">Headline</p>
+      </div>
+    </div>
+
+    <div class="px-4 pb-2">
+      <button data-section="executive-summary" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">1. Executive Summary</button>
+      <button data-section="two-contracts" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">2. Engagement Structure</button>
+    </div>
+
+    <!-- THE BUILD -->
+    <div class="px-4 py-3 mt-2 border-t border-gray-200">
+      <div class="flex items-center gap-2">
+        <div class="w-1 h-5 bg-[#FF6B6B] rounded-full"></div>
+        <p class="text-xs font-bold text-[#1B2A4A] uppercase tracking-wider">The Build</p>
+      </div>
+    </div>
+
+    <div class="px-4 pb-2">
+      <button data-section="mvp-scope" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">3. MVP Scope</button>
+      <button data-section="poc" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">4. Proof of Concept</button>
+      <button data-section="commercials" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">5. Commercial Terms</button>
+      <button data-section="infrastructure" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">6. Infrastructure Costs</button>
+      <button data-section="ownership" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">7. Ownership &amp; Licensing</button>
+    </div>
+
+    <!-- WHAT'S NEXT -->
+    <div class="px-4 py-3 mt-2 border-t border-gray-200">
+      <div class="flex items-center gap-2">
+        <div class="w-1 h-5 bg-[#FF6B6B] rounded-full"></div>
+        <p class="text-xs font-bold text-[#1B2A4A] uppercase tracking-wider">What's Next</p>
+      </div>
+    </div>
+
+    <div class="px-4 pb-2">
+      <button data-section="post-mvp" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">8. Post-MVP Development</button>
+      <button data-section="scope-creep" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">9. Scope Discipline</button>
+      <button data-section="confirm" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">10. For Confirmation</button>
+      <button data-section="next-step" class="sidebar-link block w-full text-left px-3 py-1.5 rounded-md text-[#2D2D2D] hover:bg-[#1B2A4A]/10 hover:text-[#1B2A4A] transition-colors truncate">11. Next Step</button>
+    </div>
+
+    <!-- Version info -->
+    <div class="px-4 py-4 mt-2 border-t border-gray-200">
+      <p class="text-xs text-[#6B7280]">Version 2.0 &bull; May 2026</p>
+      <p class="text-xs text-[#6B7280]">Prepared for Cloud9 Consulting</p>
+      <p class="text-xs text-[#6B7280] mt-2">
+        <a href="/proposals/cloud9" class="text-[#1B2A4A] hover:underline">&larr; View V1 (initial)</a>
+      </p>
+    </div>
+  </nav>
+</aside>

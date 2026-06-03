@@ -1,77 +1,99 @@
 ---
 interface Props {
   version?: 'v1' | 'v2';
+  variant?: 'proposal';
+  title?: string;
 }
-const { version = 'v1' } = Astro.props;
-const titleText = version === 'v2'
+
+const { version, variant = 'proposal', title } = Astro.props;
+
+const defaultTitle = version === 'v2'
   ? 'Cloud9 Visualisation Tool — MVP Build Proposal (V2)'
-  : 'Cloud9 Visualisation Application — Proposal v2.1';
+  : version === 'v1'
+  ? 'Cloud9 Visualisation Application — Proposal v2.1'
+  : 'Cloud9 AI Operations Platform';
+
+const displayTitle = title ?? defaultTitle;
 ---
 
 <header class="fixed top-0 left-0 right-0 h-16 bg-[#1B2A4A] z-50 flex items-center px-4 lg:px-6 shadow-lg">
-  <!-- Mobile hamburger -->
-  <button
-    id="sidebar-toggle"
-    class="lg:hidden mr-3 text-white p-1 hover:bg-white/10 rounded-lg transition-colors"
-    aria-label="Toggle navigation"
-  >
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-    </svg>
-  </button>
+  <!-- Mobile hamburger (only on proposals with sidebar) -->
+  {version && (
+    <button
+      id="sidebar-toggle"
+      class="lg:hidden mr-3 text-white p-1 hover:bg-white/10 rounded-lg transition-colors"
+      aria-label="Toggle navigation"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  )}
 
   <!-- BrightKeep logo -->
   <div class="flex items-center flex-shrink-0 gap-2">
-    <img
-      src="/proposals/brightkeep-logo.png"
-      alt="BrightKeep"
-      class="h-8"
-    />
-    <span class="text-2xl leading-none" style="font-family: 'Poppins', sans-serif; font-weight: 300;"><span class="text-white">Bright</span><span class="text-[#FF6B6B]">Keep</span></span>
+    <img src="/proposals/brightkeep-logo.png" alt="BrightKeep" class="h-8" />
+    <span class="text-2xl leading-none" style="font-family: 'Poppins', sans-serif; font-weight: 300;">
+      <span class="text-white">Bright</span><span class="text-[#FF6B6B]">Keep</span>
+    </span>
   </div>
 
-  <!-- Version toggle -->
-  <div class="hidden md:flex items-center gap-1 ml-4 lg:ml-6 bg-white/10 rounded-lg p-0.5">
+  <!-- Navigation: back link + optional V1/V2 toggle -->
+  <div class="flex items-center gap-2 ml-4 lg:ml-6">
+    <!-- Back to all proposals -->
     <a
       href="/proposals/cloud9"
-      class={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${version === 'v1' ? 'bg-white text-[#1B2A4A]' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+      class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/60 hover:text-white hover:bg-white/10 transition-colors"
     >
-      V1 — Initial
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      All Proposals
     </a>
-    <a
-      href="/proposals/cloud9-v2"
-      class={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${version === 'v2' ? 'bg-[#FF6B6B] text-white' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
-    >
-      V2 — Updated
-    </a>
+
+    <!-- V1/V2 toggle — only shown on visualisation proposals -->
+    {version && (
+      <div class="hidden md:flex items-center gap-1 bg-white/10 rounded-lg p-0.5">
+        <a
+          href="/proposals/cloud9-visualisation"
+          class={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${version === 'v1' ? 'bg-white text-[#1B2A4A]' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+        >
+          V1 — Initial
+        </a>
+        <a
+          href="/proposals/cloud9-v2"
+          class={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${version === 'v2' ? 'bg-[#FF6B6B] text-white' : 'text-white/70 hover:text-white hover:bg-white/10'}`}
+        >
+          V2 — Updated
+        </a>
+      </div>
+    )}
   </div>
 
   <!-- Title (centered) -->
   <div class="flex-1 text-center hidden lg:block">
     <h1 class="text-white font-semibold text-sm lg:text-base truncate px-4">
-      {titleText}
+      {displayTitle}
     </h1>
   </div>
 
-  <!-- Export PDF button -->
-  <button
-    id="export-pdf-btn"
-    class="print:hidden ml-auto lg:ml-0 mr-3 text-white/80 hover:text-white hover:bg-white/10 p-2 rounded-lg transition-colors flex items-center gap-1.5 text-sm"
-    aria-label="Export PDF"
-    title="Export as PDF"
-  >
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-    </svg>
-    <span class="hidden sm:inline">Export PDF</span>
-  </button>
+  <!-- Export PDF button (proposals with sidebar only) -->
+  {version && (
+    <button
+      id="export-pdf-btn"
+      class="print:hidden ml-auto lg:ml-0 mr-3 text-white/80 hover:text-white hover:bg-white/10 p-2 rounded-lg transition-colors flex items-center gap-1.5 text-sm"
+      aria-label="Export PDF"
+      title="Export as PDF"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+      <span class="hidden sm:inline">Export PDF</span>
+    </button>
+  )}
 
   <!-- Cloud9 logo -->
-  <div class="flex items-center flex-shrink-0">
-    <img
-      src="/proposals/cloud9-logo.png"
-      alt="Cloud9 Consulting"
-      class="h-8 rounded"
-    />
+  <div class="flex items-center flex-shrink-0 ml-auto lg:ml-0">
+    <img src="/proposals/cloud9-logo.png" alt="Cloud9 Consulting" class="h-8 rounded" />
   </div>
 </header>

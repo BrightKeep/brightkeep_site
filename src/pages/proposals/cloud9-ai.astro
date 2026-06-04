@@ -786,6 +786,22 @@ if (Astro.request.method === 'POST' && !authenticated) {
               </div>
             </div>
 
+            <!-- Resource costs -->
+            <div class="reveal rounded-2xl border border-[#1B2A4A]/15 bg-[#F8F9FA] p-5 mb-8 flex flex-col sm:flex-row sm:items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-[#1B2A4A] flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div class="flex-1">
+                <div class="font-bold text-[#1B2A4A] text-sm mb-1">Delivery costs - BrightKeep resource</div>
+                <p class="text-[#4B5563] text-sm leading-relaxed">Delivery is charged on a time and material basis at the contracted BrightKeep daily rate. Work is drawn down against pre-agreed outputs and time-spend, confirmed at the start of each phase before work commences.</p>
+              </div>
+              <div class="flex-shrink-0 text-center sm:text-right">
+                <div class="text-xs font-bold text-[#6B7280] uppercase tracking-wider mb-1">Billing model</div>
+                <div class="text-sm font-bold text-[#1B2A4A]">Time & material</div>
+                <div class="text-xs text-[#6B7280]">Per contracted rate</div>
+              </div>
+            </div>
+
             <!-- Bottom row: cost breakdown + CTA -->
             <div class="grid lg:grid-cols-5 gap-8">
 

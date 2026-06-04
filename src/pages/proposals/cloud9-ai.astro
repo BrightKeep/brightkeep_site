@@ -42,14 +42,12 @@ if (Astro.request.method === 'POST' && !authenticated) {
     <>
       <ProposalHeader title="Cloud9 AI Operations Platform" />
 
-      <!-- Scroll progress bar -->
       <div id="ai-progress" class="fixed top-16 left-0 right-0 z-40 h-0.5 bg-transparent">
         <div id="ai-progress-fill" class="h-full bg-[#FF6B6B] transition-none" style="width:0%"></div>
       </div>
 
-      <!-- Section nav dots (desktop) -->
       <nav id="section-dots" class="hidden lg:flex fixed right-5 top-1/2 -translate-y-1/2 z-40 flex-col gap-3" aria-label="Section navigation">
-        {['s-hero','s-specialists','s-architecture','s-roadmap','s-sprint1','s-benefits','s-investment'].map((id, i) => (
+        {['s-hero','s-challenge','s-solution','s-specialists','s-delivery','s-benefits','s-summary'].map((id, i) => (
           <button
             class="ai-dot w-2.5 h-2.5 rounded-full bg-white/25 hover:bg-white/50 transition-all duration-200 border border-white/30"
             data-target={id}
@@ -60,90 +58,62 @@ if (Astro.request.method === 'POST' && !authenticated) {
 
       <main class="pt-16">
 
-        <!-- ═══════════════════════════════════ SECTION 1: HERO -->
+        <!-- ════════════════════════════════════ SECTION 1: HERO -->
         <section id="s-hero" class="relative min-h-screen flex items-center overflow-hidden bg-[#0D1F3C]">
-          <!-- Animated particle background -->
           <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
             {Array.from({length: 18}).map((_, i) => (
-              <div
-                class="particle absolute rounded-full"
-                style={`
-                  width: ${4 + (i % 5) * 3}px;
-                  height: ${4 + (i % 5) * 3}px;
-                  left: ${(i * 17 + 5) % 95}%;
-                  top: ${(i * 23 + 8) % 90}%;
-                  background: ${ i % 3 === 0 ? '#FF6B6B' : i % 3 === 1 ? '#00B4D8' : 'rgba(255,255,255,0.4)' };
-                  opacity: ${0.2 + (i % 4) * 0.1};
-                  animation: float-particle ${5 + (i % 6)}s ease-in-out ${(i * 0.7) % 4}s infinite alternate;
-                `}
-              ></div>
+              <div class="particle absolute rounded-full" style={`width:${4+(i%5)*3}px;height:${4+(i%5)*3}px;left:${(i*17+5)%95}%;top:${(i*23+8)%90}%;background:${i%3===0?'#FF6B6B':i%3===1?'#00B4D8':'rgba(255,255,255,0.4)'};opacity:${0.2+(i%4)*0.1};animation:float-particle ${5+(i%6)}s ease-in-out ${(i*0.7)%4}s infinite alternate`}></div>
             ))}
-            <!-- Grid overlay -->
-            <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px;"></div>
+            <div class="absolute inset-0" style="background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:60px 60px"></div>
           </div>
 
           <div class="relative z-10 max-w-6xl mx-auto px-6 lg:px-12 py-24 w-full">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-              <!-- Left: Headline -->
               <div class="hero-left" style="opacity:0;transform:translateX(-30px)">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FF6B6B]/15 border border-[#FF6B6B]/30 mb-8">
                   <span class="w-2 h-2 rounded-full bg-[#FF6B6B] animate-pulse"></span>
                   <span class="text-[#FF6B6B] text-xs font-bold uppercase tracking-widest">AI Operations Platform</span>
                 </div>
-
                 <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6">
-                  Meet Your<br>
+                  Cloud9<br>
                   <span class="relative">
                     AI Operations
                     <span class="absolute -bottom-1 left-0 right-0 h-1 bg-[#FF6B6B] rounded-full hero-underline" style="transform:scaleX(0);transform-origin:left"></span>
                   </span><br>
-                  <span class="text-[#00B4D8]">Team.</span>
+                  <span class="text-[#00B4D8]">Platform</span>
                 </h1>
-
                 <p class="text-white/65 text-lg leading-relaxed mb-10 max-w-lg">
-                  Intelligent AI Specialists embedded in your Microsoft 365 environment — automating proposals, hiring, and operations while learning from every engagement.
+                  A team of AI Specialists embedded in your Microsoft 365 environment — handling proposals, hiring, and operations while learning from every engagement.
                 </p>
-
                 <div class="flex flex-wrap gap-4">
-                  <a href="#s-specialists" class="px-6 py-3 bg-[#FF6B6B] text-white font-semibold rounded-xl hover:bg-[#FF5252] transition-colors text-sm">
-                    Meet the Specialists →
-                  </a>
-                  <a href="#s-investment" class="px-6 py-3 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 transition-colors text-sm border border-white/20">
-                    View Investment
-                  </a>
+                  <a href="#s-challenge" class="px-6 py-3 bg-[#FF6B6B] text-white font-semibold rounded-xl hover:bg-[#FF5252] transition-colors text-sm">See the opportunity</a>
+                  <a href="#s-summary" class="px-6 py-3 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 transition-colors text-sm border border-white/20">Proposal summary</a>
                 </div>
-
-                <!-- Stats row -->
                 <div class="flex gap-8 mt-12 pt-10 border-t border-white/10">
                   <div>
-                    <div class="text-3xl font-bold text-white">~20<span class="text-[#FF6B6B]">min</span></div>
-                    <div class="text-white/40 text-xs mt-1">Per proposal (vs 3hrs)</div>
+                    <div class="text-3xl font-bold text-white">~20<span class="text-[#FF6B6B]"> min</span></div>
+                    <div class="text-white/40 text-xs mt-1">Per proposal (target)</div>
                   </div>
                   <div class="w-px bg-white/10"></div>
                   <div>
                     <div class="text-3xl font-bold text-white">6<span class="text-[#00B4D8]">+</span></div>
-                    <div class="text-white/40 text-xs mt-1">AI Specialists</div>
+                    <div class="text-white/40 text-xs mt-1">AI Specialists planned</div>
                   </div>
                   <div class="w-px bg-white/10"></div>
                   <div>
-                    <div class="text-3xl font-bold text-white">$150<span class="text-[#FF6B6B]">/mo</span></div>
-                    <div class="text-white/40 text-xs mt-1">Running cost</div>
+                    <div class="text-3xl font-bold text-white">M365<span class="text-[#FF6B6B]"> native</span></div>
+                    <div class="text-white/40 text-xs mt-1">No new infrastructure</div>
                   </div>
                 </div>
               </div>
 
-              <!-- Right: Jordan Reeves card -->
               <div class="hero-right" style="opacity:0;transform:translateX(30px)">
                 <div class="relative">
-                  <!-- Floating card -->
                   <div class="relative bg-white/8 backdrop-blur-sm border border-white/15 rounded-2xl p-7 specialist-float">
-                    <!-- Card header -->
                     <div class="flex items-center gap-4 mb-5">
                       <div class="relative">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#1B2A4A] to-[#3A6B9F] flex items-center justify-center text-white font-bold text-xl border-2 border-[#FF6B6B]/40">
-                          JR
-                        </div>
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#1B2A4A] to-[#3A6B9F] flex items-center justify-center text-white font-bold text-xl border-2 border-[#FF6B6B]/40">JR</div>
                         <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-400 border-2 border-[#0D1F3C] flex items-center justify-center">
                           <div class="w-2 h-2 rounded-full bg-emerald-400 animate-ping absolute"></div>
                           <div class="w-2 h-2 rounded-full bg-white"></div>
@@ -152,43 +122,35 @@ if (Astro.request.method === 'POST' && !authenticated) {
                       <div>
                         <div class="text-white font-bold text-lg">Jordan Reeves</div>
                         <div class="text-white/50 text-sm">Proposals Strategist</div>
-                        <div class="mt-1.5">
-                          <span class="inline-block px-2 py-0.5 rounded-full text-xs font-bold bg-[#FF6B6B] text-white">Sprint 1 — Active</span>
-                        </div>
+                        <span class="inline-block mt-1.5 px-2 py-0.5 rounded-full text-xs font-bold bg-[#FF6B6B] text-white">Phase 1</span>
                       </div>
                     </div>
-
                     <div class="space-y-3">
                       {[
-                        { icon: '✍️', text: 'Generates complete proposals from a brief in under 5 minutes' },
-                        { icon: '🧠', text: 'Remembers every past Cloud9 delivery and draws on them' },
-                        { icon: '🎯', text: 'Pushes back when an approach won\'t win — and explains why' },
+                        { text: 'Generates complete proposals from a brief in under 20 minutes' },
+                        { text: 'Draws on Cloud9\'s past proposals and deliveries automatically' },
+                        { text: 'Challenges approaches that won\'t win — and explains why' },
                       ].map(item => (
                         <div class="flex items-start gap-3 text-white/75 text-sm">
-                          <span class="text-base mt-0.5 flex-shrink-0">{item.icon}</span>
+                          <svg class="w-4 h-4 text-[#FF6B6B] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 12 4 10"/></svg>
                           <span>{item.text}</span>
                         </div>
                       ))}
                     </div>
-
-                    <!-- "Live" typing indicator -->
                     <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-2">
                       <div class="flex gap-1">
                         <div class="w-1.5 h-1.5 rounded-full bg-[#00B4D8] animate-bounce" style="animation-delay:0s"></div>
                         <div class="w-1.5 h-1.5 rounded-full bg-[#00B4D8] animate-bounce" style="animation-delay:0.15s"></div>
                         <div class="w-1.5 h-1.5 rounded-full bg-[#00B4D8] animate-bounce" style="animation-delay:0.3s"></div>
                       </div>
-                      <span class="text-white/35 text-xs italic">Drafting proposal for new government panel opportunity...</span>
+                      <span class="text-white/35 text-xs italic">Drafting executive summary for government panel opportunity...</span>
                     </div>
                   </div>
-
-                  <!-- Decorative glow -->
                   <div class="absolute -inset-4 bg-[#FF6B6B]/5 rounded-3xl blur-2xl -z-10"></div>
                 </div>
               </div>
             </div>
 
-            <!-- Scroll indicator -->
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30">
               <span class="text-xs uppercase tracking-widest">Scroll to explore</span>
               <div class="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1">
@@ -199,24 +161,325 @@ if (Astro.request.method === 'POST' && !authenticated) {
         </section>
 
 
-        <!-- ═════════════════════════════ SECTION 2: SPECIALISTS -->
+        <!-- ═══════════════════════════════════ SECTION 2: THE CHALLENGE -->
+        <section id="s-challenge" class="py-24 bg-white">
+          <div class="max-w-6xl mx-auto px-6 lg:px-12">
+
+            <div class="text-center mb-16 reveal">
+              <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#FF6B6B]/10 text-[#FF6B6B] mb-4">The Opportunity</span>
+              <h2 class="text-3xl lg:text-4xl font-bold text-[#1B2A4A] mb-4">Where time is being lost</h2>
+              <p class="text-[#6B7280] text-lg max-w-2xl mx-auto">Cloud9's core processes work — but they rely on significant manual effort that scales poorly as the business grows. These are the highest-impact areas to address first.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-6 items-start">
+
+              <!-- Priority cards (left 2/3) -->
+              <div class="lg:col-span-2 space-y-5">
+                <div class="flex items-center gap-3 mb-6 challenge-label" style="opacity:0;transform:translateY(10px)">
+                  <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1B2A4A] text-white text-xs font-bold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-[#FF6B6B] animate-pulse"></span>
+                    Phase 1 focus
+                  </div>
+                  <div class="flex-1 h-px bg-gray-200"></div>
+                </div>
+
+                <!-- Card 1: Proposal Generation -->
+                <div class="challenge-card-1 rounded-2xl border-2 border-[#1B2A4A] overflow-hidden shadow-lg" style="opacity:0;transform:translateX(-20px)">
+                  <div class="h-1.5 bg-gradient-to-r from-[#1B2A4A] to-[#3A6B9F]"></div>
+                  <div class="p-6">
+                    <div class="flex items-start gap-4 mb-5">
+                      <div class="w-12 h-12 rounded-xl bg-[#1B2A4A]/8 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-[#1B2A4A]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+                      </div>
+                      <div>
+                        <h3 class="text-lg font-bold text-[#1B2A4A] mb-1">Proposal Generation</h3>
+                        <p class="text-sm text-[#6B7280]">The highest-frequency, highest-effort manual process in the business</p>
+                      </div>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-3">
+                      {[
+                        'Each proposal takes 2–4 hours to assemble manually',
+                        'Past proposals and learnings are rarely referenced',
+                        'CV reformatting is repeated for every bid',
+                        'Structure and voice varies between submissions',
+                      ].map(pain => (
+                        <div class="flex items-start gap-2.5 p-3 rounded-lg bg-red-50 border border-red-100">
+                          <svg class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                          <span class="text-xs text-[#374151]">{pain}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 2: Team Profiles -->
+                <div class="challenge-card-2 rounded-2xl border-2 border-[#3A6B9F] overflow-hidden shadow-lg" style="opacity:0;transform:translateX(-20px)">
+                  <div class="h-1.5 bg-gradient-to-r from-[#3A6B9F] to-[#00B4D8]"></div>
+                  <div class="p-6">
+                    <div class="flex items-start gap-4 mb-5">
+                      <div class="w-12 h-12 rounded-xl bg-[#3A6B9F]/8 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-[#3A6B9F]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+                      </div>
+                      <div>
+                        <h3 class="text-lg font-bold text-[#1B2A4A] mb-1">Consultant Team Profiles</h3>
+                        <p class="text-sm text-[#6B7280]">A time-consuming step repeated on every proposal submission</p>
+                      </div>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-3">
+                      {[
+                        'CVs are manually reformatted for every individual bid',
+                        'Same experience explained differently each time',
+                        'No standard format adapted to brief requirements',
+                        'Leadership time spent on formatting, not strategy',
+                      ].map(pain => (
+                        <div class="flex items-start gap-2.5 p-3 rounded-lg bg-blue-50 border border-blue-100">
+                          <svg class="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                          <span class="text-xs text-[#374151]">{pain}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Backlog column (right 1/3) -->
+              <div class="challenge-backlog" style="opacity:0;transform:translateX(20px)">
+                <div class="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-5 sticky top-24">
+                  <div class="flex items-center gap-2 mb-5">
+                    <svg class="w-4 h-4 text-[#6B7280]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                    <span class="text-xs font-bold text-[#6B7280] uppercase tracking-wider">Future phases</span>
+                  </div>
+                  <div class="space-y-3">
+                    {[
+                      { label: 'Candidate Sourcing', sub: 'AI-assisted hiring pipeline', phase: 'Phase 2' },
+                      { label: 'Meeting Notes', sub: 'Auto-transcription & summaries', phase: 'Phase 4' },
+                      { label: 'Employment Contracts', sub: 'Template-driven generation', phase: 'Phase 4' },
+                      { label: 'Timesheet Management', sub: 'Karmly & approval workflows', phase: 'Phase 4' },
+                      { label: 'Tender Monitoring', sub: 'AusTender + state portals', phase: 'Phase 5' },
+                      { label: 'BD Outreach', sub: 'Research & personalised drafts', phase: 'Phase 5' },
+                    ].map(({ label, sub, phase }) => (
+                      <div class="flex items-start gap-3 p-3 rounded-lg bg-white border border-gray-100">
+                        <div class="w-1.5 h-1.5 rounded-full bg-gray-300 flex-shrink-0 mt-1.5"></div>
+                        <div class="flex-1 min-w-0">
+                          <div class="text-xs font-semibold text-[#374151] truncate">{label}</div>
+                          <div class="text-xs text-[#9CA3AF] truncate">{sub}</div>
+                        </div>
+                        <span class="text-xs text-[#9CA3AF] flex-shrink-0 font-medium">{phase}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p class="text-xs text-[#9CA3AF] mt-4 pt-3 border-t border-gray-200 text-center">Prioritisation reviewed at each phase</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════ SECTION 3: THE PLATFORM -->
+        <section id="s-solution" class="py-24 bg-[#1B2A4A]">
+          <div class="max-w-6xl mx-auto px-6 lg:px-12">
+
+            <div class="text-center mb-16 reveal">
+              <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#00B4D8]/15 text-[#00B4D8] mb-4 border border-[#00B4D8]/25">Platform Overview</span>
+              <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">How the platform works</h2>
+              <p class="text-white/50 text-lg max-w-2xl mx-auto">A central knowledge platform ingests Cloud9's existing data and connects to external tools. Named AI Specialists draw from that knowledge to assist your team.</p>
+            </div>
+
+            <!-- Architecture diagram -->
+            <div id="arch-diagram" class="relative max-w-5xl mx-auto mb-16">
+              <svg viewBox="0 0 960 340" xmlns="http://www.w3.org/2000/svg" class="w-full" style="overflow:visible">
+
+                <!-- Column labels -->
+                <text x="110" y="16" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" font-weight="700" fill="rgba(255,255,255,0.35)" letter-spacing="0.12em" id="lbl-1" style="opacity:0;transition:opacity 0.6s ease">DATA SOURCES</text>
+                <text x="460" y="16" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" font-weight="700" fill="rgba(255,255,255,0.35)" letter-spacing="0.12em" id="lbl-2" style="opacity:0;transition:opacity 0.6s ease">THE PLATFORM</text>
+                <text x="780" y="16" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" font-weight="700" fill="rgba(255,255,255,0.35)" letter-spacing="0.12em" id="lbl-3" style="opacity:0;transition:opacity 0.6s ease">SPECIALISTS</text>
+                <text x="920" y="16" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" font-weight="700" fill="rgba(255,255,255,0.35)" letter-spacing="0.12em" id="lbl-4" style="opacity:0;transition:opacity 0.6s ease">USERS</text>
+
+                <!-- Data sources column -->
+                <g id="arch-sources" style="opacity:0;transition:opacity 0.7s ease">
+                  <!-- Cloud9 data box -->
+                  <rect x="10" y="30" width="200" height="130" rx="10" fill="rgba(0,180,216,0.08)" stroke="#00B4D8" stroke-width="1.5"/>
+                  <text x="110" y="50" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="600" fill="#00B4D8">Cloud9 Data</text>
+                  {[
+                    { y: 68, label: 'Past Proposals' },
+                    { y: 88, label: 'Consultant CVs' },
+                    { y: 108, label: 'Delivery Documents' },
+                    { y: 128, label: 'Branded Templates' },
+                  ].map(({ y, label }) => (
+                    <g>
+                      <rect x="24" y={y} width="172" height="16" rx="4" fill="rgba(255,255,255,0.05)"/>
+                      <circle cx="36" cy={y+8} r="3" fill="#00B4D8" opacity="0.6"/>
+                      <text x="46" y={y+11} font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.65)">{label}</text>
+                    </g>
+                  ))}
+
+                  <!-- External APIs box -->
+                  <rect x="10" y="178" width="200" height="130" rx="10" fill="rgba(124,58,237,0.08)" stroke="rgba(124,58,237,0.5)" stroke-width="1.5"/>
+                  <text x="110" y="198" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="600" fill="#7C3AED">External Systems</text>
+                  {[
+                    { y: 216, label: 'Karmly (hours & projects)' },
+                    { y: 236, label: 'MYOB (financial data)' },
+                    { y: 256, label: 'Seek (candidates — Phase 2)' },
+                    { y: 276, label: 'Microsoft 365 (Graph API)' },
+                  ].map(({ y, label }) => (
+                    <g>
+                      <rect x="24" y={y} width="172" height="16" rx="4" fill="rgba(255,255,255,0.05)"/>
+                      <circle cx="36" cy={y+8} r="3" fill="#7C3AED" opacity="0.6"/>
+                      <text x="46" y={y+11} font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.65)">{label}</text>
+                    </g>
+                  ))}
+                </g>
+
+                <!-- Arrows: sources → platform -->
+                <g id="arch-arrows-1" style="opacity:0;transition:opacity 0.5s ease">
+                  <line x1="210" y1="95" x2="296" y2="130" stroke="#00B4D8" stroke-width="1.5" stroke-dasharray="5,4"/>
+                  <polygon points="292,125 300,132 295,137" fill="#00B4D8"/>
+                  <line x1="210" y1="243" x2="296" y2="210" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="5,4"/>
+                  <polygon points="292,205 300,208 295,215" fill="#7C3AED"/>
+                </g>
+
+                <!-- Platform box (Azure AI Foundry) -->
+                <g id="arch-platform" style="opacity:0;transition:opacity 0.7s ease">
+                  <rect x="300" y="50" width="320" height="240" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(255,107,107,0.5)" stroke-width="2"/>
+                  <rect x="300" y="50" width="320" height="30" rx="14" fill="rgba(255,107,107,0.15)"/>
+                  <rect x="300" y="64" width="320" height="16" fill="rgba(255,107,107,0.15)"/>
+                  <text x="460" y="70" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="700" fill="#FF6B6B" letter-spacing="0.08em">AZURE AI FOUNDRY</text>
+
+                  <!-- Knowledge Base sub-box -->
+                  <rect x="316" y="96" width="134" height="170" rx="8" fill="rgba(0,180,216,0.08)" stroke="#00B4D8" stroke-width="1"/>
+                  <text x="383" y="114" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="600" fill="#00B4D8">Knowledge Base</text>
+                  {[
+                    { y: 124, label: 'Document ingestion' },
+                    { y: 143, label: 'AI Search index' },
+                    { y: 162, label: 'Tagging & metadata' },
+                    { y: 181, label: 'Sensitivity filter' },
+                    { y: 200, label: 'Past work retrieval' },
+                    { y: 219, label: 'Cloud9 voice model' },
+                  ].map(({ y, label }) => (
+                    <g>
+                      <circle cx="326" cy={y+5} r="2.5" fill="#00B4D8" opacity="0.5"/>
+                      <text x="334" y={y+8} font-family="Inter,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.6)">{label}</text>
+                    </g>
+                  ))}
+
+                  <!-- Arrow inside platform -->
+                  <line x1="450" y1="170" x2="465" y2="170" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-dasharray="3,2"/>
+                  <polygon points="462,167 468,170 462,173" fill="rgba(255,255,255,0.3)"/>
+
+                  <!-- Specialist Engine sub-box -->
+                  <rect x="468" y="96" width="134" height="170" rx="8" fill="rgba(255,107,107,0.08)" stroke="rgba(255,107,107,0.4)" stroke-width="1"/>
+                  <text x="535" y="114" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="600" fill="#FF6B6B">Specialist Engine</text>
+                  {[
+                    { y: 124, label: 'Multiple AI models' },
+                    { y: 143, label: 'Specialist memory' },
+                    { y: 162, label: 'Charter & persona' },
+                    { y: 181, label: 'Tool access layer' },
+                    { y: 200, label: 'Context assembly' },
+                    { y: 219, label: 'Response generation' },
+                  ].map(({ y, label }) => (
+                    <g>
+                      <circle cx="478" cy={y+5} r="2.5" fill="#FF6B6B" opacity="0.5"/>
+                      <text x="486" y={y+8} font-family="Inter,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.6)">{label}</text>
+                    </g>
+                  ))}
+                </g>
+
+                <!-- Arrows: platform → specialists -->
+                <g id="arch-arrows-2" style="opacity:0;transition:opacity 0.5s ease">
+                  <line x1="620" y1="130" x2="695" y2="105" stroke="rgba(255,107,107,0.6)" stroke-width="1.5" stroke-dasharray="5,4"/>
+                  <polygon points="691,101 699,105 694,111" fill="rgba(255,107,107,0.6)"/>
+                  <line x1="620" y1="170" x2="695" y2="170" stroke="rgba(255,107,107,0.6)" stroke-width="1.5" stroke-dasharray="5,4"/>
+                  <polygon points="691,166 699,170 691,174" fill="rgba(255,107,107,0.6)"/>
+                  <line x1="620" y1="210" x2="695" y2="235" stroke="rgba(255,107,107,0.6)" stroke-width="1.5" stroke-dasharray="5,4"/>
+                  <polygon points="691,230 699,235 694,241" fill="rgba(255,107,107,0.6)"/>
+                </g>
+
+                <!-- Specialists column -->
+                <g id="arch-specialists" style="opacity:0;transition:opacity 0.7s ease">
+                  {[
+                    { y: 78, label: 'Jordan Reeves', sub: 'Proposals', color: '#FF6B6B', initials: 'JR' },
+                    { y: 148, label: 'Office Manager', sub: 'Knowledge (Phase 2)', color: '#7C3AED', initials: 'OM' },
+                    { y: 218, label: 'Future Specialists', sub: 'Phases 3–5', color: '#6B7280', initials: '+' },
+                  ].map(({ y, label, sub, color, initials }) => (
+                    <g>
+                      <rect x="700" y={y} width="130" height="52" rx="8" fill="rgba(255,255,255,0.05)" stroke={color} stroke-width="1.5" opacity={initials === '+' ? '0.4' : '1'}/>
+                      <circle cx="722" cy={y+26} r="16" fill={color} opacity={initials === '+' ? '0.3' : '0.2'} stroke={color} stroke-width="1"/>
+                      <text x="722" y={y+31} text-anchor="middle" font-family="Inter,sans-serif" font-size={initials === '+' ? '16' : '9'} font-weight="800" fill={color}>{initials}</text>
+                      <text x="744" y={y+21} font-family="Inter,sans-serif" font-size="9.5" font-weight="600" fill="rgba(255,255,255,0.85)">{label}</text>
+                      <text x="744" y={y+35} font-family="Inter,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.45)">{sub}</text>
+                    </g>
+                  ))}
+                </g>
+
+                <!-- Arrows: specialists → users -->
+                <g id="arch-arrows-3" style="opacity:0;transition:opacity 0.5s ease">
+                  <line x1="830" y1="104" x2="880" y2="115" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                  <line x1="830" y1="174" x2="880" y2="170" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                  <line x1="830" y1="244" x2="880" y2="225" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                  <polygon points="876,111 884,115 879,121" fill="rgba(255,255,255,0.2)"/>
+                  <polygon points="876,166 884,170 876,174" fill="rgba(255,255,255,0.2)"/>
+                  <polygon points="876,221 884,225 879,231" fill="rgba(255,255,255,0.2)"/>
+                </g>
+
+                <!-- Users column -->
+                <g id="arch-users" style="opacity:0;transition:opacity 0.7s ease">
+                  <rect x="884" y="60" width="70" height="220" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+                  {[
+                    { y: 90, label: 'Directors' },
+                    { y: 150, label: 'Consultants' },
+                    { y: 210, label: 'Admin' },
+                  ].map(({ y, label }) => (
+                    <g>
+                      <circle cx="919" cy={y} r="18" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+                      <svg x="907" y={y-12} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                      </svg>
+                      <text x="919" y={y+32} text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,0.4)">{label}</text>
+                    </g>
+                  ))}
+                </g>
+
+              </svg>
+            </div>
+
+            <!-- Supporting points -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+              {[
+                { color: '#00B4D8', title: 'Runs on your existing Microsoft environment', body: 'Built within Azure and Microsoft 365. No new infrastructure to procure or manage — it extends what Cloud9 already has.' },
+                { color: '#FF6B6B', title: 'Multiple AI models, selected by task', body: 'Different models handle different tasks — writing quality, reasoning, document extraction — with routing configured per use case.' },
+                { color: '#7C3AED', title: 'Knowledge grows with every engagement', body: 'Every proposal, delivery, and interaction indexed and available. The platform gets more useful the longer it runs.' },
+              ].map(({ color, title, body }) => (
+                <div class="reveal p-5 rounded-xl" style={`background:${color}10;border:1px solid ${color}25`}>
+                  <div class="w-8 h-8 rounded-lg mb-3 flex items-center justify-center" style={`background:${color}20`}>
+                    <div class="w-3 h-3 rounded-full" style={`background:${color}`}></div>
+                  </div>
+                  <h4 class="text-white font-semibold text-sm mb-2">{title}</h4>
+                  <p class="text-white/50 text-xs leading-relaxed">{body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════ SECTION 4: SPECIALISTS -->
         <section id="s-specialists" class="py-24 bg-white">
           <div class="max-w-6xl mx-auto px-6 lg:px-12">
 
             <div class="text-center mb-16 reveal">
               <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#FF6B6B]/10 text-[#FF6B6B] mb-4">The Specialists</span>
-              <h2 class="text-3xl lg:text-4xl font-bold text-[#1B2A4A] mb-4">Not tools. Colleagues.</h2>
-              <p class="text-[#6B7280] text-lg max-w-2xl mx-auto">Each Specialist has a name, a defined expertise, and a memory that grows with every interaction. They push back when something isn't right. They learn what works for each person they work with.</p>
+              <h2 class="text-3xl lg:text-4xl font-bold text-[#1B2A4A] mb-4">Named AI agents, not generic tools</h2>
+              <p class="text-[#6B7280] text-lg max-w-2xl mx-auto">Each Specialist has a defined identity, deep domain expertise, and a memory that grows with every interaction. They challenge approaches that won't work. They learn what each person responds to.</p>
             </div>
 
-            <!-- Specialist cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
 
               <!-- Jordan Reeves — Active -->
               <div class="reveal specialist-card relative rounded-2xl border-2 border-[#FF6B6B] overflow-hidden shadow-xl" style="transition-delay:0s">
-                <div class="absolute top-4 right-4 z-10">
-                  <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-[#FF6B6B] text-white">Sprint 1 — Active</span>
-                </div>
+                <div class="absolute top-4 right-4 z-10"><span class="px-2.5 py-1 rounded-full text-xs font-bold bg-[#FF6B6B] text-white">Phase 1</span></div>
                 <div class="h-3 bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E]"></div>
                 <div class="p-6">
                   <div class="flex items-center gap-3 mb-5">
@@ -227,9 +490,9 @@ if (Astro.request.method === 'POST' && !authenticated) {
                     </div>
                   </div>
                   <ul class="space-y-2.5">
-                    {['Proposal writing & bid strategy','CV → Team Profile conversion','Government panel responses','References past Cloud9 wins'].map(trait => (
+                    {['Proposal writing & bid strategy','CV → Team Profile conversion','Government panel responses','Draws on past Cloud9 work'].map(trait => (
                       <li class="flex items-start gap-2.5 text-sm text-[#374151]">
-                        <svg class="w-4 h-4 text-[#FF6B6B] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                        <svg class="w-4 h-4 text-[#FF6B6B] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                         {trait}
                       </li>
                     ))}
@@ -237,7 +500,7 @@ if (Astro.request.method === 'POST' && !authenticated) {
                 </div>
               </div>
 
-              <!-- Office Manager — Sprint 2 -->
+              <!-- Office Manager -->
               <div class="reveal specialist-card rounded-2xl border-2 border-gray-100 overflow-hidden opacity-80" style="transition-delay:0.1s">
                 <div class="h-3 bg-gradient-to-r from-[#7C3AED] to-[#9F67FF]"></div>
                 <div class="p-6">
@@ -246,13 +509,13 @@ if (Astro.request.method === 'POST' && !authenticated) {
                     <div>
                       <div class="font-bold text-[#1B2A4A] text-base">Name TBD</div>
                       <div class="text-[#6B7280] text-xs">Office & Knowledge Manager</div>
-                      <span class="inline-block mt-1.5 px-2 py-0.5 rounded-full text-xs font-semibold bg-[#7C3AED]/10 text-[#7C3AED]">Sprint 2</span>
+                      <span class="inline-block mt-1.5 px-2 py-0.5 rounded-full text-xs font-semibold bg-[#7C3AED]/10 text-[#7C3AED]">Phase 2</span>
                     </div>
                   </div>
                   <ul class="space-y-2.5">
                     {['Document library governance','Ingestion & tagging pipeline','Repository integrity protection','Cross-Specialist knowledge queries'].map(trait => (
                       <li class="flex items-start gap-2.5 text-sm text-[#374151]">
-                        <svg class="w-4 h-4 text-[#7C3AED] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                        <svg class="w-4 h-4 text-[#7C3AED] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                         {trait}
                       </li>
                     ))}
@@ -260,7 +523,7 @@ if (Astro.request.method === 'POST' && !authenticated) {
                 </div>
               </div>
 
-              <!-- BD Specialist — Sprint 5 -->
+              <!-- Future -->
               <div class="reveal specialist-card rounded-2xl border-2 border-gray-100 overflow-hidden opacity-60" style="transition-delay:0.2s">
                 <div class="h-3 bg-gradient-to-r from-[#DC2626] to-[#F87171]"></div>
                 <div class="p-6">
@@ -269,13 +532,13 @@ if (Astro.request.method === 'POST' && !authenticated) {
                     <div>
                       <div class="font-bold text-[#1B2A4A] text-base">Name TBD</div>
                       <div class="text-[#6B7280] text-xs">Business Development</div>
-                      <span class="inline-block mt-1.5 px-2 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-700">Sprint 5</span>
+                      <span class="inline-block mt-1.5 px-2 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-700">Phase 5</span>
                     </div>
                   </div>
                   <ul class="space-y-2.5">
-                    {['Daily tender monitoring (AusTender)','BD targeting & research','Personalised outreach at scale','Market intelligence reports'].map(trait => (
+                    {['Daily tender monitoring (AusTender)','BD targeting & research','Personalised outreach drafts','Market intelligence reports'].map(trait => (
                       <li class="flex items-start gap-2.5 text-sm text-[#374151]">
-                        <svg class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                        <svg class="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                         {trait}
                       </li>
                     ))}
@@ -284,20 +547,17 @@ if (Astro.request.method === 'POST' && !authenticated) {
               </div>
             </div>
 
-            <!-- What makes them different -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
               {[
-                { icon: '🧠', color: '#00B4D8', label: 'Persistent Memory', text: 'Specialists remember every user they\'ve worked with. They learn preferences, track coaching progress, and build a model of what works for each person — across sessions and over time.' },
-                { icon: '📚', color: '#7C3AED', label: 'Institutional Knowledge', text: 'Every past Cloud9 proposal, delivery document, and project outcome is indexed and tagged. When you ask a Specialist for help, they draw on what Cloud9 has actually done before.' },
-                { icon: '🎯', color: '#FF6B6B', label: 'Principled Push-back', text: 'Specialists don\'t just complete tasks. They challenge approaches that won\'t work, flag when something isn\'t ready, and help users produce better outputs — not just faster ones.' },
+                { icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1 1 .03 2.7-1.4 2.4l-4.8-1.2A9 9 0 0112 18a9 9 0 01-3-.3l-4.8 1.2c-1.43.3-2.4-1.4-1.4-2.4L4 15.3"/></svg>`, color: '#00B4D8', label: 'Persistent Memory', text: 'Each Specialist remembers what works for each user across sessions — preferences, coaching progress, and client context.' },
+                { icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>`, color: '#7C3AED', label: 'Cloud9 Knowledge Base', text: 'Every past proposal, delivery document, and project outcome is indexed and available. Specialists draw on Cloud9\'s real history.' },
+                { icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>`, color: '#FF6B6B', label: 'Principled Push-back', text: 'Specialists challenge approaches that won\'t work, flag when something isn\'t ready, and help users produce better outputs — not just faster ones.' },
               ].map(({ icon, color, label, text }) => (
-                <div class="reveal flex gap-4 p-6 rounded-xl bg-[#F8F9FA] border border-gray-100">
-                  <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0" style={`background:${color}20`}>
-                    {icon}
-                  </div>
+                <div class="reveal flex gap-4 p-5 rounded-xl bg-[#F8F9FA] border border-gray-100">
+                  <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={`background:${color}15;color:${color}`} set:html={icon}></div>
                   <div>
                     <div class="font-bold text-[#1B2A4A] mb-1.5 text-sm">{label}</div>
-                    <p class="text-[#6B7280] text-sm leading-relaxed">{text}</p>
+                    <p class="text-[#6B7280] text-xs leading-relaxed">{text}</p>
                   </div>
                 </div>
               ))}
@@ -306,262 +566,133 @@ if (Astro.request.method === 'POST' && !authenticated) {
         </section>
 
 
-        <!-- ═════════════════════════════ SECTION 3: ARCHITECTURE -->
-        <section id="s-architecture" class="py-24 bg-[#1B2A4A]">
+        <!-- ═══════════════════════════════════ SECTION 5: DELIVERY -->
+        <section id="s-delivery" class="py-24 bg-[#F0F4FF]">
           <div class="max-w-6xl mx-auto px-6 lg:px-12">
 
             <div class="text-center mb-16 reveal">
-              <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#00B4D8]/15 text-[#00B4D8] mb-4 border border-[#00B4D8]/25">The Architecture</span>
-              <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Three things working together</h2>
-              <p class="text-white/50 text-lg max-w-2xl mx-auto">Built entirely within your existing Microsoft Azure and Microsoft 365 environment. No new software, no separate logins.</p>
+              <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#1B2A4A]/10 text-[#1B2A4A] mb-4">Delivery</span>
+              <h2 class="text-3xl lg:text-4xl font-bold text-[#1B2A4A] mb-4">Phase 1 deliverables</h2>
+              <p class="text-[#6B7280] text-lg max-w-2xl mx-auto">The first phase focuses on the highest-impact outputs. Delivery is flexible — worked as blocks of time rather than a fixed calendar schedule.</p>
             </div>
 
-            <!-- Architecture diagram -->
-            <div id="arch-diagram" class="relative max-w-4xl mx-auto mb-16">
-              <svg viewBox="0 0 860 280" xmlns="http://www.w3.org/2000/svg" class="w-full">
-                <!-- Zone 1: Your Team -->
-                <g id="arch-zone-1" style="opacity:0;transition:opacity 0.7s ease">
-                  <rect x="8" y="30" width="230" height="220" rx="12" fill="rgba(0,180,216,0.08)" stroke="#00B4D8" stroke-width="1.5"/>
-                  <text x="123" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#00B4D8" letter-spacing="0.1em">YOUR TEAM</text>
-                  <circle cx="65" cy="105" r="26" fill="rgba(0,180,216,0.15)"/>
-                  <text x="65" y="110" text-anchor="middle" font-size="18">👤</text>
-                  <text x="65" y="145" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="Inter, sans-serif">Directors</text>
-                  <circle cx="123" cy="105" r="26" fill="rgba(0,180,216,0.15)"/>
-                  <text x="123" y="110" text-anchor="middle" font-size="18">👤</text>
-                  <text x="123" y="145" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="Inter, sans-serif">Consultants</text>
-                  <circle cx="181" cy="105" r="26" fill="rgba(0,180,216,0.15)"/>
-                  <text x="181" y="110" text-anchor="middle" font-size="18">👤</text>
-                  <text x="181" y="145" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="Inter, sans-serif">Admin</text>
-                  <rect x="28" y="175" width="185" height="28" rx="6" fill="rgba(255,255,255,0.07)"/>
-                  <text x="121" y="193" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.55)" font-family="Inter, sans-serif">SharePoint · Teams · Outlook</text>
-                  <rect x="28" y="210" width="185" height="28" rx="6" fill="rgba(255,255,255,0.07)"/>
-                  <text x="121" y="228" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.55)" font-family="Inter, sans-serif">Microsoft 365 (existing)</text>
-                </g>
-
-                <!-- Arrow 1→2 -->
-                <g id="arch-arrow-1" style="opacity:0;transition:opacity 0.5s ease">
-                  <line x1="238" y1="140" x2="302" y2="140" stroke="#00B4D8" stroke-width="2" stroke-dasharray="6,4"/>
-                  <polygon points="298,136 306,140 298,144" fill="#00B4D8"/>
-                </g>
-
-                <!-- Zone 2: AI Specialists -->
-                <g id="arch-zone-2" style="opacity:0;transition:opacity 0.7s ease">
-                  <rect x="308" y="30" width="240" height="220" rx="12" fill="rgba(255,107,107,0.08)" stroke="rgba(255,107,107,0.5)" stroke-width="1.5"/>
-                  <text x="428" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#FF6B6B" letter-spacing="0.1em">AI SPECIALISTS</text>
-                  <circle cx="362" cy="105" r="30" fill="rgba(255,107,107,0.15)" stroke="rgba(255,107,107,0.4)" stroke-width="1.5"/>
-                  <text x="362" y="99" text-anchor="middle" font-size="10" font-weight="700" fill="white" font-family="Inter, sans-serif">JR</text>
-                  <text x="362" y="113" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.7)" font-family="Inter, sans-serif">Jordan</text>
-                  <circle cx="428" cy="105" r="26" fill="rgba(124,58,237,0.15)" stroke="rgba(124,58,237,0.3)" stroke-width="1"/>
-                  <text x="428" y="113" text-anchor="middle" font-size="16" fill="rgba(255,255,255,0.4)">+</text>
-                  <text x="428" y="145" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.4)" font-family="Inter, sans-serif">Sprint 2+</text>
-                  <circle cx="490" cy="105" r="26" fill="rgba(220,38,38,0.1)" stroke="rgba(220,38,38,0.2)" stroke-width="1"/>
-                  <text x="490" y="113" text-anchor="middle" font-size="16" fill="rgba(255,255,255,0.3)">+</text>
-                  <text x="490" y="145" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.3)" font-family="Inter, sans-serif">Sprint 5+</text>
-                  <rect x="328" y="175" width="200" height="28" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-                  <text x="428" y="193" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif">Charter · Memory · Skills</text>
-                  <rect x="328" y="210" width="200" height="28" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-                  <text x="428" y="228" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif">Azure AI Foundry</text>
-                </g>
-
-                <!-- Arrow 2→3 -->
-                <g id="arch-arrow-2" style="opacity:0;transition:opacity 0.5s ease">
-                  <line x1="548" y1="140" x2="612" y2="140" stroke="#00B4D8" stroke-width="2" stroke-dasharray="6,4"/>
-                  <polygon points="608,136 616,140 608,144" fill="#00B4D8"/>
-                </g>
-
-                <!-- Zone 3: Knowledge & Tools -->
-                <g id="arch-zone-3" style="opacity:0;transition:opacity 0.7s ease">
-                  <rect x="618" y="30" width="230" height="220" rx="12" fill="rgba(16,185,129,0.08)" stroke="rgba(16,185,129,0.4)" stroke-width="1.5"/>
-                  <text x="733" y="20" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#10B981" letter-spacing="0.08em">KNOWLEDGE &amp; TOOLS</text>
-                  {[
-                    { y: 58, icon: '📄', label: 'Past Proposals Library' },
-                    { y: 90, icon: '📁', label: 'Delivery Documents' },
-                    { y: 122, icon: '👥', label: 'Consultant Profiles & CVs' },
-                    { y: 154, icon: '⚙️', label: 'External Tools (Karmly, MYOB)' },
-                    { y: 186, icon: '📋', label: 'Templates & Standards' },
-                  ].map(({ y, icon, label }) => (
-                    <g>
-                      <rect x="638" y={y} width="190" height="24" rx="5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-                      <text x="652" y={y + 15} font-size="11">{icon}</text>
-                      <text x="670" y={y + 15} font-size="9.5" fill="rgba(255,255,255,0.65)" font-family="Inter, sans-serif">{label}</text>
-                    </g>
-                  ))}
-                  <rect x="638" y="218" width="190" height="24" rx="5" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
-                  <text x="733" y="234" text-anchor="middle" font-size="9" fill="#10B981" font-family="Inter, sans-serif" font-weight="600">Grows with every project ↑</text>
-                </g>
-              </svg>
-            </div>
-
-            <!-- Stats row -->
-            <div class="grid grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <!-- Output blocks -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
               {[
-                { num: '10+', label: 'AI models available', sub: 'Claude, GPT-5, DeepSeek & more', color: '#00B4D8' },
-                { num: '$150–200', label: 'AUD/month running', sub: 'Azure services, pay-per-use', color: '#FF6B6B' },
-                { num: '3,000+', label: 'models in catalog', sub: 'Azure AI Foundry marketplace', color: '#10B981' },
-              ].map(({ num, label, sub, color }) => (
-                <div class="reveal text-center p-6 rounded-xl" style={`background:${color}10;border:1px solid ${color}25`}>
-                  <div class="text-3xl font-bold mb-1" style={`color:${color}`}>{num}</div>
-                  <div class="text-white text-sm font-semibold mb-1">{label}</div>
-                  <div class="text-white/40 text-xs">{sub}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-        <!-- ═════════════════════════════════ SECTION 4: ROADMAP -->
-        <section id="s-roadmap" class="py-24 bg-[#F0F4FF]">
-          <div class="max-w-6xl mx-auto px-6 lg:px-12">
-
-            <div class="text-center mb-16 reveal">
-              <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#1B2A4A]/10 text-[#1B2A4A] mb-4">The Plan</span>
-              <h2 class="text-3xl lg:text-4xl font-bold text-[#1B2A4A] mb-4">5 Sprints. Each one delivers.</h2>
-              <p class="text-[#6B7280] text-lg max-w-2xl mx-auto">Each sprint is ~10 paid working days. Each delivers working capability Cloud9 can use immediately. The platform grows with every sprint.</p>
-            </div>
-
-            <!-- Sprint timeline — horizontal scroll on mobile -->
-            <div class="overflow-x-auto pb-4 -mx-6 px-6 lg:mx-0 lg:px-0">
-              <div class="flex gap-4 min-w-[800px] lg:min-w-0">
-
-                {[
-                  {
-                    num: '01', color: '#1B2A4A', light: '#EBF0FF',
-                    name: 'Foundation + Jordan', active: true,
-                    items: ['Azure infrastructure', 'Jordan Reeves Specialist', 'CV → Team Profile', 'Proposal Generator', 'Knowledge Library v1'],
-                  },
-                  {
-                    num: '02', color: '#7C3AED', light: '#F5F3FF',
-                    name: 'Office Manager + Candidates', active: false,
-                    items: ['Office Manager Specialist', 'Auto document ingestion', 'Candidate Finder Specialist', 'Seek API integration', 'Role-based access layer'],
-                  },
-                  {
-                    num: '03', color: '#D97706', light: '#FFFBEB',
-                    name: 'Advanced Proposals', active: false,
-                    items: ['Complex bid generator', 'Statement of Work gen.', 'Case study creation', 'Director security tier', 'Rate card tools'],
-                  },
-                  {
-                    num: '04', color: '#059669', light: '#ECFDF5',
-                    name: 'Operations', active: false,
-                    items: ['AI meeting notes', 'Employment contracts', 'Timesheet automation', 'Karmly + MYOB integration', 'Scheduled agent alerts'],
-                  },
-                  {
-                    num: '05', color: '#DC2626', light: '#FEF2F2',
-                    name: 'Growth Intelligence', active: false,
-                    items: ['BD Specialist', 'Daily tender monitoring', 'BD outreach automation', 'Market intelligence', 'Pipeline management'],
-                  },
-                ].map(({ num, color, light, name, active, items }) => (
-                  <div
-                    class={`reveal flex-1 rounded-2xl overflow-hidden border-2 transition-shadow ${active ? 'shadow-xl' : 'shadow-md opacity-85'}`}
-                    style={`border-color:${color}; background:white; ${active ? `box-shadow: 0 20px 60px ${color}25` : ''}`}
-                  >
-                    <div class="h-2" style={`background:${color}`}></div>
-                    <div class="p-5">
-                      <div class="flex items-start justify-between mb-4">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm" style={`background:${color}`}>
-                          {num}
-                        </div>
-                        {active && (
-                          <span class="px-2.5 py-1 rounded-full text-xs font-bold text-white" style={`background:${color}`}>Now</span>
-                        )}
+                {
+                  n: '01', color: '#FF6B6B',
+                  title: 'Proposal Generator',
+                  desc: 'A complete 4-section proposal generated from a client brief — Executive Summary, Approach, Team, and Timeline. Output is a branded Word document saved to SharePoint.',
+                  time: '~4 days',
+                  tags: ['Proposals', 'Word output', 'SharePoint'],
+                },
+                {
+                  n: '02', color: '#3A6B9F',
+                  title: 'CV to Team Profile',
+                  desc: 'Consultant CVs automatically reframed for each specific brief context. One consistent format that adapts to the engagement — no manual reformatting required.',
+                  time: '~2 days',
+                  tags: ['CVs', 'Proposals', 'Word output'],
+                },
+                {
+                  n: '03', color: '#0D9488',
+                  title: 'Cloud9 Knowledge Library',
+                  desc: 'Past proposals and delivery documents indexed, tagged, and searchable by AI. The platform draws on Cloud9\'s real history — not generic language — in every response.',
+                  time: '~2 days',
+                  tags: ['RAG', 'Knowledge base', 'Tagging'],
+                },
+                {
+                  n: '04', color: '#7C3AED',
+                  title: 'Jordan Reeves Specialist',
+                  desc: 'A named AI Specialist configured with Cloud9\'s voice, domain knowledge, and push-back behaviours. Includes a generated avatar and a defined Charter covering communication style and limits.',
+                  time: 'Alongside above',
+                  tags: ['Specialist', 'Charter', 'Avatar'],
+                },
+                {
+                  n: '05', color: '#D97706',
+                  title: 'Usage & Cost Dashboard',
+                  desc: 'Application Insights dashboard showing who\'s using the platform, what\'s being generated, and what it\'s costing. Budget alerts configured and visible to nominated administrators.',
+                  time: '~1 day',
+                  tags: ['Monitoring', 'Cost alerts', 'Insights'],
+                },
+              ].map(({ n, color, title, desc, time, tags }) => (
+                <div class="reveal bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden" style={`transition-delay:${parseInt(n)*0.07}s`}>
+                  <div class="h-1" style={`background:${color}`}></div>
+                  <div class="p-5">
+                    <div class="flex items-start justify-between mb-3">
+                      <div class="w-9 h-9 rounded-lg flex items-center justify-center text-white font-bold text-sm" style={`background:${color}`}>{n}</div>
+                      <div class="text-right">
+                        <div class="text-xs font-semibold text-[#374151]">{time}</div>
+                        <div class="text-xs text-[#9CA3AF]">estimated</div>
                       </div>
-                      <div class="font-bold text-[#1B2A4A] text-sm mb-4 leading-snug">{name}</div>
-                      <ul class="space-y-2">
-                        {items.map(item => (
-                          <li class="flex items-start gap-2 text-xs text-[#4B5563]">
-                            <svg class="w-3.5 h-3.5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" style={`color:${color}`}><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
+                    </div>
+                    <h3 class="font-bold text-[#1B2A4A] text-base mb-2">{title}</h3>
+                    <p class="text-[#6B7280] text-xs leading-relaxed mb-4">{desc}</p>
+                    <div class="flex flex-wrap gap-1.5">
+                      {tags.map(tag => (
+                        <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-[#6B7280]">{tag}</span>
+                      ))}
                     </div>
                   </div>
-                ))}
-
-              </div>
-            </div>
-
-            <p class="text-center text-[#9CA3AF] text-sm mt-6">Each sprint ~10 paid working days &middot; Delivered flexibly over calendar time &middot; Each sprint independently valuable</p>
-          </div>
-        </section>
-
-
-        <!-- ════════════════════════════════ SECTION 5: SPRINT 1 -->
-        <section id="s-sprint1" class="py-24 bg-white">
-          <div class="max-w-6xl mx-auto px-6 lg:px-12">
-
-            <div class="text-center mb-16 reveal">
-              <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#1B2A4A] text-white mb-4">Sprint 1 — 10 Days</span>
-              <h2 class="text-3xl lg:text-4xl font-bold text-[#1B2A4A] mb-4">What Cloud9 gets in 10 paid days</h2>
-              <p class="text-[#6B7280] text-lg max-w-2xl mx-auto">By the end of Sprint 1, any Cloud9 staff member can generate a complete, on-brand proposal in under 20 minutes — without Alastair in the room.</p>
-            </div>
-
-            <!-- Day blocks -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-12">
-              {[
-                { days: 'Days 1–2', color: '#1B2A4A', items: ['Azure foundation', 'Models deployed', 'SharePoint connected', 'Budget alert set'] },
-                { days: 'Days 2–3', color: '#3A6B9F', items: ['Jordan\'s Charter drafted', 'Cloud9 review session', 'Voice & push-back defined', 'Avatar uploaded'] },
-                { days: 'Days 3–5', color: '#7C3AED', items: ['CV → Profile built', 'Tested on 5 CVs', 'Output verified', 'Prompts refined'] },
-                { days: 'Days 5–7', color: '#0D9488', items: ['Proposals indexed', 'Deliveries indexed', 'Cloud9 voice derived', 'Retrieval tested'] },
-                { days: 'Days 7–9', color: '#D97706', items: ['Proposal Generator built', 'Word doc output live', 'End-to-end test done', 'Quality rounds'] },
-                { days: 'Days 9–10', color: '#059669', items: ['Error handling', 'Intake form live', 'Acceptance test', 'Handover + docs'] },
-              ].map(({ days, color, items }, i) => (
-                <div class="reveal rounded-xl overflow-hidden border border-gray-100 shadow-sm" style={`transition-delay:${i * 0.07}s`}>
-                  <div class="py-2 px-3 text-white text-xs font-bold text-center" style={`background:${color}`}>{days}</div>
-                  <div class="p-3 bg-[#F8F9FA]">
-                    <ul class="space-y-1.5">
-                      {items.map(item => (
-                        <li class="text-xs text-[#4B5563] leading-snug">{item}</li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
               ))}
             </div>
 
-            <!-- Definition of done -->
-            <div class="reveal">
-              <h3 class="text-[#1B2A4A] font-bold text-lg mb-5">Definition of Done</h3>
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {[
-                  { icon: '✅', text: 'Cloud9 staff (not Alastair) can generate a proposal end-to-end' },
-                  { icon: '✅', text: 'Output is good enough to send to a client with light editing' },
-                  { icon: '✅', text: 'Jordan references at least one relevant past Cloud9 delivery' },
-                  { icon: '✅', text: 'Monthly running cost confirmed within $200 AUD estimate' },
-                ].map(({ icon, text }) => (
-                  <div class="flex gap-3 p-4 rounded-xl bg-emerald-50 border border-emerald-100">
-                    <span class="text-lg flex-shrink-0">{icon}</span>
-                    <span class="text-sm text-[#065F46] font-medium leading-snug">{text}</span>
-                  </div>
-                ))}
+            <!-- Future phases table -->
+            <div class="reveal bg-white rounded-2xl border border-gray-200 overflow-hidden">
+              <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                <h3 class="font-bold text-[#1B2A4A]">Future phases</h3>
+                <span class="text-xs text-[#9CA3AF] italic">Indicative estimates — confirmed at start of each phase</span>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th class="px-5 py-3 text-left text-xs font-bold text-[#6B7280] uppercase tracking-wider">Phase</th>
+                      <th class="px-5 py-3 text-left text-xs font-bold text-[#6B7280] uppercase tracking-wider">Key deliverables</th>
+                      <th class="px-5 py-3 text-left text-xs font-bold text-[#6B7280] uppercase tracking-wider">Indicative time</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-100">
+                    {[
+                      { phase: 'Phase 2', color: '#7C3AED', items: 'Office Manager Specialist, automated document ingestion, Candidate Finder, Seek API integration', time: '~10 days' },
+                      { phase: 'Phase 3', color: '#D97706', items: 'Major/custom proposals, Statement of Work generation, Case Study creation, director access tier', time: '~10–15 days' },
+                      { phase: 'Phase 4', color: '#059669', items: 'AI meeting notes, employment contracts, timesheet automation, Karmly + MYOB integration', time: '~15 days' },
+                      { phase: 'Phase 5', color: '#DC2626', items: 'Business Development Specialist, daily tender monitoring, outreach automation, market intelligence', time: '~15 days' },
+                    ].map(({ phase, color, items, time }) => (
+                      <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-5 py-3.5"><span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold text-white" style={`background:${color}`}>{phase}</span></td>
+                        <td class="px-5 py-3.5 text-[#374151] text-xs">{items}</td>
+                        <td class="px-5 py-3.5 text-[#6B7280] text-xs font-medium whitespace-nowrap">{time}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </section>
 
 
-        <!-- ═══════════════════════════════ SECTION 6: BENEFITS -->
+        <!-- ═══════════════════════════════════ SECTION 6: BENEFITS -->
         <section id="s-benefits" class="relative overflow-hidden">
           <div class="grid lg:grid-cols-2">
 
-            <!-- Left: Commercial -->
-            <div class="py-20 px-8 lg:px-16 bg-[#1B2A4A]">
+            <div class="py-20 px-8 lg:px-14 bg-[#1B2A4A]">
               <div class="max-w-lg reveal">
-                <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-[#00B4D8]/20 text-[#00B4D8] mb-6 border border-[#00B4D8]/25">The Commercial Case</span>
-                <h2 class="text-2xl lg:text-3xl font-bold text-white mb-10">Hard numbers, real returns</h2>
-                <div class="space-y-5">
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-[#00B4D8]/20 text-[#00B4D8] mb-6 border border-[#00B4D8]/25">Benefits</span>
+                <h2 class="text-2xl lg:text-3xl font-bold text-white mb-10">What changes for Cloud9</h2>
+                <div class="space-y-4">
                   {[
-                    { icon: '⚡', stat: '3 hrs → 20 min', label: 'Proposal production time', sub: 'From first draft to client-ready Word document' },
-                    { icon: '💰', stat: '$400–800/mo', label: 'Onsell value per client', sub: 'Platform packaged for other Microsoft-ecosystem firms' },
-                    { icon: '🎯', stat: 'Sprint 2', label: 'Hiring pipeline automated', sub: 'Seek API + AI scoring + internal candidate DB' },
-                    { icon: '🕐', stat: 'Hours/week', label: 'Leadership time freed', sub: 'From proposal writing, admin, and manual research' },
-                  ].map(({ icon, stat, label, sub }) => (
+                    { icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`, label: 'Proposal time reduced significantly', body: 'From hours of manual assembly to a brief review and send. Consultants focus on client relationships, not document formatting.' },
+                    { icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.745 3.745 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.745 3.745 0 013.296-1.043A3.745 3.745 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.745 3.745 0 013.296 1.043 3.745 3.745 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>`, label: 'Consistent quality and voice', body: 'Every proposal drawn from the same knowledge base and written in Cloud9\'s voice. Quality doesn\'t depend on who wrote it or how much time they had.' },
+                    { icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/></svg>`, label: 'Past work actively leveraged', body: 'Cloud9\'s history of proposals and deliveries becomes a working asset — referenced automatically in every new engagement, not buried in a folder.' },
+                    { icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>`, label: 'Leadership time freed for client work', body: 'Directors and senior partners spend less time on proposal administration and more time on strategy, relationships, and growth.' },
+                  ].map(({ icon, label, body }) => (
                     <div class="flex gap-4 p-4 rounded-xl bg-white/5 border border-white/8">
-                      <span class="text-2xl flex-shrink-0">{icon}</span>
+                      <div class="w-10 h-10 rounded-lg bg-[#00B4D8]/15 flex items-center justify-center text-[#00B4D8] flex-shrink-0" set:html={icon}></div>
                       <div>
-                        <div class="text-[#00B4D8] font-bold text-lg leading-tight">{stat}</div>
-                        <div class="text-white font-semibold text-sm">{label}</div>
-                        <div class="text-white/40 text-xs mt-0.5">{sub}</div>
+                        <div class="text-white font-semibold text-sm mb-1">{label}</div>
+                        <div class="text-white/45 text-xs leading-relaxed">{body}</div>
                       </div>
                     </div>
                   ))}
@@ -569,24 +700,22 @@ if (Astro.request.method === 'POST' && !authenticated) {
               </div>
             </div>
 
-            <!-- Right: Non-commercial -->
-            <div class="py-20 px-8 lg:px-16 bg-gradient-to-br from-[#FF6B6B] to-[#FF4040]">
+            <div class="py-20 px-8 lg:px-14 bg-gradient-to-br from-[#FF6B6B] to-[#E84040]">
               <div class="max-w-lg reveal">
-                <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-white/20 text-white mb-6 border border-white/30">Beyond the Numbers</span>
-                <h2 class="text-2xl lg:text-3xl font-bold text-white mb-10">Built-in competitive advantage</h2>
-                <div class="space-y-5">
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-white/20 text-white mb-6 border border-white/30">Platform Features</span>
+                <h2 class="text-2xl lg:text-3xl font-bold text-white mb-10">What the platform provides</h2>
+                <div class="space-y-4">
                   {[
-                    { icon: '🧠', stat: 'Never forgets', label: 'Institutional memory', sub: 'Every past project, outcome, and lesson available to every Specialist' },
-                    { icon: '📈', stat: 'Gets better', label: 'Continuous improvement', sub: 'Specialists learn from every interaction; knowledge compounds' },
-                    { icon: '🏆', stat: 'Standout', label: 'Competitive edge', sub: 'Proposals that reference real Cloud9 track record win more work' },
-                    { icon: '🚀', stat: 'Future-proof', label: 'Platform architecture', sub: 'Add Specialists and capabilities indefinitely as needs grow' },
-                  ].map(({ icon, stat, label, sub }) => (
+                    { icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/></svg>`, label: 'Named Specialists with real personalities', body: 'Each agent has a name, avatar, defined voice, and push-back triggers. They act as colleagues, not command-line tools.' },
+                    { icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>`, label: 'Grows with every engagement', body: 'The platform learns from each interaction. Specialists become more accurate and more useful the longer the platform runs.' },
+                    { icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 2.59a3.001 3.001 0 01-.621 4.72m-16.5 0v11.25"/></svg>`, label: 'Built to be onsold', body: 'Everything packaged for redeployment into another Microsoft-environment client in 1–2 days. A commercial asset, not just an internal tool.' },
+                    { icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0112 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-1.5-3.75V8.25m0 0v1.5m0 2.25v1.5"/></svg>`, label: 'Expanding capability by phase', body: 'Each new phase adds Specialists and integrations. The platform grows alongside the business without requiring a rebuild.' },
+                  ].map(({ icon, label, body }) => (
                     <div class="flex gap-4 p-4 rounded-xl bg-white/10 border border-white/15">
-                      <span class="text-2xl flex-shrink-0">{icon}</span>
+                      <div class="w-10 h-10 rounded-lg bg-white/15 flex items-center justify-center text-white flex-shrink-0" set:html={icon}></div>
                       <div>
-                        <div class="text-white font-bold text-lg leading-tight">{stat}</div>
-                        <div class="text-white/90 font-semibold text-sm">{label}</div>
-                        <div class="text-white/55 text-xs mt-0.5">{sub}</div>
+                        <div class="text-white font-semibold text-sm mb-1">{label}</div>
+                        <div class="text-white/55 text-xs leading-relaxed">{body}</div>
                       </div>
                     </div>
                   ))}
@@ -597,103 +726,108 @@ if (Astro.request.method === 'POST' && !authenticated) {
         </section>
 
 
-        <!-- ══════════════════════════════ SECTION 7: INVESTMENT -->
-        <section id="s-investment" class="py-24 bg-white">
+        <!-- ═══════════════════════════════════ SECTION 7: PROPOSAL SUMMARY -->
+        <section id="s-summary" class="py-24 bg-white">
           <div class="max-w-6xl mx-auto px-6 lg:px-12">
 
             <div class="text-center mb-16 reveal">
-              <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#1B2A4A]/10 text-[#1B2A4A] mb-4">Investment</span>
-              <h2 class="text-3xl lg:text-4xl font-bold text-[#1B2A4A] mb-4">Transparent costs at every stage</h2>
-              <p class="text-[#6B7280] text-lg max-w-2xl mx-auto">The platform runs on Azure pay-per-use services. At Cloud9's scale, the monthly running cost is modest — and the onsell opportunity creates healthy margin.</p>
+              <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#1B2A4A]/10 text-[#1B2A4A] mb-4">Proposal Summary</span>
+              <h2 class="text-3xl lg:text-4xl font-bold text-[#1B2A4A] mb-4">What's being proposed</h2>
+              <p class="text-[#6B7280] text-lg max-w-2xl mx-auto">A phased delivery of the Cloud9 AI Operations Platform, starting with proposal automation and expanding across Cloud9's operations over time.</p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-12 mb-16">
+            <div class="grid lg:grid-cols-2 gap-10 mb-12">
 
-              <!-- Cost table -->
-              <div class="reveal">
-                <h3 class="font-bold text-[#1B2A4A] text-lg mb-5">Monthly Azure Running Costs</h3>
-                <div class="rounded-xl overflow-hidden border border-gray-200">
-                  <table class="w-full text-sm">
-                    <thead>
-                      <tr class="bg-[#1B2A4A] text-white">
-                        <th class="px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider">Service</th>
-                        <th class="px-4 py-3 text-right font-semibold text-xs uppercase tracking-wider">Monthly (AUD)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {[
-                        ['AI Models (writing & analysis)', '$25–65'],
-                        ['Knowledge search & indexing', '$0–110 *'],
-                        ['Document processing', '$0 (free tier)'],
-                        ['Specialist memory (Cosmos DB)', '$5–15'],
-                        ['Monitoring & security', '$10–15'],
-                      ].map(([service, cost], i) => (
-                        <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                          <td class="px-4 py-3 text-[#374151]">{service}</td>
-                          <td class="px-4 py-3 text-right font-semibold text-[#1B2A4A]">{cost}</td>
-                        </tr>
-                      ))}
-                      <tr class="bg-[#1B2A4A]">
-                        <td class="px-4 py-3 text-white font-bold">Total estimate</td>
-                        <td class="px-4 py-3 text-right text-[#FF6B6B] font-bold text-base">$40–205/mo</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <p class="text-xs text-[#9CA3AF] p-3 border-t border-gray-100">* Search upgrades from free to paid tier ($110/mo) at scale. Budget alert set at $200/month.</p>
+              <!-- Left: What's included + engagement model -->
+              <div class="reveal space-y-6">
+                <div>
+                  <h3 class="font-bold text-[#1B2A4A] text-base mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-[#FF6B6B]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Phase 1 deliverables
+                  </h3>
+                  <ul class="space-y-2.5">
+                    {[
+                      'Azure AI Foundry project configured and deployed',
+                      'Jordan Reeves Specialist — Charter, avatar, knowledge configured',
+                      'Proposal Generator — brief to Word document in SharePoint',
+                      'CV → Team Profile — automatic reframing per brief',
+                      'Cloud9 Knowledge Library — past work indexed and accessible',
+                      'Usage and cost monitoring dashboard',
+                    ].map(item => (
+                      <li class="flex items-start gap-3 text-sm text-[#374151]">
+                        <svg class="w-4 h-4 text-[#FF6B6B] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                <!-- Onsell box -->
-                <div class="mt-6 rounded-xl bg-gradient-to-r from-[#FF6B6B] to-[#FF4040] p-5 text-white">
-                  <div class="font-bold text-base mb-1">The Onsell Opportunity</div>
-                  <p class="text-white/80 text-sm mb-4">Everything built for Cloud9 is packaged and deployable into a new client's Microsoft environment in 1–2 days.</p>
-                  <div class="grid grid-cols-3 gap-3">
+                <div class="p-5 rounded-xl bg-[#F8F9FA] border border-gray-200">
+                  <h3 class="font-bold text-[#1B2A4A] text-sm mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#3A6B9F]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+                    Engagement model
+                  </h3>
+                  <ul class="space-y-2 text-sm text-[#4B5563]">
                     {[
-                      { label: 'Running cost', val: '~$150–200' },
-                      { label: 'Onsell price', val: '$400–800' },
-                      { label: 'Margin/client', val: '$200–600' },
-                    ].map(({ label, val }) => (
-                      <div class="bg-white/15 rounded-lg p-3 text-center">
-                        <div class="font-bold text-sm">{val}</div>
-                        <div class="text-white/60 text-xs">{label}</div>
+                      'Delivery is phased — each phase is scoped and agreed independently',
+                      'Work is delivered in blocks of time, not fixed calendar sprints',
+                      'Hours can be spread across weeks (fractional engagement)',
+                      'Each phase produces working, usable output before the next begins',
+                      'Prioritisation is reviewed at the start of each phase',
+                    ].map(item => (
+                      <li class="flex items-start gap-2.5">
+                        <svg class="w-3.5 h-3.5 text-[#3A6B9F] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Right: Cost framework + next steps -->
+              <div class="reveal space-y-5">
+                <div class="rounded-xl border border-gray-200 overflow-hidden">
+                  <div class="px-5 py-3.5 bg-gray-50 border-b border-gray-100">
+                    <h3 class="font-bold text-[#1B2A4A] text-sm flex items-center gap-2">
+                      <svg class="w-4 h-4 text-[#6B7280]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>
+                      Cost framework
+                    </h3>
+                  </div>
+                  <div class="p-5 space-y-4">
+                    <p class="text-sm text-[#4B5563] leading-relaxed">The platform runs on Azure AI services billed at usage rates. Monthly costs will be scoped against Cloud9's current tooling — including existing Microsoft 365 and GitHub Copilot licences — to understand the net cost position before committing.</p>
+                    <div class="flex gap-3 p-4 rounded-lg bg-amber-50 border border-amber-100">
+                      <svg class="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+                      <p class="text-xs text-amber-800 leading-relaxed">Existing licences (e.g. GitHub Copilot, Microsoft Copilot add-ons) may offset platform running costs once compared. A cost-comparison exercise is included in Phase 1 scoping.</p>
+                    </div>
+                    <p class="text-xs text-[#9CA3AF]">Delivery costs (BrightKeep's time) are quoted separately per phase. Phase 1 scope and rate will be confirmed on agreement to proceed.</p>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="font-bold text-[#1B2A4A] text-sm mb-3">To start Phase 1</h3>
+                  <div class="space-y-2.5">
+                    {[
+                      { action: 'Create Azure subscription linked to Cloud9\'s Microsoft 365 tenant', owner: 'Matt / Michael', critical: true },
+                      { action: 'Grant BrightKeep Owner access to the subscription', owner: 'Matt', critical: true },
+                      { action: 'Upload past proposals and delivery documents to SharePoint', owner: 'Michael', critical: false },
+                      { action: 'Book Jordan Charter review session (~2 hours)', owner: 'Michael + Alastair', critical: false },
+                    ].map(({ action, owner, critical }) => (
+                      <div class={`flex items-start gap-3 p-3 rounded-lg border ${critical ? 'bg-[#FFF7F7] border-[#FF6B6B]/25' : 'bg-gray-50 border-gray-100'}`}>
+                        <div class={`w-4 h-4 rounded border-2 flex-shrink-0 mt-0.5 ${critical ? 'border-[#FF6B6B]' : 'border-gray-300'}`}></div>
+                        <div class="flex-1 text-xs">
+                          <span class="font-medium text-[#1B2A4A]">{action}</span>
+                          <span class="text-[#9CA3AF] ml-1">— {owner}</span>
+                        </div>
+                        {critical && <span class="text-xs font-bold text-[#FF6B6B] flex-shrink-0">Required</span>}
                       </div>
                     ))}
                   </div>
                 </div>
-              </div>
 
-              <!-- Next steps -->
-              <div class="reveal">
-                <h3 class="font-bold text-[#1B2A4A] text-lg mb-5">What We Need to Start</h3>
-                <div class="space-y-3 mb-8">
-                  {[
-                    { action: 'Create Azure subscription linked to Cloud9\'s M365 tenant', owner: 'Matt / Michael', urgent: true },
-                    { action: 'Grant Alastair Owner access to the Azure subscription', owner: 'Matt', urgent: true },
-                    { action: 'Upload 10–20 past proposals to SharePoint', owner: 'Michael', urgent: false },
-                    { action: 'Upload current CV per consultant (Word or PDF)', owner: 'Each consultant', urgent: false },
-                    { action: 'Book 2-hour Jordan Charter review session', owner: 'Michael + Alastair', urgent: false },
-                    { action: 'Apply for Seek employer account (Sprint 2 lead time)', owner: 'Matt', urgent: false },
-                  ].map(({ action, owner, urgent }) => (
-                    <div class={`flex items-start gap-3 p-3.5 rounded-xl border ${urgent ? 'bg-[#FFF7F7] border-[#FF6B6B]/30' : 'bg-gray-50 border-gray-100'}`}>
-                      <div class={`w-4 h-4 rounded border-2 flex-shrink-0 mt-0.5 ${urgent ? 'border-[#FF6B6B]' : 'border-gray-300'}`}></div>
-                      <div class="flex-1">
-                        <span class="text-sm text-[#1B2A4A] font-medium">{action}</span>
-                        <span class="ml-2 text-xs text-[#9CA3AF]">— {owner}</span>
-                      </div>
-                      {urgent && <span class="text-xs font-bold text-[#FF6B6B] flex-shrink-0">Critical</span>}
-                    </div>
-                  ))}
-                </div>
-
-                <!-- CTA -->
-                <div class="text-center p-8 rounded-2xl bg-[#1B2A4A]">
-                  <div class="text-white font-bold text-lg mb-2">Ready to get started?</div>
-                  <p class="text-white/50 text-sm mb-6">Sprint 1 can begin as soon as the Azure subscription is in place. Jordan Reeves will be operational within 10 paid working days.</p>
-                  <a
-                    href="mailto:alastair@brightkeep.com.au?subject=Cloud9 AI Platform - Let's Start&body=Hi Alastair, we'd like to proceed with the AI Operations Platform. Let's arrange a kick-off call."
-                    class="inline-block px-8 py-3.5 bg-[#FF6B6B] text-white font-bold rounded-xl hover:bg-[#FF5252] transition-colors text-sm"
-                  >
-                    Let's Get Started →
-                  </a>
+                <div class="text-center p-7 rounded-2xl bg-[#1B2A4A]">
+                  <div class="text-white font-bold text-base mb-2">Ready to proceed?</div>
+                  <p class="text-white/45 text-xs mb-5">Phase 1 can begin once Azure access is in place. All other items can be completed in parallel.</p>
+                  <a href="mailto:alastair@brightkeep.com.au?subject=Cloud9 AI Platform — Proceed with Phase 1&body=Hi Alastair, we'd like to proceed with Phase 1 of the AI Operations Platform. Please let us know next steps." class="inline-block px-8 py-3 bg-[#FF6B6B] text-white font-bold rounded-xl hover:bg-[#FF5252] transition-colors text-sm">Get in touch</a>
                 </div>
               </div>
             </div>
@@ -705,78 +839,54 @@ if (Astro.request.method === 'POST' && !authenticated) {
 
       <style is:global>
         @keyframes float-particle {
-          0% { transform: translate(0, 0) scale(1); }
-          100% { transform: translate(15px, -25px) scale(1.2); }
+          0% { transform: translate(0,0) scale(1); }
+          100% { transform: translate(15px,-25px) scale(1.2); }
         }
         @keyframes specialist-float {
-          0%, 100% { transform: translateY(0px); }
+          0%,100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
         }
         @keyframes scroll-dot-anim {
-          0%, 100% { transform: translateY(0); opacity: 0.8; }
+          0%,100% { transform: translateY(0); opacity: 0.8; }
           50% { transform: translateY(10px); opacity: 0.3; }
         }
-        .specialist-float {
-          animation: specialist-float 4s ease-in-out infinite;
-        }
-        .scroll-dot {
-          animation: scroll-dot-anim 1.8s ease-in-out infinite;
-        }
-        .hero-underline {
-          transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
-        }
-        .hero-underline.active {
-          transform: scaleX(1) !important;
-        }
-        .reveal {
-          opacity: 0;
-          transform: translateY(28px);
-          transition: opacity 0.65s ease, transform 0.65s ease;
-        }
-        .reveal.visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        .specialist-float { animation: specialist-float 4s ease-in-out infinite; }
+        .scroll-dot { animation: scroll-dot-anim 1.8s ease-in-out infinite; }
+        .hero-underline { transition: transform 1.2s cubic-bezier(0.16,1,0.3,1) 0.6s; }
+        .hero-underline.active { transform: scaleX(1) !important; }
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
         html { scroll-behavior: smooth; }
-        .specialist-card {
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .specialist-card:hover {
-          transform: translateY(-4px);
-        }
-        .ai-dot.active {
-          background: #FF6B6B !important;
-          transform: scale(1.3);
-        }
+        .specialist-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .specialist-card:hover { transform: translateY(-4px); }
+        .ai-dot.active { background: #FF6B6B !important; transform: scale(1.3); }
       </style>
 
       <script is:inline>
         document.addEventListener('DOMContentLoaded', () => {
 
-          // ── Hero entrance
+          // Hero entrance
           setTimeout(() => {
             const heroLeft = document.querySelector('.hero-left');
             const heroRight = document.querySelector('.hero-right');
             const underline = document.querySelector('.hero-underline');
             if (heroLeft) { heroLeft.style.transition = 'opacity 0.9s ease, transform 0.9s ease'; heroLeft.style.opacity = '1'; heroLeft.style.transform = 'translateX(0)'; }
             if (heroRight) { setTimeout(() => { heroRight.style.transition = 'opacity 0.9s ease, transform 0.9s ease'; heroRight.style.opacity = '1'; heroRight.style.transform = 'translateX(0)'; }, 300); }
-            if (underline) { setTimeout(() => underline.classList.add('active'), 600); }
+            if (underline) { setTimeout(() => underline.classList.add('active'), 700); }
           }, 100);
 
-          // ── Scroll progress bar
+          // Progress bar
           const progressFill = document.getElementById('ai-progress-fill');
           function updateProgress() {
             if (!progressFill) return;
-            const scrollTop = window.scrollY;
-            const docHeight = document.body.scrollHeight - window.innerHeight;
-            const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            const pct = (window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight)) * 100;
             progressFill.style.width = pct + '%';
           }
           window.addEventListener('scroll', updateProgress, { passive: true });
 
-          // ── Section dot nav
+          // Section dot nav
           const dots = document.querySelectorAll('.ai-dot');
-          const sectionIds = ['s-hero','s-specialists','s-architecture','s-roadmap','s-sprint1','s-benefits','s-investment'];
+          const sectionIds = ['s-hero','s-challenge','s-solution','s-specialists','s-delivery','s-benefits','s-summary'];
           const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
 
           dots.forEach(dot => {
@@ -786,61 +896,77 @@ if (Astro.request.method === 'POST' && !authenticated) {
             });
           });
 
-          // ── Reveal on scroll (Intersection Observer)
+          // Reveal on scroll
           const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                revealObserver.unobserve(entry.target);
-              }
+              if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
             });
           }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
           document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-          // ── Section dot active state
+          // Section dot active state
           const dotObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
               if (entry.isIntersecting) {
                 const id = entry.target.id;
-                dots.forEach(dot => {
-                  dot.classList.toggle('active', dot.dataset.target === id);
-                });
+                dots.forEach(dot => dot.classList.toggle('active', dot.dataset.target === id));
               }
             });
           }, { threshold: 0.4 });
-
           sections.forEach(s => dotObserver.observe(s));
 
-          // ── Architecture diagram animation
-          const archSection = document.getElementById('s-architecture');
+          // Challenge section animation
+          const challengeSection = document.getElementById('s-challenge');
+          let challengeAnimated = false;
+          const challengeObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !challengeAnimated) {
+              challengeAnimated = true;
+              const label = document.querySelector('.challenge-label');
+              const card1 = document.querySelector('.challenge-card-1');
+              const card2 = document.querySelector('.challenge-card-2');
+              const backlog = document.querySelector('.challenge-backlog');
+              const animate = (el, delay, tx) => {
+                if (!el) return;
+                setTimeout(() => {
+                  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                  el.style.opacity = '1';
+                  el.style.transform = tx || 'translateY(0)';
+                }, delay);
+              };
+              animate(label, 0, 'translateY(0)');
+              animate(card1, 200, 'translateX(0)');
+              animate(card2, 380, 'translateX(0)');
+              animate(backlog, 560, 'translateX(0)');
+            }
+          }, { threshold: 0.2 });
+          if (challengeSection) challengeObserver.observe(challengeSection);
+
+          // Architecture diagram animation
+          const archSection = document.getElementById('s-solution');
           let archAnimated = false;
           const archObserver = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting && !archAnimated) {
               archAnimated = true;
-              const z1 = document.getElementById('arch-zone-1');
-              const z2 = document.getElementById('arch-zone-2');
-              const z3 = document.getElementById('arch-zone-3');
-              const a1 = document.getElementById('arch-arrow-1');
-              const a2 = document.getElementById('arch-arrow-2');
-              if (z1) z1.style.opacity = '1';
-              setTimeout(() => { if (a1) a1.style.opacity = '1'; }, 400);
-              setTimeout(() => { if (z2) z2.style.opacity = '1'; }, 600);
-              setTimeout(() => { if (a2) a2.style.opacity = '1'; }, 1000);
-              setTimeout(() => { if (z3) z3.style.opacity = '1'; }, 1200);
+              const show = (ids, delay) => ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) setTimeout(() => { el.style.opacity = '1'; }, delay);
+              });
+              show(['lbl-1','arch-sources'], 0);
+              show(['arch-arrows-1','lbl-2'], 500);
+              show(['arch-platform'], 700);
+              show(['arch-arrows-2','lbl-3'], 1200);
+              show(['arch-specialists'], 1400);
+              show(['arch-arrows-3','lbl-4'], 1800);
+              show(['arch-users'], 2000);
             }
-          }, { threshold: 0.3 });
+          }, { threshold: 0.25 });
           if (archSection) archObserver.observe(archSection);
 
-          // ── Smooth scroll for anchor links
+          // Smooth scroll for anchor links
           document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', (e) => {
-              const id = link.getAttribute('href').slice(1);
-              const target = document.getElementById(id);
-              if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth' });
-              }
+              const target = document.getElementById(link.getAttribute('href').slice(1));
+              if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
             });
           });
 
